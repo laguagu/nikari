@@ -37,7 +37,7 @@ export function Chatbot() {
   };
 
   return (
-    <div className="grid w-full max-w-6xl grid-cols-1 gap-4 p-4 rounded-lg border border-gray-200 dark:border-gray-800">
+    <div className="grid w-full max-w-6xl grid-cols-1 gap-4 p-4 rounded-lg border border-gray-200 dark:border-gray-800 mx-auto">
       <div className="space-y-2">
         <h1 className="text-3xl font-bold">Support</h1>
         <p className="text-sm text-gray-500 dark:text-gray-400">
