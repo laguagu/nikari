@@ -1,0 +1,3 @@
+
+docker tag nextjs-docker docker-registry.rahti.csc.fi/nodetesti/webchat:latest
+docker push docker-registry.rahti.csc.fi/nodetesti/webchat:latest
