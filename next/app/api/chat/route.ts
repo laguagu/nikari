@@ -11,6 +11,7 @@ export const runtime = 'edge';
  
 export async function POST(req: Request) {
   const { messages } = await req.json();
+ console.log(messages, "messages");
  
   const messagesWithRole = [
     ...messages,
