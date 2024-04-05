@@ -1,3 +1,5 @@
+docker build -t nextjs-docker .
+docker run -p 3000:3000 nextjs-docker
 
 docker tag nextjs-docker docker-registry.rahti.csc.fi/nodetesti/webchat:latest
 docker push docker-registry.rahti.csc.fi/nodetesti/webchat:latest
