@@ -1,0 +1,14 @@
+1. Help me find the care-instructions for my furniture using image
+	(mobiilissa voi aukaista kameran), mutten fileseistä kuva
+2. Kun kuva on otettu, voi painaa send jolloin kuva lähtee visionille
+
+3. Vision palauttaa json jossa havaitut materiaalit arvolla true
+
+4. Näkymään renderöidään "materiaalienvarmistus" puhekupla
+	-pitää varmistaa kumpaa nahkaa tuotteessa on: parkkinahka vai normi verhoilunahka
+	-samoin pitäisi varmistaa onko öljytty vai lakattu
+	-Käytännössä siis jos vision tunnnistaa puun ja/tai nahkan niin renderöidään lisäkysymykset
+
+5. Chatbot sitten joko antaa lisäkysymysten perusteella matchaavat "kovakoodatut" hoito-ohjeet
+	TAI
+Sitten promptataan tietojen perusteella omalla datalla rikastettua LLM
