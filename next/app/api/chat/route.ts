@@ -8,10 +8,10 @@ const openai = new OpenAI({
  
 // Set the runtime to edge for best performance
 export const runtime = 'edge';
- 
+// LISÄÄ CHATBOT KEHOTUS ETTÄ TARKISTA HOITO-OHJEET AINA NIKARIN SIVUILTA JA HEIDÄN SPOSTI
 export async function POST(req: Request) {
   const { messages } = await req.json();
- console.log(messages, "messages");
+  console.log(messages, "messages");
  
   const messagesWithRole = [
     ...messages,
