@@ -84,6 +84,7 @@ export default function Chat() {
   const [activeComponent, setActiveComponent] = useState("");
   const [showOptions, setShowOptions] = useState(true);
   const [answers, setAnswers] = useState({});
+  const [capturedImage, setCapturedImage] = useState<string | null>(null);
   const {
     messages,
     setMessages,
@@ -91,7 +92,7 @@ export default function Chat() {
     setInput,
     handleInputChange,
     handleSubmit,
-    append,
+    append, 
   } = useChat({
     // initialInput: initialPrompt,
   });
@@ -126,6 +127,11 @@ export default function Chat() {
     console.log(answers, "answers");
   }, [answers]);
 
+  const handleBackClick = () => {
+    setShowOptions(true);
+    setMessages([]);
+  };
+
   const updateUserMessage = (content: string) => {
     setLocalMessages((prevMessages) => [
       ...prevMessages,
@@ -142,6 +148,10 @@ export default function Chat() {
         content,
       } as Message,
     ]);
+  };
+
+  const handleCapture = (imageDataUrl: string) => {
+    setCapturedImage(imageDataUrl);
   };
 
   type ButtonProps = {
@@ -179,7 +189,7 @@ export default function Chat() {
   const renderComponent = () => {
     switch (activeComponent) {
       case "imageUpload":
-        return <ImageUploadComponent />;
+        return <ImageUploadComponent onCapture={handleCapture} />;
       case "locationQuery":
         return <LocationQueryComponent />;
       case "form":
@@ -198,16 +208,18 @@ export default function Chat() {
   const currentQuestion = questions[currentQuestionIndex];
 
   return (
-    <div className="min-h-screen  w-full bg-gray-200 flex flex-col items-center justify-center overflow-y-hidden rounded-md">
+    <div className="min-h-screen  w-full bg-Ö flex flex-col items-center justify-center overflow-y-hidden rounded-md">
       <h1 className="md:text-5xl text-3xl lg:text-7xl font-bold text-centerrelative z-20 mb-3 text-white">
         <Link href={"/"}>Nikari AI</Link>
       </h1>
+      
       {currentQuestionIndex < questions.length &&
         currentQuestion.choices.map((choice) => (
           <button key={choice} onClick={() => handleChoice(choice)}>
             {choice}
           </button>
         ))}
+    {capturedImage && <img src={capturedImage} alt="Captured" />}
 
       <div className="grid w-full max-w-md sm:max-w-lg md:max-w-2xl lg:max-w-3xl xl:max-w-6xl grid-cols-1 gap-4 p-4 rounded-lg border-2 shadow-xl border-gray-200 dark:border-gray-800 mx-auto bg-zinc-100">
         <div className="space-y-2">
@@ -275,7 +287,7 @@ export default function Chat() {
 
           <div>{renderComponent()}</div>
           {!showOptions && (
-            <button onClick={() => setShowOptions(true)}>Palaa takaisin</button>
+            <button onClick={handleBackClick}>Palaa takaisin</button>
           )}
         </div>
 
@@ -295,7 +307,6 @@ export default function Chat() {
           ]}
         /> */}
       </div>
-
       <SparklesUnder />
     </div>
   );
