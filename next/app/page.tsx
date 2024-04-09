@@ -7,10 +7,13 @@ import clsx from "clsx";
 import { UserIcon, RocketLaunchIcon } from "@heroicons/react/24/outline";
 import React, { use, useEffect, useState } from "react";
 import { TextGenerateEffect } from "@/components/ui/text-generate-effect";
-import SparklesUnder from "@/app/ui/sparkles-under";
+import SparklesUnder from "@/components/chat/sparkles-under";
 import { Message } from "ai/react";
 import { Separator } from "@/components/ui/separator";
 import Link from "next/link";
+import ImageUploadComponent from "@/components/chat/ImageUploadComponent";
+import LocationQueryComponent from "@/components/chat/LocationQueryComponent";
+import FormComponent from "@/components/chat/FormComponent";
 
 const words = `You're now chatting with a AI powered support agent. Ask us anything!`;
 
@@ -79,6 +82,7 @@ function getCareInstructions(answers: string[]) {
 export default function Chat() {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [activeComponent, setActiveComponent] = useState("");
+  const [showOptions, setShowOptions] = useState(true);
   const [answers, setAnswers] = useState({});
   const {
     messages,
@@ -179,7 +183,13 @@ export default function Chat() {
       case "locationQuery":
         return <LocationQueryComponent />;
       case "form":
-        return <FormComponent />;
+        return (
+          <FormComponent
+            input={input}
+            handleInputChange={handleInputChange}
+            handleSubmit={handleSubmit}
+          />
+        );
       default:
         return <div>Valitse vaihtoehto</div>;
     }
@@ -229,22 +239,46 @@ export default function Chat() {
           ))}
         </div>
         <div>
-          <h2 className="text-3xl font-bold mb-3">Choices</h2>
-          <div className="flex justify-center space-x-3 items-center">
-            <button onClick={() => setActiveComponent("imageUpload")}>
-              1. Auta minua löytämään hoito-ohjeet huonekalulleni valokuvan
-              perusteella.
-            </button>
-            <button onClick={() => setActiveComponent("locationQuery")}>
-              2. Haluan tietää, missä on lähin Nikari-huonekalujen jälleenmyyjä.
-            </button>
-            <button onClick={() => setActiveComponent("form")}>
-              3. Ei mikään seuraavista. Siirry keskustelemaan Nikari-AI
-              avustajan kanssa.
-            </button>
-          </div>
+          {showOptions && (
+            <div className="flex justify-center space-x-3 items-center">
+              <button
+                onClick={() => {
+                  setActiveComponent("imageUpload");
+                  setShowOptions(false);
+                }}
+              >
+                1. Auta minua löytämään hoito-ohjeet huonekalulleni valokuvan
+                perusteella.
+              </button>
+              <button
+                onClick={() => {
+                  setActiveComponent("locationQuery");
+                  setShowOptions(false);
+                }}
+              >
+                2. Haluan tietää, missä on lähin Nikari-huonekalujen
+                jälleenmyyjä.
+              </button>
+              <button
+                onClick={() => {
+                  setActiveComponent("form");
+                  updateAssistantMessage("Hei. Miten voin auttaa?");
+                  setShowOptions(false);
+                }}
+              >
+                3. Ei mikään seuraavista. Siirry keskustelemaan Nikari-AI
+                avustajan kanssa.
+              </button>
+            </div>
+          )}
+
+
           <div>{renderComponent()}</div>
+          {!showOptions && (
+            <button onClick={() => setShowOptions(true)}>Palaa takaisin</button>
+          )}
         </div>
+
         {/* <AssistantMessageWithButtons
           message="Tarvitsetko vielä apua?"
           buttons={[
@@ -260,20 +294,6 @@ export default function Chat() {
             },
           ]}
         /> */}
-        <form onSubmit={handleSubmit}>
-          <div className="flex gap-4 items-center">
-            <Input
-              type="text"
-              value={input}
-              className="flex-1 border-2 p-2 rounded-md text-black font-semibold"
-              placeholder="Type your message..."
-              onChange={handleInputChange}
-            />
-            <Button className="h-[3rem] w-20 shrink-0" type="submit">
-              Send
-            </Button>
-          </div>
-        </form>
       </div>
 
       <SparklesUnder />
