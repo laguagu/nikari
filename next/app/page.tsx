@@ -183,7 +183,8 @@ export default function Chat() {
 
   // Lisää funktio, joka käsittelee kuvan lähetyksen jälkeistä logiikkaa
   const handleImageSent = () => {
-    setActiveComponent(""); // Voit asettaa tämän tyhjäksi tai vaihtoehtoisesti näyttää jonkin "kiitos" -näkymän
+    setActiveComponent("");
+    setShowOptions(true)
   };
 
   const renderComponent = () => {
@@ -208,7 +209,7 @@ export default function Chat() {
   const currentQuestion = questions[currentQuestionIndex];
 
   return (
-    <div className="min-h-screen  w-full bg-Ö flex flex-col items-center justify-center overflow-y-hidden rounded-md">
+    <div className="min-h-screen bg-gray-200 w-full bg-Ö flex flex-col items-center justify-center overflow-y-hidden rounded-md">
       <h1 className="md:text-5xl text-3xl lg:text-7xl font-bold text-centerrelative z-20 mb-3 text-white">
         <Link href={"/"}>Nikari AI</Link>
       </h1>
