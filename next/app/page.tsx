@@ -84,7 +84,6 @@ export default function Chat() {
   const [activeComponent, setActiveComponent] = useState("");
   const [showOptions, setShowOptions] = useState(true);
   const [answers, setAnswers] = useState({});
-  const [capturedImage, setCapturedImage] = useState<string | null>(null);
   const {
     messages,
     setMessages,
@@ -92,7 +91,7 @@ export default function Chat() {
     setInput,
     handleInputChange,
     handleSubmit,
-    append, 
+    append,
   } = useChat({
     // initialInput: initialPrompt,
   });
@@ -111,7 +110,6 @@ export default function Chat() {
           ...messages,
           { id: "1", role: "assistant", content: message },
         ]);
-        console.log(message);
         // append({ role: "user", content: message });
       }
       setCurrentQuestionIndex(currentQuestionIndex + 1);
@@ -130,6 +128,7 @@ export default function Chat() {
   const handleBackClick = () => {
     setShowOptions(true);
     setMessages([]);
+    setActiveComponent("");
   };
 
   const updateUserMessage = (content: string) => {
@@ -148,10 +147,6 @@ export default function Chat() {
         content,
       } as Message,
     ]);
-  };
-
-  const handleCapture = (imageDataUrl: string) => {
-    setCapturedImage(imageDataUrl);
   };
 
   type ButtonProps = {
@@ -186,10 +181,15 @@ export default function Chat() {
     );
   };
 
+  // Lisää funktio, joka käsittelee kuvan lähetyksen jälkeistä logiikkaa
+  const handleImageSent = () => {
+    setActiveComponent(""); // Voit asettaa tämän tyhjäksi tai vaihtoehtoisesti näyttää jonkin "kiitos" -näkymän
+  };
+
   const renderComponent = () => {
     switch (activeComponent) {
       case "imageUpload":
-        return <ImageUploadComponent onCapture={handleCapture} />;
+        return <ImageUploadComponent onImageSent={handleImageSent}/>;
       case "locationQuery":
         return <LocationQueryComponent />;
       case "form":
@@ -212,14 +212,13 @@ export default function Chat() {
       <h1 className="md:text-5xl text-3xl lg:text-7xl font-bold text-centerrelative z-20 mb-3 text-white">
         <Link href={"/"}>Nikari AI</Link>
       </h1>
-      
+
       {currentQuestionIndex < questions.length &&
         currentQuestion.choices.map((choice) => (
           <button key={choice} onClick={() => handleChoice(choice)}>
             {choice}
           </button>
         ))}
-    {capturedImage && <img src={capturedImage} alt="Captured" />}
 
       <div className="grid w-full max-w-md sm:max-w-lg md:max-w-2xl lg:max-w-3xl xl:max-w-6xl grid-cols-1 gap-4 p-4 rounded-lg border-2 shadow-xl border-gray-200 dark:border-gray-800 mx-auto bg-zinc-100">
         <div className="space-y-2">
@@ -283,7 +282,6 @@ export default function Chat() {
               </button>
             </div>
           )}
-
 
           <div>{renderComponent()}</div>
           {!showOptions && (
