@@ -5,6 +5,7 @@
             3. Visio tunnistaa huonekalut materiaalit kuvasta
             4. Kysytään onko kaikki materiaalit valittuna mitä tarvitset.
             5. Käyttäjä voi hyväksyä tai lisätä materiaaleja mitä GPT visio on tunnistanut esim puu, metalli
+            6. Käyttäjälle annetaan hoito-ohjeet annettujen materiaalejen perusteella.
         2. Valitse kuva tiedostoista.
     2. Halaun tietää missä on lähin nikari huonekalujen jälleenmyyjä
         1. Syötä paikkakuntasi minkä läheltä etsin sinulle lähimmän jälleenmyyjän.

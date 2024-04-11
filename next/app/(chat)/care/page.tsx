@@ -4,42 +4,22 @@ import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import React from "react";
 import Link from "next/link";
-import { TextGenerateEffect } from "@/components/ui/text-generate-effect";
-import { Separator } from "@radix-ui/react-separator";
-import SparklesUnder from "@/components/chat/sparkles-under";
-import BackButton from "@/components/ui/BackButton";
+
+interface CameraComponentProps {
+  setSelectedOption: (value: React.SetStateAction<string>) => void;
+}
 
 export default function Vision() {
-  const words = `You're now chatting with a AI powered support agent. Ask us anything!`;
   return (
-    <div className="min-h-screen bg-black w-full bg-Ö flex flex-col items-center justify-center overflow-y-hidden rounded-md">
-      <h1 className="md:text-5xl text-3xl lg:text-7xl font-bold text-centerrelative z-20 mb-3 text-white">
-        <Link href={"/"}>Nikari AI</Link>
-      </h1>
-      <div className="grid w-full max-w-md sm:max-w-lg md:max-w-2xl lg:max-w-3xl xl:max-w-6xl grid-cols-1 gap-4 p-4 rounded-lg border-2 shadow-xl border-gray-200 dark:border-gray-800 mx-auto bg-zinc-100">
-        <div className="space-y-2">
-          <h2 className="text-3xl font-bold">Support</h2>
-          <TextGenerateEffect words={words} />
-     
-          <Separator />
-        </div>
-        <div className="max-h-[55vh] space-y-4 overflow-y-auto"></div>
-        <ImageUploadComponent />
-        <BackButton/>
-      </div>
-      <SparklesUnder />
+    <div>
+      <ImageUploadComponent />
     </div>
   );
 }
 
-export function ImageUploadComponent(): JSX.Element {
+export function ImageUploadComponent() {
   const [selectedOption, setSelectedOption] = useState("");
   const fileInputRef = useRef<HTMLInputElement>(null);
-
-
-  useEffect(() => {
-    console.log("selectedOption", selectedOption);
-  }, [selectedOption]);
 
   const handleOptionChange = (option: string) => {
     setSelectedOption(option);
@@ -90,9 +70,7 @@ export function ImageUploadComponent(): JSX.Element {
   );
 }
 
-interface CameraComponentProps {
-  setSelectedOption: (value: React.SetStateAction<string>) => void;
-}
+
 
 export const CameraComponent: React.FC<CameraComponentProps> = ({
   setSelectedOption,
