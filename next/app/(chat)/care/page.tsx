@@ -4,26 +4,39 @@ import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import React from "react";
 import Link from "next/link";
+import axios from "axios";
 
 interface CameraComponentProps {
   setSelectedOption: (value: React.SetStateAction<string>) => void;
+  setMaterials?: React.Dispatch<React.SetStateAction<any>>;
+  materials?: { [key: string]: boolean } | null; 
+}
+
+interface MaterialProps {
+  setMaterials: React.Dispatch<React.SetStateAction<any>>;
+  materials: { [key: string]: boolean } | null;
 }
 
 export default function Vision() {
+  const [materials, setMaterials] = useState(null);
+  useEffect(() => {
+    console.log("Materiaalit", materials);
+  }
+  , [materials]);
   return (
     <div>
-      <ImageUploadComponent />
+      <MaterialDetector setMaterials={setMaterials} materials={materials} />
+      <MaterialResults materials={materials} />
     </div>
   );
 }
 
-export function ImageUploadComponent() {
+export function MaterialDetector({ setMaterials, materials }: MaterialProps) {
   const [selectedOption, setSelectedOption] = useState("");
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   const handleOptionChange = (option: string) => {
     setSelectedOption(option);
-    console.log("option", option);
 
     if (option === "file") {
       // Jos käyttäjä valitsi 'file', laukaistaan tiedostonvalitsimen klikkaustapahtuma
@@ -62,22 +75,22 @@ export function ImageUploadComponent() {
         </div>
       )}
       {selectedOption === "camera" && (
-        <CameraComponent setSelectedOption={setSelectedOption} />
+        <CameraComponent setSelectedOption={setSelectedOption} setMaterials={setMaterials} materials={materials} />
       )}
       {selectedOption === "file" && <FileUploadComponent />}
-      {/* Tiedoston lataamisen logiikan voi lisätä tähän, jos käyttäjä valitsee 'Lisää kuva tiedostosta' */}
+      {/* Kun kuva on lähetetty ja materiaalit analysoitu, näytetään tulokset */}
+
     </div>
   );
 }
 
-
-
 export const CameraComponent: React.FC<CameraComponentProps> = ({
   setSelectedOption,
+  setMaterials,
 }) => {
   const videoRef = useRef<HTMLVideoElement | null>(null);
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
-  const [imagePreview, setImagePreview] = useState<string | null>(null);
+  const [imageURL, setImageURL] = useState<string | null>(null);
   const [isCameraReady, setIsCameraReady] = useState<boolean>(false);
   const [isVideoVisible, setIsVideoVisible] = useState<boolean>(true);
 
@@ -116,30 +129,39 @@ export const CameraComponent: React.FC<CameraComponentProps> = ({
       canvasRef.current.height
     );
     const imageDataUrl = canvasRef.current.toDataURL("image/png");
-    setImagePreview(imageDataUrl);
+    setImageURL(imageDataUrl);
     // Sammutetaan kameralaite esikatselun ajaksi
     setIsVideoVisible(false);
   };
-  
+
   async function sendImageToGPT(image_url: string) {
     setSelectedOption("");
     setIsVideoVisible(false);
-    
-    const response = await fetch('/api/visio/', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({ image_url })
-    });
-    console.log("Kuva lähetetty");
-    const data = await response.json();
-    console.log(data);
+    try {
+      console.log("Tässä lähetettävä kuva:", image_url);
+      console.log("Lähetetään kuva GPT:lle");
+      const response = await axios.post(
+        "/api/visio/",
+        { image_url: image_url },
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+      const data = response.data;
+      const materials = JSON.parse(data.message.content);
+      setMaterials(materials);
+      console.log("Materiialit asetettu", materials);
+      console.log("Kuva lähetetty");
+    } catch (error) {
+      console.error("Virhe kuvan lähetyksessä:", error);
+    }
   }
 
   function resetStates() {
     console.log("Reseting States");
-    setImagePreview(null);
+    setImageURL(null);
     setIsVideoVisible(true);
     setIsCameraReady(false);
     startCamera();
@@ -166,26 +188,20 @@ export const CameraComponent: React.FC<CameraComponentProps> = ({
         )}
         <div />
         {/* Kuvan katsetlu */}
-        {imagePreview && (
+        {imageURL && (
           <div className="bg-gray-200 p-3 justify-center items-center ml-3 rounded-xl">
             <div className="text-center">
               <p className="mb-2 font-medium">
                 Näyttääkö kuvankaappaus hyvältä
               </p>
-              <Image
-                src={imagePreview}
-                alt="Esikatselu"
-                width={500}
-                height={500}
-              />
-              <Button className="mr-2 mt-4" onClick={() => sendImageToGPT(imagePreview)}>
+              <Image src={imageURL} alt="Esikatselu" width={500} height={500} />
+              <Button
+                className="mr-2 mt-4"
+                onClick={() => sendImageToGPT(imageURL)}
+              >
                 Lähetä kuva
               </Button>
-              <Button
-                onClick={resetStates}
-              >
-                Ota uusi kuva
-              </Button>
+              <Button onClick={resetStates}>Ota uusi kuva</Button>
             </div>
           </div>
         )}
@@ -204,13 +220,36 @@ export const CameraComponent: React.FC<CameraComponentProps> = ({
   );
 };
 
+function MaterialResults({ materials }: { materials: { [key: string]: boolean } | null }) {
+  console.log('MaterialResults rendering with materials:', materials);
+  if (!materials) {
+    return null; // Ei näytetä mitään, jos materiaaleja ei ole asetettu
+  }
+
+  // Tarkistetaan, löytyikö mitään materiaalia
+  const foundMaterials = Object.entries(materials).filter(
+    ([_, value]) => value
+  );
+
+  if (foundMaterials.length === 0) {
+    return <p>Ei tunnistettuja materiaaleja.</p>;
+  }
+
+  return (
+    <div>
+      <h3>Tunnistetut materiaalit:</h3>
+      <ul>
+        {foundMaterials.map(([material, _]) => (
+          <li key={material}>{material}</li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+
 export const FileUploadComponent = () => {
   const [imageURL, setImageURL] = useState<string>("");
   const fileInputRef = useRef<HTMLInputElement>(null);
-
-  useEffect(() => {
-    console.log("imageURL", imageURL);
-  }, [imageURL]);
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];

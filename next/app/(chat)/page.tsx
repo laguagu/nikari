@@ -9,6 +9,7 @@ import { useState } from "react";
 import { Message } from "ai/react";
 import Link from "next/link";
 import hoitoOhjeet from "@/lib/hoitoOhjeet";
+import FormComponent from "@/components/chat/FormComponent";
 
 type ButtonProps = {
   label: string;
@@ -173,6 +174,7 @@ export default function Chat() {
             </Link>
           </button>
         </div>
+        {/* <FormComponent handleInputChange={handleInputChange} input={input} handleSubmit={handleSubmit}/> */}
       </div>
     </div>
   );

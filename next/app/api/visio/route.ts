@@ -1,43 +1,60 @@
-import type { NextApiRequest, NextApiResponse } from "next";
+
 import OpenAI from "openai";
 
-export async function POST(req: NextApiRequest, res: NextApiResponse) {
-  const openai = new OpenAI({
-    apiKey: process.env.OPENAI_API_KEY,
+const openai = new OpenAI({
+  apiKey: process.env.OPENAI_API_KEY,
+});
+
+export async function POST(req: Request, res: Response) {
+  const data = await req.json();
+  const image = data.image_url;
+  if (!image) {
+    return Response.json({ message:"Cant find image in req.body" , status: 400});
+  }
+
+  const response = await openai.chat.completions.create({
+    model: "gpt-4-turbo",
+    messages: [
+      {
+        role: "user",
+        content: [
+          {
+            type: "text",
+            text: "Can you help me find the materials of the furniture in this image? If the image is not a furniture return a JSON with all values false. Fill this JSON -object and return it only (as JSON parseable): { wood: false, metal: false, leather: false, laminate: false, plastic: false, fabric: false, outdoorFurniture: false }",
+          },
+          {
+            type: "image_url",
+            image_url: {
+              url: image,
+            },
+          },
+        ],
+      },
+    ],
+    response_format: { type: "json_object" },
   });
-
-  // const response = await openai.chat.completions.create({
-  //   model: "gpt-4-vision-preview",
-  //   messages: [
-  //     {
-  //       role: "user",
-  //       content: [
-  //         { type: "text", text: "What’s in this image?" },
-  //         {
-  //           type: "image_url",
-  //           image_url: {
-  //             url: "https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/Gfp-wisconsin-madison-the-nature-boardwalk.jpg/2560px-Gfp-wisconsin-madison-the-nature-boardwalk.jpg",
-  //             // "detail": "auto",
-  //           },
-  //         },
-  //       ],
+  return Response.json({
+    index: 0,
+    message: {
+      role: 'assistant',
+      content: '{ "wood": false, "metal": false, "leather": false, "laminate": false, "plastic": false, "fabric": false, "outdoorFurniture": false }'
+    },
+    logprobs: null,
+    finish_reason: 'stop'
+  }
+  );
+  return Response.json(response.choices[0] );
+  return Response.json({ message:"toimii" });
+  // return Response.json({
+  //   message: {
+  //     index: 0,
+  //     message: {
+  //       role: "assistant",
+  //       content:
+  //         '{\n  "wood": false,\n  "metal": true,\n  "leather": false,\n  "laminate": false,\n  "plastic": false,\n  "fabric": true,\n  "outdoorFurniture": true\n}',
   //     },
-  //   ],
+  //     logprobs: null,
+  //     finish_reason: "stop",
+  //   },
   // });
-
-  // return Response.json({ message: response.choices[0] });
-  return Response.json({ message: "APissa" });
 }
-
-// Esimerkki palautusarvosta (response.choices[0]
-// {
-//     "message": {
-//       "index": 0,
-//       "message": {
-//         "role": "assistant",
-//         "content": "The image shows a wooden boardwalk path extending through a lush green field or wetland area. The grass on either side of the path is tall and vibrant. In the background, there's a line of trees and bushes, and above that, a beautiful blue sky with soft, fluffy clouds scattered throughout. The setting looks peaceful and is likely a natural reserve or park, providing a walkway for visitors to enjoy the scenery without disturbing the natural habitat."
-//       },
-//       "logprobs": null,
-//       "finish_reason": "stop"
-//     }
-//   }
