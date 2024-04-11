@@ -80,6 +80,7 @@ export const CameraComponent: React.FC<CameraComponentProps> = ({
   const [imagePreview, setImagePreview] = useState<string | null>(null);
   const [isCameraReady, setIsCameraReady] = useState<boolean>(false);
   const [isVideoVisible, setIsVideoVisible] = useState<boolean>(true);
+
   // Käynnistä kameralaitteen käyttö
   const startCamera = async () => {
     try {
@@ -119,11 +120,29 @@ export const CameraComponent: React.FC<CameraComponentProps> = ({
     // Sammutetaan kameralaite esikatselun ajaksi
     setIsVideoVisible(false);
   };
-
-  function sendImage() {
-    console.log("Kuva lähetetty");
+  
+  async function sendImageToGPT(image_url: string) {
     setSelectedOption("");
     setIsVideoVisible(false);
+    
+    const response = await fetch('/api/visio/', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ image_url })
+    });
+    console.log("Kuva lähetetty");
+    const data = await response.json();
+    console.log(data);
+  }
+
+  function resetStates() {
+    console.log("Reseting States");
+    setImagePreview(null);
+    setIsVideoVisible(true);
+    setIsCameraReady(false);
+    startCamera();
   }
 
   return (
@@ -159,16 +178,11 @@ export const CameraComponent: React.FC<CameraComponentProps> = ({
                 width={500}
                 height={500}
               />
-              <Button className="mr-2 mt-4" onClick={sendImage}>
+              <Button className="mr-2 mt-4" onClick={() => sendImageToGPT(imagePreview)}>
                 Lähetä kuva
               </Button>
               <Button
-                onClick={() => {
-                  setImagePreview(null);
-                  setIsVideoVisible(true);
-                  setIsCameraReady(false);
-                  startCamera();
-                }}
+                onClick={resetStates}
               >
                 Ota uusi kuva
               </Button>
