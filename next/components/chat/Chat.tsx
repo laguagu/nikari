@@ -8,7 +8,6 @@ import { Message } from "ai/react";
 import Link from "next/link";
 import FormComponent from "@/components/chat/FormComponent";
 
-
 const initialPrompt = "Mihin kaipaat apua?";
 
 export default function Chat() {

@@ -18,21 +18,26 @@ import {
 import { toast } from "@/components/ui/use-toast";
 import { careInstructions, Material } from "@/lib/hoitoOhjeet";
 import { useState } from "react";
+import CareGuides from "./CareGuides";
 
-type MaterialInstructions = {
+export type MaterialInstructions = {
   material: Material;
   instructions: { "1": string; "2": string; "3": string } | undefined;
 };
 
-const materials = {
-  wood: true,
-  metal: false,
-  leather: false,
-  laminate: true,
-  plastic: false,
-  fabric: false,
-  outdoorFurniture: false,
+type CareInstructionsFormProps = {
+  materials: { [key: string]: boolean } | null;
 };
+
+// const materials = {
+//   wood: true,
+//   metal: false,
+//   leather: false,
+//   laminate: true,
+//   plastic: false,
+//   fabric: false,
+//   outdoorFurniture: false,
+// };
 
 const FormSchema = z.object({
   items: z.array(z.string()).refine((value) => value.some((item) => item), {
@@ -40,18 +45,22 @@ const FormSchema = z.object({
   }),
 });
 
-const materialItems = Object.entries(materials).map(([key, value]) => ({
-  id: key,
-  label: key.charAt(0).toUpperCase() + key.slice(1), // Muuttaa ensimmäisen kirjaimen isoksi
-  checked: value,
-}));
-
-const defaultSelectedMaterials = materialItems
-  .filter((item) => item.checked)
-  .map((item) => item.id);
-
-export default function CareInstructionsForm() {
+export default function CareInstructionsForm({
+  materials,
+}: CareInstructionsFormProps) {
   const [careGuides, setcareGuides] = useState<MaterialInstructions[]>([]);
+
+  const materialItems = materials
+    ? Object.entries(materials).map(([key, value]) => ({
+        id: key,
+        label: key.charAt(0).toUpperCase() + key.slice(1), // Muuttaa ensimmäisen kirjaimen isoksi
+        checked: value,
+      }))
+    : [];
+
+  const defaultSelectedMaterials = materialItems
+    .filter((item) => item.checked)
+    .map((item) => item.id);
 
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
@@ -140,19 +149,7 @@ export default function CareInstructionsForm() {
           </form>
         </Form>
       )}
-      <div className="max-h-[500px] overflow-y-auto ">
-        {careGuides.map((careGuide) => (
-          <div key={careGuide.material}>
-            <h2>{careGuide.material}</h2>
-            <ul>
-              {careGuide.instructions &&
-                Object.values(careGuide.instructions).map((instruction, i) => (
-                  <li key={i}>{instruction}</li>
-                ))}
-            </ul>
-          </div>
-        ))}
-      </div>
+      {careGuides.length > 0 && <CareGuides careGuides={careGuides} />}
     </div>
   );
 }
