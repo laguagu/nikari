@@ -1,12 +1,18 @@
 "use client";
-import React, { useState, useRef, useContext, createContext, useEffect } from "react";
+import React, {
+  useState,
+  useRef,
+  useContext,
+  createContext,
+  useEffect,
+} from "react";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import { getMaterials } from "@/lib/actions";
 import Webcam from "react-webcam";
 import CareInstructionsForm from "@/components/chat/CareInstructionsForm";
 import { Skeleton } from "@/components/ui/skeleton";
-import { CameraSkeleton } from "@/components/chat/skeletons";
+import { CameraSkeleton, FormSkeleton } from "@/components/chat/skeletons";
 
 function useMaterialContext() {
   const context = useContext(MaterialContext);
@@ -47,10 +53,11 @@ export default function Page() {
       <div>
         {!materials && !isDetectingMaterials && <MediaInputComponent />}
         {isDetectingMaterials && (
-          <p className="text-center">Tunnistetaan materiaaleja...</p>
+          <div className="flex justify-center">
+            <FormSkeleton />
+          </div>
         )}
         {materials && <CareInstructionsForm materials={materials} />}
-        {/* <MaterialResults /> */}
       </div>
     </MaterialContext.Provider>
   );
@@ -64,22 +71,8 @@ export const MediaInputComponent = () => {
   const [imageURL, setImageURL] = useState<string | null>(null);
   const [selectedOption, setSelectedOption] = useState("");
   const [loadingCamera, setLoadingCamera] = useState(true);
-  const [isCameraReady, setIsCameraReady] = useState(false);
   const [cameraError, setCameraError] = useState(null);
-
-  // useEffect(() => {
-  //   console.log("use effect", webcamRef.current?.video);
-    
-  //   const video = webcamRef.current?.video;
-  //   if (video) {
-  //     console.log("Webcam component is mounted, adding event listeners");
-  //     video.addEventListener('canplay', handleCameraStart);
-  
-  //     return () => {
-  //       video.removeEventListener('canplay', handleCameraStart);
-  //     };
-  //   }
-  // }, [webcamRef]);
+  const [isWebcamReady, setIsWebcamReady] = useState(false);
 
   const handleOptionChange = (option: string) => {
     setSelectedOption(option);
@@ -120,7 +113,7 @@ export const MediaInputComponent = () => {
   };
 
   const videoConstraints = {
-    width: { ideal: 680 },
+    width: { ideal: 620 },
     height: { ideal: 520 },
     facingMode: { ideal: "environment" },
   };
@@ -128,29 +121,32 @@ export const MediaInputComponent = () => {
   const handleCameraStart = () => {
     console.log("Camera is active");
     setLoadingCamera(false);
+    setIsWebcamReady(true); // Aseta isWebcamReady true:ksi
   };
 
-  const handleCameraError = (error:any) => {
+  const handleCameraError = (error: any) => {
     console.error("Camera error:", error);
     setCameraError(error.message);
     setLoadingCamera(false);
   };
 
   return (
-    <div className="flex flex-col items-center justify-center space-y-4 mt-8">
+    <div className="flex flex-col items-center justify-center space-y-4 mt-8 relative min-h-[520px]">
       {loadingCamera && <CameraSkeleton />}
-      <Webcam
+
+      {!imageURL && (
+        <>
+          <Webcam
             audio={false}
             ref={webcamRef}
             screenshotFormat="image/jpeg"
             videoConstraints={videoConstraints}
-            className="rounded-xl"
+            className={`rounded-xl ${isWebcamReady ? "" : "hidden"}`} // Piilota Webcam-komponentti kunnes se on valmis
             onUserMedia={handleCameraStart}
             onUserMediaError={handleCameraError}
             // onUserMediaError={(error) => console.error('Webcam error: ', error)}
           />
-      {!loadingCamera && (
-        <>
+          {isWebcamReady && (
           <div className="flex gap-3">
             <Button onClick={captureImage}>Ota kuvankaappaus</Button>
             <input
@@ -164,6 +160,7 @@ export const MediaInputComponent = () => {
               Lisää kuva tiedostosta
             </Button>
           </div>
+          )}
         </>
       )}
       {imageURL && (
@@ -191,16 +188,3 @@ export const MediaInputComponent = () => {
     </div>
   );
 };
-
-function MaterialResults() {
-  const { materials } = useMaterialContext();
-  if (!materials) {
-    return null; // Ei näytetä mitään, jos materiaaleja ei ole asetettu
-  }
-
-  return (
-    <div>
-      <CareInstructionsForm materials={materials} />
-    </div>
-  );
-}
