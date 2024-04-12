@@ -126,7 +126,7 @@ export default function MediaInputComponent({
           </div>
         </div>
       )}
-      {cameraError && <p>Error: {cameraError}</p>}
+      {cameraError && <p>Error: {cameraError}<br/>Please plug in camera to continue.</p>}
       <canvas ref={canvasRef} style={{ display: "none" }} />
     </div>
   );
