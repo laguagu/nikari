@@ -15,18 +15,20 @@ export default function ChatLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className="min-h-screen bg-gray-200 w-full flex flex-col items-center justify-center overflow-y-hidden rounded-md">
+    <div className="min-h-screen bg-black w-full flex flex-col items-center justify-center overflow-y-hidden rounded-md">
       <h1 className="md:text-5xl text-3xl lg:text-7xl font-bold text-centerrelative z-20 mb-3 text-white">
         <Link href={"/"}>Nikari AI</Link>
       </h1>
       <div className="grid w-full max-w-md sm:max-w-lg md:max-w-2xl lg:max-w-3xl xl:max-w-6xl grid-cols-1 gap-4 p-4 rounded-lg border-2 shadow-xl border-gray-200 dark:border-gray-800 mx-auto bg-zinc-100">
         <div className="space-y-2">
-          <h2 className="text-3xl font-bold">Support</h2>
+          <div className="flex justify-between items-end">
+            <h2 className="text-3xl font-bold">Support</h2>
+            <BackButton />
+          </div>
           <TextGenerateEffect words={words} />
           <Separator />
         </div>
         {children}
-        <BackButton />
       </div>
       <SparklesUnder />
       <Toaster />

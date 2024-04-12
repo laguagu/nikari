@@ -7,7 +7,7 @@ function BackButton() {
   const router = useRouter();
   return (
     <div>
-      <Button onClick={() => router.back()}>Palaa takaisin</Button>
+      <Button onClick={() => router.back()}>Home</Button>
     </div>
   );
 }

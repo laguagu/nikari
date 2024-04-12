@@ -1,12 +1,12 @@
 "use client";
-
 import { useChat } from "ai/react";
 import clsx from "clsx";
 import { UserIcon, RocketLaunchIcon } from "@heroicons/react/24/outline";
 import { useState } from "react";
 import { Message } from "ai/react";
 import Link from "next/link";
-import FormComponent from "@/components/chat/FormComponent";
+import ChatFormComponent from "./ChatFormComponent";
+import { CardHover } from "./CardHover";
 
 const initialPrompt = "Mihin kaipaat apua?";
 
@@ -27,7 +27,6 @@ export default function Chat() {
   });
   const [localMessages, setLocalMessages] = useState<Message[]>(messages);
 
-
   const updateUserMessage = (content: string) => {
     setLocalMessages((prevMessages) => [
       ...prevMessages,
@@ -45,7 +44,6 @@ export default function Chat() {
       } as Message,
     ]);
   };
-
 
   return (
     <div>
@@ -73,27 +71,8 @@ export default function Chat() {
         ))}
       </div>
       <div>
-        <div className="flex justify-center space-x-3 items-center">
-          <button>
-            <Link href={"/care"}>
-              1. Auta minua löytämään hoito-ohjeet huonekalulleni valokuvan
-              perusteella.
-            </Link>
-          </button>
-          <button>
-            <Link href={"/care"}>
-              2. Haluan tietää, missä on lähin Nikari-huonekalujen jälleenmyyjä.
-            </Link>
-          </button>
-          <button>
-            <Link href={"/care"}>
-              3. Ei mikään seuraavista. Siirry keskustelemaan Nikari-AI
-              avustajan kanssa.
-            </Link>
-          </button>
-        </div>
+        <CardHover />
       </div>
     </div>
   );
 }
-

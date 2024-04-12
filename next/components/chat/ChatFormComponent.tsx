@@ -7,7 +7,7 @@ interface ChatFormProps {
   handleSubmit: (event: React.FormEvent<HTMLFormElement>) => void;
 }
 
-function FormComponent({ input, handleInputChange, handleSubmit }: ChatFormProps) {
+function ChatFormComponent({ input, handleInputChange, handleSubmit }: ChatFormProps) {
   return (
     <form onSubmit={handleSubmit}>
       <div className="flex gap-4 items-center">
@@ -26,4 +26,4 @@ function FormComponent({ input, handleInputChange, handleSubmit }: ChatFormProps
   );
 };
 
-export default FormComponent;
+export default ChatFormComponent;
