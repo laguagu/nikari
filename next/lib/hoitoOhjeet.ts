@@ -1,13 +1,47 @@
-const hoitoOhjeet: { [key: string]: string } = {
-  Tuoli:
-    "Furniture made of solid wood has many esthetic and performance related benefits, which need to be maintained with proper care. Please notice, that cold and dry winter climate together with the heating indoors creates very dry environment which can be unhealthy to people as well as the furniture of the house. Also, during very humid months the furniture may suffer without proper care. In dry winter climate the wood may shrink. This causes cracks, which is a very natural reacti on of the wood to its environment. This kind of cracks will usually disappear when the climate turns more humid and the wood swells. However, if you notice a crack between two planks showing a separation of a glue line, please contact us. In very humid tim es the wood might swell and cause problems with moving parts such as drawers. In these cases the wood will slowly shrink back to original dimensions once the climate becomes dryer.",
-  Ulkokäytössä:
-    "We use wood oil for outdoors as the surface treatment material. It is highly recommended to prevent the surfaces from becoming wet by wiping them clean and dry as soon as possible when they have been left in the rain. We kindly ask you to acknowledge, that the UV Protection Oil helps to maintain the origina l colouring of the wood. However, little by little wood begins to gray outdoors. The graying process is unique with each product, and in between the colours the wooden surface might look odd with all the dots and spots. All our terrace furniture is designed keeping this graying process in mind: they will look absolutely beautiful when totally gray, and the durability of the joints will not be affected throughout the color change. We recommend moving the furniture indoors well in advance before the rainy season begins. We recommend oiling the furniture regularly . In case the products stay outside throughout the summer, they usually n eed treatment every year. When you start, please rem ove all the dirt from wood. You can then add OsmoColor UV Protection Oil to the dry and clean surface. Please follow the instructions on the packaging carefully. NB: Oak wood is very sensitiv e to iron oxide. The i ron particles in the air are very efficient in making dark spots , when they mix with water on the surface of the wood material . As a consequence the surface develop s black spots or bigger dark areas. This doesn ’t affect the the durability of the material.",
-  leather:
-    "As with any other material for interior design, a laminate surface should be cleaned regularly. It does not require any special maintenance, just a damp cloth with warm water or a mild detergent. Almost all regular household cleaning products or disinfectants can be safely used. For the most common stains, you can simply clean the surface with warm water using a non - abrasive cloth. Tougher stains can be removed with non - a brasive household cleaners or solvents. For older, dried or caked - on stains, use a magic sponge or soft cloth to remove them. After using any solvents, we recommend rinsing the surface with warm water and a detergent. Always rinse thoroughly to remove the detergent with clean water, preferably warm.",
-  wood: "We use natural wood oil mixtures as the surface finish. Please note that you should always wipe the surface clean and dry of any liquids as soon as possible (in 15 minutes). Clean the surface normally with a damp cloth, using organic soaps. In order to keep your table in be st possible condition, you should clean the table top with the very finest sandy cloth once in two years. After that, treat the table top with a natural matte wood oil or wax. Let the oil - wax impregnate for 15 - 20 min, and wipe the rest off. Use a clean clo th to finish and polish the surface in the end. Please follow the instructions of the surface finish oil mixture product you are using . ( Natural treatment sprays can be used as well. NB: do not use silicone based or other non - natural treatment oils or waxes. ) In c ase your product is treated with stain and/or ( water - based ) lacquer , it is good to know that the lacquer keeps the wooden surface protected of liquids and dirt very effectively. When some spilling or staining occurs, i t is recommended to wipe it clean and dry quickly with a damp cloth, using organic soaps. In case the water - based lacquer surface is damaged, it should be sanded and the lacquer treatment redone.",
-  Sisäkäytössä:
-    "Leather is a natural material. With correct care and maintenance premium vegetable tanned leather will age gracefully, developing a beautiful patina with use over time. General advice Exposure to direct sunlight will darken “blonde” colors an d bleach darker colors. Hot, dry air can dry out leather if it is not regularly conditioned. Certain chemicals and detergents can damage the surfac e of the leather and tarnish the color. Cleaning Anytime that your leather is stained or when it has dried out after being wet repeat step 1 and 2. Over time you will develop your own “hand feel” for when cleaning or care is needed. STEP 1: Remove any dirt or stains with a clean natural spon ge or soft cloth before applying any oils or condit ioners. Varieties of leather leaning products are available and can be divided into two groups distinguished b y their active ingredients: - Surfectants that clean the surface of the leather - Leather soaps that deep clean Try both types of cleaners to find your preference. STEP 2: After cleaning, it is important to apply something that will nourish the leather, protect it and help it to retain moisture. Use a product that contains a natural wax. The wax will protect t he leather in the same way that wax protects the pa int of a car",
-};
+export type Material = 'wood' | 'laminate' | 'metal' | 'leather' | 'plastic' | 'fabric' | 'outdoor';
 
-export default hoitoOhjeet;
+type CareInstructions = {
+  [K in Material]?: {
+    "1": string;
+    "2": string;
+    "3": string;
+  }
+}
+
+export const careInstructions: CareInstructions = {
+  wood: {
+    "1": "Lets start taking care of the wooden parts of the furniture: Avoid placing solid wood furniture in direct sunlight or near heat sources. In dry, cold climates, use a humidifier to maintain room humidity and prevent wood from shrinking and cracking. In humid climates, ensure the room is well-ventilated to prevent swelling of the wood.",
+    "2": "For natural wood oil mixture finishes, clean spills immediately and wipe the surface clean and dry of any liquids within 15 minutes. Clean the surface with a damp cloth using organic soaps. Avoid using silicone-based or non-natural oils or waxes.",
+    "3": "Maintain the wood by cleaning the tabletop with the finest sandy cloth once every two years, then treating it with natural matte wood oil or wax. Allow the oil or wax to impregnate for 15-20 minutes before wiping off the excess and polishing with a clean cloth.",
+  },
+  laminate: {
+    "1": "Lets start taking care of the laminate parts of the furniture: Clean regularly with a damp cloth and warm water or mild detergent. This material does not require special maintenance, and most household cleaning products or disinfectants are safe to use.",
+    "2": "For most common stains, warm water and a non-abrasive cloth should suffice. Tougher stains can be removed with non-abrasive household cleaners or solvents.",
+    "3": "For older, dried, or caked-on stains, gently use a magic sponge or soft cloth. After using solvents, rinse the surface with warm water and detergent, then rinse thoroughly with clean, preferably warm, water.",
+  },
+  metal: {
+    "1": "Lets start taking care of the metal parts of the furniture: Wipe surfaces with a clean, soft cloth dampened with mild detergent and water. Rinse thoroughly with a wet cloth and dry immediately to prevent rust.",
+    "2": "Check regularly for signs of rust or corrosion, especially in joints and hidden areas. If rust is found, gently sand the area and apply a metal primer and paint, or use a rust remover for minor spots.",
+    "3": "Apply a thin layer of car wax or metal polish to add a protective coating and enhance the finish, following the manufacturer's instructions.",
+  },
+  leather: {
+    "1": "Lets start taking care of the leather parts of the furniture: Dust the leather regularly with a dry, soft cloth. For light soiling, use a damp cloth with a mild leather cleaner suited for your leather type.",
+    "2": "Avoid exposing leather to direct sunlight or heat sources, which can cause drying and fading. Keep the leather supple by using a leather conditioner every 6-12 months.",
+    "3": "Immediately blot spills with a clean, absorbent cloth. Do not rub. For tougher stains, consult a professional leather cleaner.",
+  },
+  plastic: {
+    "1": "Lets start taking care of the plastic parts of the furniture: Clean using a soft cloth or sponge with mild soap and lukewarm water. Avoid abrasive cleaners and scrubbers that can scratch the surface.",
+    "2": "Rinse with clean water and dry thoroughly to prevent water spots and streaks.",
+    "3": "Protect from direct sunlight and extreme temperatures to prevent warping, fading, or cracking. Store indoors during severe weather if possible.",
+  },
+  fabric: {
+    "1": "Lets start taking care of the fabric parts of the furniture: Vacuum regularly with an upholstery attachment to remove dust and prevent soil from becoming embedded in the fibers.",
+    "2": "Clean spills immediately by blotting with a clean, white cloth. Test any cleaner on a hidden area before applying to the entire surface.",
+    "3": "Rotate cushions and pillows regularly to ensure even wear. Avoid placing fabric furniture in direct sunlight to prevent fading.",
+  },
+  outdoor: {
+    "1": "Lets start taking care of the of the outdoor furniture: After exposure to rain, promptly wipe the furniture clean and dry to prevent the wood from becoming wet and to minimize the graying process. Use a soft cloth or sponge to gently remove water and prevent the formation of odd spots and dots as the wood begins to gray naturally over time.",
+    "2": "Apply OsmoColor UV Protection Oil annually at the end of the summer if the furniture stays outside, following the product's instructions meticulously. Start by thoroughly cleaning the furniture to remove all dirt and ensure the wood is dry before applying the oil to protect the wood and maintain its original coloring as long as possible.",
+    "3": "Be mindful of the furniture's exposure to iron particles, especially with oak wood, which is sensitive to iron oxide leading to dark spots or areas when mixed with water. Regularly inspect and clean the furniture to prevent the buildup of iron particles. Move the furniture indoors before the rainy season to prevent water-related damage and the acceleration of the graying process.",
+  },
+};

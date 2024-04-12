@@ -10,6 +10,8 @@ import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import Link from "next/link";
 import { getMaterials } from "@/lib/actions";
+import Webcam from "react-webcam";
+import CareInstructionsForm from "@/components/chat/CareInstructionsForm";
 
 function useMaterialContext() {
   const context = useContext(MaterialContext);
@@ -23,11 +25,6 @@ function useMaterialContext() {
   return context;
 }
 
-interface CameraComponentProps {
-  setSelectedOption: (value: React.SetStateAction<string>) => void;
-  materials?: { [key: string]: boolean } | null;
-}
-
 type MaterialContextType = {
   materials: { [key: string]: boolean } | null;
   setMaterials: React.Dispatch<
@@ -35,8 +32,6 @@ type MaterialContextType = {
   >;
   handleSetMaterials: (value: string) => void;
 };
-
-
 
 const MaterialContext = createContext<MaterialContextType | undefined>(
   undefined
@@ -55,172 +50,133 @@ export default function Page() {
     setIsDetectingMaterials(false); // Materiaalien tunnistus valmis
   };
   return (
-    <MaterialContext.Provider value={{ materials, setMaterials, handleSetMaterials }}>
+    <MaterialContext.Provider
+      value={{ materials, setMaterials, handleSetMaterials }}
+    >
       <div>
-        {!materials && !isDetectingMaterials && (
-          <MaterialDetector/>
-        )}
+        {/* {!materials && !isDetectingMaterials && <MediaInputComponent />} */}
         {isDetectingMaterials && (
           <p className="text-center">Tunnistetaan materiaaleja...</p>
         )}
+        <CareInstructionsForm />
         <MaterialResults />
       </div>
     </MaterialContext.Provider>
   );
 }
 
-export function MaterialDetector() {
+export const MediaInputComponent = () => {
+  const webcamRef = useRef<Webcam>(null);
+  const [imageURL, setImageURL] = useState<string | null>(null);
   const [selectedOption, setSelectedOption] = useState("");
+  const canvasRef = useRef<HTMLCanvasElement | null>(null);
+  const fileInputRef = useRef<HTMLInputElement>(null);
+  const { handleSetMaterials } = useMaterialContext();
+  const [loadingCamera, setLoadingCamera] = useState(true);
 
   const handleOptionChange = (option: string) => {
     setSelectedOption(option);
+    if (option === "file") {
+      // Avataan tiedostonvalitsin
+      fileInputRef.current?.click();
+    }
+  };
+
+  const captureImage = () => {
+    const screenshot = webcamRef.current?.getScreenshot();
+    if (screenshot) {
+      setImageURL(screenshot);
+    } else {
+      console.error("Failed to capture image");
+    }
+  };
+
+  const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0];
+    if (file) {
+      const imageDataUrl = URL.createObjectURL(file);
+      setImageURL(imageDataUrl);
+    }
+  };
+
+  const sendImageToGPT = async (imageURL: string) => {
+    if (imageURL) {
+      // Oletetaan, että handleSetMaterials on funktio, joka käsittelee kuvan
+      await handleSetMaterials(imageURL);
+      setImageURL(null); // Resetoi kuvan esikatselu
+      setSelectedOption(""); // Resetoi valitun vaihtoehdon
+    }
+  };
+
+  const resetStates = () => {
+    setImageURL(null);
+  };
+
+  const videoConstraints = {
+    width: { ideal: 680 },
+    height: { ideal: 520 },
+    facingMode: { ideal: "environment" },
   };
 
   return (
     <div className="flex flex-col items-center justify-center space-y-4 mt-8">
-      {!selectedOption && (
-        <div className="space-x-4">
-          <button
-            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-            onClick={() => handleOptionChange("camera")}
-          >
-            Käytä kameraa
-          </button>
-          <button
-            className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded"
-            onClick={() => handleOptionChange("file")}
-          >
-            Lisää kuva tiedostosta
-          </button>
-        </div>
-      )}
-      {selectedOption === "camera" && (
-        <CameraComponent
-          setSelectedOption={setSelectedOption}
-        />
-      )}
-      {selectedOption === "file" && <FileUploadComponent />}
-      {/* Kun kuva on lähetetty ja materiaalit analysoitu, näytetään tulokset */}
-    </div>
-  );
-}
-
-export const CameraComponent: React.FC<CameraComponentProps> = ({
-  setSelectedOption,
-}) => {
-  const videoRef = useRef<HTMLVideoElement | null>(null);
-  const canvasRef = useRef<HTMLCanvasElement | null>(null);
-  const [imageURL, setImageURL] = useState<string | null>(null);
-  const [isCameraReady, setIsCameraReady] = useState<boolean>(false);
-  const [isVideoVisible, setIsVideoVisible] = useState<boolean>(true);
-  const { handleSetMaterials } = useMaterialContext();
-  // Käynnistä kameralaitteen käyttö
-  const startCamera = async () => {
-    try {
-      const stream = await navigator.mediaDevices.getUserMedia({
-        video: true,
-      });
-      if (videoRef.current) {
-        videoRef.current.srcObject = stream;
-        videoRef.current.onloadedmetadata = () => {
-          setIsCameraReady(true);
-        };
-      }
-    } catch (error) {
-      console.error("Kameran käynnistäminen epäonnistui:", error);
-    }
-  };
-
-  useEffect(() => {
-    startCamera();
-  }, []);
-
-  const captureImage = () => {
-    if (!canvasRef.current || !videoRef.current) return;
-    const context = canvasRef.current.getContext("2d");
-    context!.drawImage(
-      videoRef.current,
-      0,
-      0,
-      canvasRef.current.width,
-      canvasRef.current.height
-    );
-    const imageDataUrl = canvasRef.current.toDataURL("image/png");
-    setImageURL(imageDataUrl);
-    // Sammutetaan kameralaite esikatselun ajaksi
-    setIsVideoVisible(false);
-  };
-
-  async function sendImageToGPT(image_url: string) {
-    setSelectedOption("");
-    setIsVideoVisible(false);
-    await handleSetMaterials(image_url);
-  }
-
-  function resetStates() {
-    setImageURL(null);
-    setIsVideoVisible(true);
-    setIsCameraReady(false);
-    startCamera();
-  }
-
-  return (
-    <div className="flex flex-col items-center justify-center space-y-4">
-      {!isCameraReady && (
+      {loadingCamera && (
         <div>
           <p>Kamera latautuu...</p>
         </div>
       )}
-      {/* Kameratila  */}
-      <div className="flex items-center space-y-3">
-        {isVideoVisible && (
-          <video
-            style={{ display: isCameraReady ? "block" : "none" }}
-            ref={videoRef}
-            autoPlay
-            playsInline
-            muted
-            className="rounded-lg border border-gray-200 shadow-sm"
-          ></video>
-        )}
-        <div />
-        {/* Kuvan katsetlu */}
-        {imageURL && (
-          <div className="bg-gray-200 p-3 justify-center items-center ml-3 rounded-xl">
-            <div className="text-center">
-              <p className="mb-2 font-medium">
-                Näyttääkö kuvankaappaus hyvältä
-              </p>
-              <Image src={imageURL} alt="Esikatselu" width={500} height={500} />
-              <Button
-                className="mr-2 mt-4"
-                onClick={() => sendImageToGPT(imageURL)}
-              >
-                Lähetä kuva
-              </Button>
-              <Button onClick={resetStates}>Ota uusi kuva</Button>
-            </div>
+      {!imageURL && (
+        <>
+          <Webcam
+            audio={false}
+            ref={webcamRef}
+            screenshotFormat="image/jpeg"
+            videoConstraints={videoConstraints}
+            className="rounded-xl"
+            onUserMedia={() => setLoadingCamera(false)}
+          />
+          <div className="flex gap-3">
+            <Button onClick={captureImage}>Ota kuvankaappaus</Button>
+            <input
+              type="file"
+              ref={fileInputRef}
+              style={{ display: "none" }}
+              onChange={handleFileChange}
+              accept="image/*"
+            />
+            <Button onClick={() => fileInputRef.current?.click()}>
+              Lisää kuva tiedostosta
+            </Button>
           </div>
-        )}
-        <canvas ref={canvasRef} style={{ display: "none" }} />
-      </div>
-
-      {isCameraReady && (
-        <button
-          className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
-          onClick={captureImage}
-        >
-          Ota kuvankaappaus
-        </button>
+        </>
       )}
+      {imageURL && (
+        <div className="bg-gray-200 p-3 justify-center items-center ml-3 rounded-xl">
+          <div className="text-center">
+            <Image
+              src={imageURL}
+              alt="Esikatselu"
+              layout="responsive"
+              width={1280}
+              height={720}
+            />
+            <Button
+              className="mr-2 mt-4"
+              onClick={() => sendImageToGPT(imageURL)}
+            >
+              Hyväksy kuva
+            </Button>
+            <Button onClick={resetStates}>Ota uusi kuva</Button>
+          </div>
+        </div>
+      )}
+      <canvas ref={canvasRef} style={{ display: "none" }} />
     </div>
   );
 };
 
 function MaterialResults() {
-  const { materials, setMaterials } = useMaterialContext();
-  
-  console.log("MaterialResults rendering with materials:", materials);
+  const { materials } = useMaterialContext();
   if (!materials) {
     return null; // Ei näytetä mitään, jos materiaaleja ei ole asetettu
   }
@@ -235,51 +191,8 @@ function MaterialResults() {
   }
 
   return (
-    <div className="flex flex-col items-center ">
-      <h3>Tunnistetut materiaalit:</h3>
-      <ul>
-        {foundMaterials.map(([material]) => (
-          <li key={material}>{material}</li>
-        ))}
-      </ul>
-      <Button>Lähetä</Button>
+    <div>
+      <CareInstructionsForm />
     </div>
   );
 }
-
-export const FileUploadComponent = () => {
-  const [imageURL, setImageURL] = useState<string>("");
-  const fileInputRef = useRef<HTMLInputElement>(null);
-
-  const handleFileChange = async (
-    event: React.ChangeEvent<HTMLInputElement>
-  ) => {
-    const file = event.target.files?.[0];
-    if (file) {
-      const imageDataUrl = URL.createObjectURL(file);
-      setImageURL(imageDataUrl); // Näyttää valitun kuvan esikatselun
-      // await handleSetMaterials(imageDataUrl); // Käynnistä materiaalien tunnistus
-    }
-  };
-
-  const handleClick = () => {
-    fileInputRef.current!.click();
-  };
-
-  return (
-    <div>
-      <Button onClick={handleClick}>Avaa tiedosto</Button>
-      <input
-        type="file"
-        ref={fileInputRef}
-        style={{ display: "none" }}
-        onChange={handleFileChange}
-        accept="image/*"
-      />
-      <div>
-        {imageURL && <img src={imageURL} width={100} alt="Esikatselu" />}
-        <Button>Send Picture</Button>
-      </div>
-    </div>
-  );
-};

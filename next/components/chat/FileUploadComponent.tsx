@@ -3,10 +3,6 @@ import { useRef, useState } from "react";
 export const FileUploadComponent = () => {
     const [imageURL, setImageURL] = useState<string>("");
     const fileInputRef = useRef<HTMLInputElement>(null);
-    console.log("FileUploadComponent rendering");
-    console.log(fileInputRef.current);
-    console.log(imageURL);
-  
     const handleFileChange = async (
       event: React.ChangeEvent<HTMLInputElement>
     ) => {

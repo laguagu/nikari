@@ -1,10 +1,11 @@
-"use client"
+"use client";
 import SparklesUnder from "@/components/chat/sparkles-under";
 import BackButton from "@/components/ui/BackButton";
 import { Separator } from "@/components/ui/separator";
 import { TextGenerateEffect } from "@/components/ui/text-generate-effect";
 import Link from "next/link";
 import React from "react";
+import { Toaster } from "@/components/ui/toaster";
 
 const words = `You're now chatting with a AI powered support agent. Ask us anything!`;
 
@@ -25,9 +26,10 @@ export default function ChatLayout({
           <Separator />
         </div>
         {children}
-      <BackButton />
+        <BackButton />
       </div>
       <SparklesUnder />
+      <Toaster />
     </div>
   );
 }
