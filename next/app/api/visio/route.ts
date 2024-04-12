@@ -40,7 +40,7 @@ export async function POST(req: Request, res: Response) {
     message: {
       role: "assistant",
       content:
-        '{ "wood": true, "metal": false, "leather": false, "laminate": false, "plastic": false, "fabric": false, "outdoorFurniture": false }',
+        '{ "wood": false, "metal": true, "leather": false, "laminate": false, "plastic": false, "fabric": false, "outdoorFurniture": false }',
     },
     logprobs: null,
     finish_reason: "stop",

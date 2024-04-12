@@ -7,28 +7,23 @@ import { CameraSkeleton } from "@/components/chat/skeletons";
 
 interface MediaInputComponentProps {
   handleSetMaterials: (value: string) => void;
+  imageURL: string | null; // Lisää tämä rivi
+  setImageURL: (value: string | null) => void; 
 }
 
 export default function MediaInputComponent({
   handleSetMaterials,
+  setImageURL,
+  imageURL,
 }: MediaInputComponentProps) {
   // const { handleSetMaterials } = useMaterialContext();
   const webcamRef = useRef<Webcam>(null);
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
-  const [imageURL, setImageURL] = useState<string | null>(null);
-  const [selectedOption, setSelectedOption] = useState("");
+  // const [imageURL, setImageURL] = useState<string | null>(null);
   const [loadingCamera, setLoadingCamera] = useState(true);
   const [cameraError, setCameraError] = useState(null);
   const [isWebcamReady, setIsWebcamReady] = useState(false);
-
-  const handleOptionChange = (option: string) => {
-    setSelectedOption(option);
-    if (option === "file") {
-      // Avataan tiedostonvalitsin
-      fileInputRef.current?.click();
-    }
-  };
 
   const captureImage = () => {
     const screenshot = webcamRef.current?.getScreenshot();
@@ -52,7 +47,6 @@ export default function MediaInputComponent({
       // Oletetaan, että handleSetMaterials on funktio, joka käsittelee kuvan
       await handleSetMaterials(imageURL);
       setImageURL(null); // Resetoi kuvan esikatselu
-      setSelectedOption(""); // Resetoi valitun vaihtoehdon
     }
   };
 

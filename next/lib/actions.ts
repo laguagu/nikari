@@ -5,7 +5,7 @@ import axios from "axios";
 export async function getMaterials(image_url: string) {
   try {
     const response = await axios.post(
-      "http://localhost:3000/api/visio/",
+      "https://webchat-nodetesti.rahtiapp.fi/api/visio", // Tarvitsee tämän kun viet rahti tuotantoon. Et voi viitata localhostiin
       { image_url: image_url },
       {
         headers: {

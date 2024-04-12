@@ -10,6 +10,7 @@ export default function Page() {
     null
   );
   const [isDetectingMaterials, setIsDetectingMaterials] = useState(false);
+  const [imageURL, setImageURL] = useState<string | null>(null); 
 
   const handleSetMaterials = async (image_url: string) => {
     setIsDetectingMaterials(true); // Aloitetaan materiaalien tunnistus
@@ -21,7 +22,7 @@ export default function Page() {
   return (
     <div>
       {!materials && !isDetectingMaterials && (
-        <MediaInputComponent handleSetMaterials={handleSetMaterials} />
+        <MediaInputComponent handleSetMaterials={handleSetMaterials} setImageURL={setImageURL} imageURL={imageURL}/>
       )}
       {isDetectingMaterials && (
         <div className="flex justify-center">
