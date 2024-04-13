@@ -7,13 +7,11 @@ import { Message } from "ai/react";
 import Link from "next/link";
 import ChatFormComponent from "./ChatFormComponent";
 import { CardHover } from "./CardHover";
+import { roboto_mono } from "@/app/fonts";
 
 const initialPrompt = "Mihin kaipaat apua?";
 
 export default function Chat() {
-  const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
-  const [showOptions, setShowOptions] = useState(true);
-  const [answers, setAnswers] = useState({});
   const {
     messages,
     setMessages,

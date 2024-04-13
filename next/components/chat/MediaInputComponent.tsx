@@ -1,6 +1,8 @@
 "use client";
 import React, { useState, useRef } from "react";
 import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 import Image from "next/image";
 import Webcam from "react-webcam";
 import { CameraSkeleton } from "@/components/chat/skeletons";
@@ -8,7 +10,7 @@ import { CameraSkeleton } from "@/components/chat/skeletons";
 interface MediaInputComponentProps {
   handleSetMaterials: (value: string) => void;
   imageURL: string | null; // Lisää tämä rivi
-  setImageURL: (value: string | null) => void; 
+  setImageURL: (value: string | null) => void;
 }
 
 export default function MediaInputComponent({
@@ -91,7 +93,7 @@ export default function MediaInputComponent({
           />
           {isWebcamReady && (
             <div className="flex gap-3">
-              <Button onClick={captureImage}>Ota kuvankaappaus</Button>
+              <Button onClick={captureImage}>Take Screenshot</Button>
               <input
                 type="file"
                 ref={fileInputRef}
@@ -100,7 +102,7 @@ export default function MediaInputComponent({
                 accept="image/*"
               />
               <Button onClick={() => fileInputRef.current?.click()}>
-                Lisää kuva tiedostosta
+                Upload Image
               </Button>
             </div>
           )}
@@ -120,13 +122,19 @@ export default function MediaInputComponent({
               className="mr-2 mt-4"
               onClick={() => sendImageToGPT(imageURL)}
             >
-              Hyväksy kuva
+              Accept and Send
             </Button>
-            <Button onClick={resetStates}>Ota uusi kuva</Button>
+            <Button onClick={resetStates}>Take New Picture</Button>
           </div>
         </div>
       )}
-      {cameraError && <p>Error: {cameraError}<br/>Please plug in camera to continue.</p>}
+      {cameraError && (
+        <p>
+          Error: {cameraError}
+          <br />
+          Please plug in camera to continue.
+        </p>
+      )}
       <canvas ref={canvasRef} style={{ display: "none" }} />
     </div>
   );
