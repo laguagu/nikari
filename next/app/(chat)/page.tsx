@@ -1,12 +1,10 @@
+import { auth } from "@/auth";
 import Chat from "@/components/chat/Chat";
 
-export default function Page() {
-
-
+export default async function Page() {
   return (
     <>
-      <Chat/>
+      <Chat />
     </>
   );
 }
-

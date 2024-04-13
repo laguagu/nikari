@@ -19,12 +19,12 @@ export const projects = [
     title: "Find a Dealer",
     description:
       "I want to know where the nearest Nikari furniture dealer is located.",
-    link: "/care",
+    link: "/",
   },
   {
     title: "Talk to Nikari AI",
     description:
       "None of the above. Proceed to chat with the Nikari AI assistant.",
-    link: "/care",
+    link: "/nofound",
   },
 ];
