@@ -1,15 +1,16 @@
 import { SignJWT, jwtVerify } from "jose";
+import { revalidatePath } from "next/cache";
 import { cookies } from "next/headers";
 import { NextRequest, NextResponse } from "next/server";
 
-const secretKey = "secret";
+const secretKey = process.env.AUTH_SECRET;
 const key = new TextEncoder().encode(secretKey);
 
 export async function encrypt(payload: any) {
   return await new SignJWT(payload)
     .setProtectedHeader({ alg: "HS256" })
     .setIssuedAt()
-    .setExpirationTime("10 sec from now")
+    .setExpirationTime("1h")
     .sign(key);
 }
 
@@ -21,16 +22,34 @@ export async function decrypt(input: string): Promise<any> {
 }
 
 export async function login(formData: FormData) {
-  // Verify credentials && get the user
+  const hardcodedEmail = "t@t";
+  const hardcodedPassword = "t";
 
-  const user = { email: formData.get("email"), name: "John" };
+  const email = formData.get("email");
+  const password = formData.get("password");
+  console.log(email, "email");
+  try {
+    if (email === hardcodedEmail && password === hardcodedPassword) {
+      const user = { email, name: "Nikaridemo" };
 
-  // Create the session
-  const expires = new Date(Date.now() + 10 * 1000);
-  const session = await encrypt({ user, expires });
+      // Create the session
+      const expires = new Date(Date.now() + 24 * 60 * 60 * 1000); // Set expiration to 1 day
+      const session = await encrypt({ user, expires });
 
-  // Save the session in a cookie
-  cookies().set("session", session, { expires, httpOnly: true });
+      // Save the session in a cookie
+      cookies().set("session", session, { expires, httpOnly: true });
+      return true;
+    } else {
+      throw new Error("Invalid credentials");
+    }
+  } catch (error: any) {
+    console.log("Error in login function: ", error);
+    revalidatePath("/login");
+    return { error: error.message };
+  } finally {
+    console.log("Login function executed");
+    revalidatePath("/");
+  }
 }
 
 export async function logout() {
