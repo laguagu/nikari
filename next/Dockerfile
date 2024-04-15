@@ -40,6 +40,13 @@ WORKDIR /app
 
 ENV NODE_ENV production
 ENV OPENAI_API_KEY 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
+ENV OPENAI_API_KEY=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
+ENV SUPABASE_PRIVATE_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRvYmx2eGljaGpkbm5nbmt6cGh1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTIzMDA4MjksImV4cCI6MjAyNzg3NjgyOX0.RPfYn_Zwm_Uf-PIwl_VMol_X-8GI5ow20PRgmJulY7s
+ENV SUPABASE_URL=https://toblvxichjdnngnkzphu.supabase.co
+ENV SERPAPI_API_KEY=e24674cc544882917d951d4e7b2b147dea0d58cdce1612d1a37fdedb56153c63
+ENV AUTH_SECRET=nikarisecret
+ENV BASIC_AUTH_USER=testuser
+ENV BASIC_AUTH_PASSWORD=testpassword
 # Uncomment the following line in case you want to disable telemetry during runtime.
 ENV NEXT_TELEMETRY_DISABLED 1
 
