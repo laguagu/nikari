@@ -69,6 +69,7 @@ export default function CareInstructionsForm({
     },
   });
 
+  // Muuta server komponentiksi omaan kansioon
   function onSubmit(data: z.infer<typeof FormSchema>) {
     const selectedMaterials = data.items as Material[];
     const selectedCareInstructions = selectedMaterials.map((material) => {
