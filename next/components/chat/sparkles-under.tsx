@@ -1,7 +1,7 @@
 import { SparklesCore } from "@/components/ui/sparkles";
 import React from "react";
 
- function SparklesUnder() {
+function SparklesUnder() {
   return (
     <div className="w-[40rem] h-40 relative">
       {/* Gradients */}

@@ -25,6 +25,6 @@ export const projects = [
     title: "Talk to Nikari AI",
     description:
       "None of the above. Proceed to chat with the Nikari AI assistant.",
-    link: "/nofound",
+    link: "/chatbot",
   },
 ];

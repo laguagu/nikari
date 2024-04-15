@@ -2,13 +2,16 @@ import { NextRequest, NextResponse } from "next/server";
 import { updateSession } from "@/lib/basicAuth";
 
 export async function middleware(request: NextRequest) {
-  const url = new URL(request.url);
-  const authenticate = await updateSession(request);
-  if (authenticate || url.pathname === '/login') {
+  const response = await updateSession(request);
+  if (response) return response;
+
+  // Oletetaan, että olet jo kirjautumissivulla
+  if (new URL(request.url).pathname === '/login') {
     return NextResponse.next();
   }
-  const loginUrl = new URL('/login', url.origin);
-  return NextResponse.redirect(loginUrl);
+
+  // Jos ei ole voimassaolevaa sessionia, ohjaa kirjautumissivulle
+  return NextResponse.redirect(new URL("/login", request.url));
 }
 
 export const config = {
