@@ -28,20 +28,20 @@ export default function ChatMessages() {
   } = useChat({
     initialInput: "",
     api: endPoint,
-    initialMessages: [
-      {
-        id: "1",
-        role: "user",
-        content:
-          " Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis rerum, totam harum praesentium, ad corrupti animi eos sunt asperiores hic accusantium molestias. Atque autem nemo, quidem itaque modi hic eius.",
-      },
-      {
-        id: "2",
-        role: "assistant",
-        content:
-          " Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis rerum, totam harum praesentium, ad corrupti animi eos sunt asperiores hic accusantium molestias. Atque autem nemo, quidem itaque modi hic eius.",
-      },
-    ],
+    // initialMessages: [
+    //   {
+    //     id: "1",
+    //     role: "user",
+    //     content:
+    //       " Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis rerum, totam harum praesentium, ad corrupti animi eos sunt asperiores hic accusantium molestias. Atque autem nemo, quidem itaque modi hic eius.",
+    //   },
+    //   {
+    //     id: "2",
+    //     role: "assistant",
+    //     content:
+    //       " Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis rerum, totam harum praesentium, ad corrupti animi eos sunt asperiores hic accusantium molestias. Atque autem nemo, quidem itaque modi hic eius.",
+    //   },
+    // ],
   });
 
   // useEffect(() => {
