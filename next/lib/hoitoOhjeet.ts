@@ -1,12 +1,19 @@
-export type Material = 'wood' | 'laminate' | 'metal' | 'leather' | 'plastic' | 'fabric' | 'outdoor';
+export type Material =
+  | "wood"
+  | "laminate"
+  | "metal"
+  | "leather"
+  | "plastic"
+  | "fabric"
+  | "outdoor";
 
 type CareInstructions = {
   [K in Material]?: {
     "1": string;
     "2": string;
     "3": string;
-  }
-}
+  };
+};
 
 export const careInstructions: CareInstructions = {
   wood: {
@@ -45,3 +52,32 @@ export const careInstructions: CareInstructions = {
     "3": "Be mindful of the furniture's exposure to iron particles, especially with oak wood, which is sensitive to iron oxide leading to dark spots or areas when mixed with water. Regularly inspect and clean the furniture to prevent the buildup of iron particles. Move the furniture indoors before the rainy season to prevent water-related damage and the acceleration of the graying process.",
   },
 };
+
+export const careInstructionsText = `
+
+# Nikari Oy, Peltorivi 13, 10470 Fiskars, Finland
+**Website:** [nikari.fi](https://www.nikari.fi)
+
+## CARE INSTRUCTIONS
+
+**Solid Wood Furniture Benefits:**
+Furniture made of solid wood offers aesthetic and performance benefits, requiring proper care. Cold and dry winter climates, along with indoor heating, create a very dry environment harmful to both humans and wooden furniture. Likewise, very humid months can adversely affect furniture without proper care.
+
+**Seasonal Wood Behavior:**
+- **Dry Climates:** Wood may shrink, causing natural cracks. These usually resolve when the humidity increases, causing the wood to swell.
+- **Humid Climates:** Wood might swell and disrupt moving parts like drawers, typically returning to normal as it dries.
+
+**Maintenance Advice:**
+- **Surface Care:** Use natural wood oil mixtures for surface finishes. Always clean any spills within 15 minutes with a damp cloth and organic soaps.
+- **Biennial Care:** Clean the tabletop with fine sandy cloth every two years, then treat with natural matte wood oil or wax. Allow the oil-wax to impregnate for 15-20 minutes before wiping off excess and polishing with a clean cloth.
+- **Finish Maintenance:** Follow specific product instructions for the surface finish oil mixture. Avoid silicone-based or non-natural oils and waxes.
+
+**Special Cases:**
+- **Stained or Lacquered Wood:** Lacquer protects the wood effectively from liquids and dirt. Clean spills quickly with a damp cloth and organic soap. If the lacquer is damaged, it should be sanded and re-applied. Contact [sales@nikari.fi](mailto:sales@nikari.fi) for more instructions.
+
+**EXTRA - Laminate Surface Maintenance:**
+Laminate surfaces should be cleaned regularly with a damp cloth and mild detergent or household cleaners. For tough stains, use non-abrasive cleaners or solvents. After using solvents, rinse the surface thoroughly with warm water to remove any detergent residue.`;
+
+// HUOM MUISTA TARKISTAA ETTÄ TEKSTI ON OIKEIN!
+// GPT Generoi lisää markdownia. Tässä esimerkki promptista, joka generoi lisää markdownia: 
+// Muutatko tämän annetun tekstin markdown muotoon. Tätä tekstiä tullaan käyttämään vektori tietokannassiani yhdessä LLM mallin kanssa vastaamaan asikkaan esittämään kysymykseen ja etssimällä ensiksi tietokannasta tietoa tämän tekstin perusteella. Eli muuta markdown muotoon, jotta se sopii minun käyttötarkoitukseen:
