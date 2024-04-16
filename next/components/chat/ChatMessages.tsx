@@ -159,7 +159,7 @@ function aiLoadingMessage() {
   return (
     <div className="text-2xl flex justify-end">
       <div className="flex items-center text-gray-900 font-mono mb-3">
-        <div className="text-2xl max-w-3xl overflow-auto break-words bg-gray-100 rounded-lg p-1 mr-1">
+        <div className="text-2xl max-w-3xl overflow-auto break-words rounded-lg p-2">
           <Comment
             height="56"
             width="56"
