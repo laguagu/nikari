@@ -30,6 +30,12 @@ export default function ChatMessages() {
     api: endPoint,
     initialMessages: [
       {
+        id: "1",
+        role: "user",
+        content:
+          " Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis rerum, totam harum praesentium, ad corrupti animi eos sunt asperiores hic accusantium molestias. Atque autem nemo, quidem itaque modi hic eius.",
+      },
+      {
         id: "2",
         role: "assistant",
         content:
@@ -126,7 +132,7 @@ export default function ChatMessages() {
             ) : (
               <RocketLaunchIcon className="w-5 mr-1 flex-shrink-0 right-0" />
             )}
-            <div className="text-2xl max-w-3xl overflow-auto break-words bg-gray-200 rounded-lg p-2">
+            <div className="text-2xl max-w-3xl overflow-auto break-words bg-gray-200 rounded-lg p-2 ">
               {message.content}
             </div>
           </div>
@@ -134,7 +140,7 @@ export default function ChatMessages() {
         {loadingResponse && aiLoadingMessage()}
       </div>
       <form onSubmit={sendMessage}>
-        <div className="flex gap-4 items-center">
+        <div className="flex gap-4 items-center mt-4">
           <Input
             type="text"
             value={input}

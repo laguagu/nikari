@@ -76,8 +76,26 @@ Furniture made of solid wood offers aesthetic and performance benefits, requirin
 - **Stained or Lacquered Wood:** Lacquer protects the wood effectively from liquids and dirt. Clean spills quickly with a damp cloth and organic soap. If the lacquer is damaged, it should be sanded and re-applied. Contact [sales@nikari.fi](mailto:sales@nikari.fi) for more instructions.
 
 **EXTRA - Laminate Surface Maintenance:**
-Laminate surfaces should be cleaned regularly with a damp cloth and mild detergent or household cleaners. For tough stains, use non-abrasive cleaners or solvents. After using solvents, rinse the surface thoroughly with warm water to remove any detergent residue.`;
+Laminate surfaces should be cleaned regularly with a damp cloth and mild detergent or household cleaners. For tough stains, use non-abrasive cleaners or solvents. After using solvents, rinse the surface thoroughly with warm water to remove any detergent residue.
+
+## ÄLYÄ Smart Technology for Furniture Lifecycle Extension
+
+**Project Purpose:**
+The initiative aims to promote furniture circular economy through the use of artificial intelligence (AI) and smart automation.
+
+**Goals:**
+- Develop circular economy service and process innovations utilizing AI and smart automation tailored to various organizational needs.
+- Pilot these innovations in selected service channels and environments, as well as in backend processes.
+
+**Applications of AI Solutions:**
+- Enhance customer experience and operational efficiency in services related to the sale, brokerage, rental, restoration, and repair of furniture and materials.
+- Primarily aimed at preserving the value of furniture and materials throughout their lifecycle.
+
+**Project Outcomes:**
+- Creation of sustainable solutions that extend the life and value of furniture through innovative use of technology.
+`;
+
 
 // HUOM MUISTA TARKISTAA ETTÄ TEKSTI ON OIKEIN!
 // GPT Generoi lisää markdownia. Tässä esimerkki promptista, joka generoi lisää markdownia: 
-// Muutatko tämän annetun tekstin markdown muotoon. Tätä tekstiä tullaan käyttämään vektori tietokannassiani yhdessä LLM mallin kanssa vastaamaan asikkaan esittämään kysymykseen ja etssimällä ensiksi tietokannasta tietoa tämän tekstin perusteella. Eli muuta markdown muotoon, jotta se sopii minun käyttötarkoitukseen:
+// Muutatko tämän annetun tekstin markdown muotoon. Tätä tekstiä tullaan käyttämään vektori tietokannassiani yhdessä LLM mallin RAG toteutuksella vastaamaan asikkaan esittämään kysymykseen ja etssimällä ensiksi tietokannasta tietoa tämän tekstin perusteella. Eli muuta markdown muotoon, jotta se sopii minun käyttötarkoitukseen:

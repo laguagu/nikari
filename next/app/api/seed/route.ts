@@ -4,7 +4,7 @@ import { RecursiveCharacterTextSplitter } from "langchain/text_splitter";
 import { createClient } from "@supabase/supabase-js";
 import { SupabaseVectorStore } from "langchain/vectorstores/supabase";
 import { OpenAIEmbeddings } from "langchain/embeddings/openai";
-
+import { careInstructionsText } from "@/lib/hoitoOhjeet";
 export const runtime = "edge";
 
 // Before running, follow set-up instructions at
@@ -20,7 +20,8 @@ export const runtime = "edge";
 export async function POST(req: NextRequest) {
   const body = await req.json();
   const text = body.text;
-
+  console.log(careInstructionsText);
+  
   try {
     const client = createClient(
       process.env.SUPABASE_URL!,
@@ -32,7 +33,7 @@ export async function POST(req: NextRequest) {
       chunkOverlap: 20,
     });
 
-    const splitDocuments = await splitter.createDocuments([text]);
+    const splitDocuments = await splitter.createDocuments([careInstructionsText]);
 
     const vectorstore = await SupabaseVectorStore.fromDocuments(
       splitDocuments,
