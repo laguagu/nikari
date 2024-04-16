@@ -2,18 +2,22 @@
 import { useChat } from "ai/react";
 import clsx from "clsx";
 import { UserIcon, RocketLaunchIcon } from "@heroicons/react/24/outline";
-import { useState } from "react";
+import { use, useEffect, useRef, useState } from "react";
 import { Message } from "ai/react";
+import Balancer from "react-wrap-balancer";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { Comment } from "react-loader-spinner";
 
 interface ChatFormProps {
   input: string;
   handleInputChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
   handleSubmit: (event: React.FormEvent<HTMLFormElement>) => void;
 }
-
+const endPoint = "/api/chat/lang";
 export default function ChatMessages() {
+  const messageContainerRef = useRef<HTMLDivElement>(null);
+  const [loadingResponse, setLoadingResponse] = useState(false);
   const {
     messages,
     setMessages,
@@ -21,23 +25,99 @@ export default function ChatMessages() {
     setInput,
     handleInputChange,
     handleSubmit,
-    append,
   } = useChat({
     initialInput: "",
+    api: endPoint,
+    initialMessages: [
+      {
+        id: "2",
+        role: "assistant",
+        content:
+          " Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis rerum, totam harum praesentium, ad corrupti animi eos sunt asperiores hic accusantium molestias. Atque autem nemo, quidem itaque modi hic eius.",
+      },
+    ],
   });
 
-  const [localMessages, setLocalMessages] = useState<Message[]>(messages);
+  // useEffect(() => {
+  //   console.log("Messages", messages);
+  // }, [messages]);
+
+  useEffect(() => {
+    if (messageContainerRef.current) {
+      const { current } = messageContainerRef;
+      current.scrollTop = current.scrollHeight - current.clientHeight;
+    }
+  }, [messages]); // This ensures the effect runs every time messages update
+
+  const sendMessage = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    if (!input.trim() || loadingResponse) return; // Prevent sending empty messages or multiple messages while loading
+    const messagesWithUserReply = messages.concat({
+      id: messages.length.toString(),
+      content: input,
+      role: "user",
+    });
+
+    setMessages(messagesWithUserReply);
+
+    setLoadingResponse(true);
+    setInput("");
+
+    const response = await fetch(endPoint, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        messages: messagesWithUserReply,
+      }),
+    });
+
+    if (!response.ok) {
+      console.error("Failed to send message", response);
+      setLoadingResponse(false);
+      return;
+    }
+    const newMessages = messagesWithUserReply;
+
+    const responseText = await response.text();
+    const gptAnswer = responseText;
+
+    setLoadingResponse(false);
+    setMessages([
+      ...newMessages,
+      { id: messages.length.toString(), role: "assistant", content: gptAnswer },
+    ]);
+
+    // const reader = response.body?.getReader();
+    // let result = '';
+    // while (true) {
+    //   if (!reader) {
+    //     break;
+    //   }
+    //   const { done, value } = await reader.read();
+    //   if (done) {
+    //     break;
+    //   }
+    //   result += new TextDecoder("utf-8").decode(value);
+    // }
+    // console.log(result);
+  };
+
   return (
     <div>
-      <div className="max-h-[55vh] space-y-4 overflow-y-auto">
-        {messages.map((message) => (
+      <div
+        className="max-h-[55vh] space-y-4 overflow-y-auto"
+        ref={messageContainerRef}
+      >
+        {messages.map((message, index) => (
           <div
-            key={message.id}
+            key={index}
             className={clsx(
-              "text-2xl items-center flex text-gray-900 font-mono",
+              "text-2xl items-center flex text-gray-900 font-mono mb-3",
               {
-                "justify-start": message.role === "user",
-                "justify-end": message.role === "assistant",
+                "justify-start text-left": message.role === "user",
+                "justify-end text-right": message.role === "assistant",
               }
             )}
           >
@@ -46,13 +126,14 @@ export default function ChatMessages() {
             ) : (
               <RocketLaunchIcon className="w-5 mr-1 flex-shrink-0 right-0" />
             )}
-            <div className="text-2xl max-w-3xl overflow-auto break-words bg-gray-100 rounded-lg p-1 mr-1">
+            <div className="text-2xl max-w-3xl overflow-auto break-words bg-gray-200 rounded-lg p-2">
               {message.content}
             </div>
           </div>
         ))}
+        {loadingResponse && aiLoadingMessage()}
       </div>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={sendMessage}>
         <div className="flex gap-4 items-center">
           <Input
             type="text"
@@ -61,11 +142,32 @@ export default function ChatMessages() {
             placeholder="Type your message..."
             onChange={handleInputChange}
           />
-          <Button className="h-[3rem] w-20 shrink-0" type="submit">
+          <Button
+            className="h-[3rem] w-20 shrink-0"
+            type="submit"
+            disabled={loadingResponse}
+          >
             Send
           </Button>
         </div>
       </form>
+    </div>
+  );
+}
+
+function aiLoadingMessage() {
+  return (
+    <div className="text-2xl flex justify-end">
+      <div className="flex items-center text-gray-900 font-mono mb-3">
+        <div className="text-2xl max-w-3xl overflow-auto break-words bg-gray-100 rounded-lg p-1 mr-1">
+          <Comment
+            height="56"
+            width="56"
+            color="#FFF"
+            backgroundColor="#2E2E2E"
+          />
+        </div>
+      </div>
     </div>
   );
 }

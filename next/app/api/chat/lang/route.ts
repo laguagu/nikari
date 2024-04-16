@@ -1,7 +1,11 @@
 import { NextRequest, NextResponse } from "next/server";
-import { Message as VercelChatMessage, StreamingTextResponse } from "ai";
+import {
+  Message as VercelChatMessage,
+  StreamingTextResponse,
+  OpenAIStream,
+} from "ai";
 
-import { createClient } from '@supabase/supabase-js'
+import { createClient } from "@supabase/supabase-js";
 
 import { ChatOpenAI, OpenAIEmbeddings } from "@langchain/openai";
 import { PromptTemplate } from "@langchain/core/prompts";
@@ -48,9 +52,9 @@ const condenseQuestionPrompt = PromptTemplate.fromTemplate(
   CONDENSE_QUESTION_TEMPLATE
 );
 
-// Vastausmalli, jossa tekoäly on kuvitteellinen puhuva koira.
-const ANSWER_TEMPLATE = `You are an energetic talking puppy named Dana, and must answer all questions like a happy, talking dog would.
-Use lots of puns!
+// Vastausmalli, joka käyttää aiempaa keskusteluhistoriaa ja kontekstia vastauksen generoimiseen.
+const ANSWER_TEMPLATE = `You are an assistant for Nikari, a distinguished Finnish furniture manufacturer known for exquisite wooden designs. 
+Your role is to provide informative and helpful responses that reflect the company's commitment to craftsmanship and customer service.
 
 Answer the question based only on the following context and chat history:
 <context>
@@ -83,7 +87,7 @@ export async function POST(req: NextRequest) {
     const previousMessages = messages.slice(0, -1);
     const currentMessageContent = messages[messages.length - 1].content;
 
-     // Alustaa OpenAI-mallin ja Supabase-asiakasohjelman.
+    // Alustaa OpenAI-mallin ja Supabase-asiakasohjelman.
     const model = new ChatOpenAI({
       modelName: "gpt-3.5-turbo-1106",
       temperature: 0.2,
@@ -130,7 +134,7 @@ export async function POST(req: NextRequest) {
         },
       ],
     });
-    
+
     const retrievalChain = retriever.pipe(combineDocumentsFn);
 
     const answerChain = RunnableSequence.from([
@@ -145,7 +149,7 @@ export async function POST(req: NextRequest) {
       answerPrompt,
       model,
     ]);
-    
+
     // Suorittaa ketjun, joka tuottaa vastauksen käyttäjän kysymykseen.
     const conversationalRetrievalQAChain = RunnableSequence.from([
       {
@@ -162,26 +166,26 @@ export async function POST(req: NextRequest) {
       chat_history: formatVercelMessages(previousMessages),
     });
 
+    return new StreamingTextResponse(stream);
     // Odottaa dokumenttien haun valmistumista ja serialisoi lähteet.
-    const documents = await documentPromise;
-    const serializedSources = Buffer.from(
-      JSON.stringify(
-        documents.map((doc) => {
-          return {
-            pageContent: doc.pageContent.slice(0, 50) + "...",
-            metadata: doc.metadata,
-          };
-        })
-      )
-    ).toString("base64");
-    
+    // const documents = await documentPromise;
+    // const serializedSources = Buffer.from(
+    //   JSON.stringify(
+    //     documents.map((doc) => {
+    //       return {
+    //         pageContent: doc.pageContent.slice(0, 50) + "...",
+    //         metadata: doc.metadata,
+    //       };
+    //     })
+    //   )
+    // ).toString("base64");
     // Palauttaa vastauksen ja liitetyt lähteet klientille.
-    return new StreamingTextResponse(stream, {
-      headers: {
-        "x-message-index": (previousMessages.length + 1).toString(),
-        "x-sources": serializedSources,
-      },
-    });
+    // return new StreamingTextResponse(stream, {
+    //   headers: {
+    //     "x-message-index": (previousMessages.length + 1).toString(),
+    //     "x-sources": serializedSources,
+    //   },
+    // });
   } catch (e: any) {
     return NextResponse.json({ error: e.message }, { status: e.status ?? 500 });
   }

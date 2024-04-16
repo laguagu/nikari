@@ -6,25 +6,23 @@ import { TextGenerateEffect } from "@/components/ui/text-generate-effect";
 import Link from "next/link";
 import React from "react";
 import { Toaster } from "@/components/ui/toaster";
-import { usePathname } from 'next/navigation'
+import { usePathname } from "next/navigation";
 
 export default function ChatLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-
-  let words = `You're now chatting with a AI powered support agent. Ask us anything!`
-  const pathname = usePathname()
+  let words = `You're now chatting with a AI powered support agent. Ask us anything!`;
+  const pathname = usePathname();
   if (pathname === "/chatbot") {
     words = `You're now chatting with a AI powered support agent. Ask us anything!`;
   } else if (pathname === "/care") {
     words = `Welcome to Nikari AI! Let's identify the materials of your furniture and provide care instructions.`;
   } else {
-    words = `Welcome to Nikari AI! Ask about care instructions, dealers, or anything else.`;
+    words = `Welcome to Nikari AI! Ask about care instructions, retailers, or anything else.`;
   }
-  
-  
+
   return (
     <div className="min-h-screen bg-black w-full flex flex-col items-center justify-center overflow-y-hidden rounded-md">
       <h1 className="md:text-5xl text-3xl lg:text-7xl font-bold text-centerrelative z-20 mb-3 text-white mt-4">

@@ -16,9 +16,9 @@ export const projects = [
     link: "/care",
   },
   {
-    title: "Find a Dealer",
+    title: "Find a retailer",
     description:
-      "I want to know where the nearest Nikari furniture dealer is located.",
+      "I want to know where the nearest Nikari furniture retailer is located.",
     link: "/",
   },
   {
