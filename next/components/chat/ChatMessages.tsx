@@ -196,3 +196,22 @@ function aiLoadingMessage() {
 //     } as Message,
 //   ]);
 // };
+
+// Fetch stream example ehkä toimii
+// async function fetchStream() {
+//   const response = await fetch('/api/your-endpoint');
+//   const reader = response.body.getReader();
+//   let receivedLength = 0;
+//   let chunks = [];
+//   while(true) {
+//     const { done, value } = await reader.read();
+//     if (done) {
+//       break;
+//     }
+//     chunks.push(value);
+//     receivedLength += value.length;
+//     // Prosessoi jokainen palanen tässä, esim. muuntaa tekstiksi ja päivittää tilaa
+//   }
+//   const completeResponse = new TextDecoder("utf-8").decode(new Uint8Array(chunks));
+//   console.log('Full response received:', completeResponse);
+// }
