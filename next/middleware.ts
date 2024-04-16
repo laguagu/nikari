@@ -14,7 +14,7 @@ export function middleware(req: NextRequest) {
       .split(":");
 
     const validUser = "testuser";
-    const validPassWord = process.env.BASIC_AUTH_PASSWORD;
+    const validPassWord = "testpassword";
 
     if (user === validUser && pwd === validPassWord) {
       return NextResponse.next();
