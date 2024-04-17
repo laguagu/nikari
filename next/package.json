@@ -23,6 +23,7 @@
     "@tsparticles/slim": "^3.3.0",
     "ai": "^3.0.22",
     "axios": "^1.6.8",
+    "browser-image-resizer": "^2.4.1",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.0",
     "dedent": "^1.5.3",
@@ -39,6 +40,7 @@
     "react-loader-spinner": "^6.1.6",
     "react-webcam": "^7.2.0",
     "react-wrap-balancer": "^1.1.0",
+    "sharp": "^0.33.3",
     "tailwind-merge": "^2.2.2",
     "tailwindcss-animate": "^1.0.7",
     "zod": "^3.22.4"

@@ -27,11 +27,13 @@ export async function POST(req: Request, res: Response) {
             type: "image_url",
             image_url: {
               url: image,
+              detail: "auto" 
             },
           },
         ],
       },
     ],
+    max_tokens: 1000,
     response_format: { type: "json_object" },
   });
   // return Response.json({
