@@ -6,6 +6,7 @@ import { Label } from "@/components/ui/label";
 import Image from "next/image";
 import Webcam from "react-webcam";
 import { CameraSkeleton } from "@/components/chat/skeletons";
+import { read } from "fs";
 
 interface MediaInputComponentProps {
   handleSetMaterials: (value: string) => void;
@@ -30,6 +31,7 @@ export default function MediaInputComponent({
   const captureImage = () => {
     const screenshot = webcamRef.current?.getScreenshot();
     if (screenshot) {
+      console.log('screenshot', screenshot, 'captureImage)');
       setImageURL(screenshot);
     } else {
       console.error("Failed to capture image");
@@ -39,15 +41,19 @@ export default function MediaInputComponent({
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
     if (file) {
-      const imageDataUrl = URL.createObjectURL(file);
-      setImageURL(imageDataUrl);
+      const reader = new FileReader();
+      reader.onloadend = function() {
+        console.log('reader.result', reader.result, 'handleFileChange)');
+        setImageURL(reader.result as string);
+      }
+      reader.readAsDataURL(file);
     }
   };
 
   const sendImageToGPT = async (imageURL: string) => {
     if (imageURL) {
       // Oletetaan, että handleSetMaterials on funktio, joka käsittelee kuvan
-      await handleSetMaterials(imageURL);
+      handleSetMaterials(imageURL);
       setImageURL(null); // Resetoi kuvan esikatselu
     }
   };

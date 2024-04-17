@@ -49,7 +49,6 @@ export default function CareInstructionsForm({
   materials,
 }: CareInstructionsFormProps) {
   const [careGuides, setcareGuides] = useState<MaterialInstructions[]>([]);
-
   const materialItems = materials
     ? Object.entries(materials).map(([key, value]) => ({
         id: key,
