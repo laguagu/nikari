@@ -48,21 +48,23 @@ export default function MediaInputComponent({
   //     reader.readAsDataURL(file);
   //   }
   // };
-  
-  const handleFileChange = async (event: React.ChangeEvent<HTMLInputElement>) => {
+
+  const handleFileChange = async (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => {
     const file = event.target.files?.[0];
-    console.log('file: ', typeof(file));
+    console.log("file: ", typeof file);
     if (file) {
-      const response = await fetch('/api/visio/resizeImage/', {
-        method: 'POST',
-        body: file // Lähetä tiedosto suoraan
+      const response = await fetch("/api/visio/resizeImage/", {
+        method: "POST",
+        body: file,
       });
-  
+
       if (!response.ok) {
-        console.error('Failed to resize image');
+        console.error("Failed to resize image");
         return;
       }
-  
+
       const resizedImage = await response.text();
       setImageURL(resizedImage);
     }
