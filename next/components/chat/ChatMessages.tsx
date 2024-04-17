@@ -4,7 +4,6 @@ import clsx from "clsx";
 import { UserIcon, RocketLaunchIcon } from "@heroicons/react/24/outline";
 import { use, useEffect, useRef, useState } from "react";
 import { Message } from "ai/react";
-import Balancer from "react-wrap-balancer";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Comment } from "react-loader-spinner";
@@ -43,10 +42,6 @@ export default function ChatMessages() {
     //   },
     // ],
   });
-
-  // useEffect(() => {
-  //   console.log("Messages", messages);
-  // }, [messages]);
 
   useEffect(() => {
     if (messageContainerRef.current) {
