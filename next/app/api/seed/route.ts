@@ -20,7 +20,6 @@ export const runtime = "edge";
 export async function POST(req: NextRequest) {
   const body = await req.json();
   const text = body.text;
-  console.log(careInstructionsText);
   
   try {
     const client = createClient(

@@ -15,7 +15,6 @@ export async function POST(req: Request) {
     ...messages,
     { role: "system", content: "Olet chatbot avustaja" },
   ];
-  console.log("Messages", messages, "messagesWithRole", messagesWithRole);
   
   // Ask OpenAI for a streaming chat completion given the prompt
   const response = await openai.chat.completions.create({

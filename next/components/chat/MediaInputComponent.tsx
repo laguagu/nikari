@@ -31,22 +31,40 @@ export default function MediaInputComponent({
   const captureImage = () => {
     const screenshot = webcamRef.current?.getScreenshot();
     if (screenshot) {
-      console.log('screenshot', screenshot, 'captureImage)');
       setImageURL(screenshot);
     } else {
       console.error("Failed to capture image");
     }
   };
 
-  const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  // const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  //   const file = event.target.files?.[0];
+  //   console.log('file: ', file);
+  //   if (file) {
+  //     const reader = new FileReader();
+  //     reader.onloadend = function() {
+  //       setImageURL(reader.result as string);
+  //     }
+  //     reader.readAsDataURL(file);
+  //   }
+  // };
+  
+  const handleFileChange = async (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
+    console.log('file: ', typeof(file));
     if (file) {
-      const reader = new FileReader();
-      reader.onloadend = function() {
-        console.log('reader.result', reader.result, 'handleFileChange)');
-        setImageURL(reader.result as string);
+      const response = await fetch('/api/visio/resizeImage/', {
+        method: 'POST',
+        body: file // Lähetä tiedosto suoraan
+      });
+  
+      if (!response.ok) {
+        console.error('Failed to resize image');
+        return;
       }
-      reader.readAsDataURL(file);
+  
+      const resizedImage = await response.text();
+      setImageURL(resizedImage);
     }
   };
 
@@ -70,7 +88,6 @@ export default function MediaInputComponent({
   };
 
   const handleCameraStart = () => {
-    console.log("Camera is active");
     setLoadingCamera(false);
     setIsWebcamReady(true); // Aseta isWebcamReady true:ksi
   };
