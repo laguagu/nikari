@@ -2,8 +2,8 @@ import { NextRequest, NextResponse } from "next/server";
 import { RecursiveCharacterTextSplitter } from "langchain/text_splitter";
 
 import { createClient } from "@supabase/supabase-js";
-import { SupabaseVectorStore } from "langchain/vectorstores/supabase";
-import { OpenAIEmbeddings } from "langchain/embeddings/openai";
+import { SupabaseVectorStore } from "@langchain/community/vectorstores/supabase";
+import { OpenAIEmbeddings } from "@langchain/openai";
 import { careInstructionsText } from "@/lib/hoitoOhjeet";
 export const runtime = "edge";
 
@@ -18,21 +18,20 @@ export const runtime = "edge";
  * https://js.langchain.com/docs/modules/data_connection/vectorstores/integrations/supabase
  */
 export async function POST(req: NextRequest) {
-  const body = await req.json();
-  const text = body.text;
-  
   try {
     const client = createClient(
       process.env.SUPABASE_URL!,
-      process.env.SUPABASE_PRIVATE_KEY!,
+      process.env.SUPABASE_PRIVATE_KEY!
     );
 
     const splitter = RecursiveCharacterTextSplitter.fromLanguage("markdown", {
-      chunkSize: 256,
-      chunkOverlap: 20,
+      chunkSize: 500,
+      chunkOverlap: 50,
     });
 
-    const splitDocuments = await splitter.createDocuments([careInstructionsText]);
+    const splitDocuments = await splitter.createDocuments([
+      careInstructionsText,
+    ]);
 
     const vectorstore = await SupabaseVectorStore.fromDocuments(
       splitDocuments,
@@ -41,7 +40,7 @@ export async function POST(req: NextRequest) {
         client,
         tableName: "documents",
         queryName: "match_documents",
-      },
+      }
     );
 
     return NextResponse.json({ ok: true }, { status: 200 });

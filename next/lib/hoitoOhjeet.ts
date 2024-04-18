@@ -93,9 +93,92 @@ The initiative aims to promote furniture circular economy through the use of art
 
 **Project Outcomes:**
 - Creation of sustainable solutions that extend the life and value of furniture through innovative use of technology.
-`;
 
+# Chairs Collection
+
+## AKADEMIA Chair
+**Design:** Wesley Walters & Salla Luhtasela  
+**Year:** 2019
+
+Designed by Wesley Walters and Salla Luhtasela, also known as duo Kaksikko, the Akademia chair combines a classic, straight frame with a softly curved seat and backrest. The Akademia chair is made of oak or ash and is available in many different finishes. The seat can be upholstered.
+
+As its name suggests, the Akademia chair was the result of Wesley Walter’s Master’s Thesis work at Aalto University, Helsinki. The design was influenced by many different cultures: Finnish chair manufacturing heritage, simplistic Shaker style from America as well as Japanese design traditions. Part of the Linea collection, the versatile Akademia chair is well suited for private use and various public environments.
+
+### Materials
+- Oak
+- Ash
+
+### Surface Finish
+- Lacquered, warm oak
+- Lacquered, light oak
+- Lacquered, natural ash
+- Black ash (stain)
+- Smoked oak (stain)
+- COM paint color, minimum 20pcs
+
+### Dimensions
+- **Width:** 460 mm
+- **Depth:** 470 mm
+- **Height:** 810/460 mm
+
+### Other Information
+- Option: seat upholstery
+- Fits well with Basic table
+
+[Download CARE INSTRUCTIONS](https://www.dropbox.com/sh/72ex6pt62kfuoqa/AAALld8u9JcILgr6CQ8QAqota?dl=0)  
+[Download BROCHURES and UPHOLSTERIES](https://www.dropbox.com/sh/72ex6pt62kfuoqa/AAALld8u9JcILgr6CQ8QAqota?dl=0)  
+[Download 2D/3D FILES](https://www.dropbox.com/sh/72ex6pt62kfuoqa/AAALld8u9JcILgr6CQ8QAqota?dl=0)
+
+## COLLECTION: LINEA
+
+The Linea collection includes soft, organic forms and upholstered products with round legs. Every piece of furniture is made keeping in mind the furniture making tradition of Finland and the joinery developed throughout the years at the Nikari studio workshop.
+
+[See all: Linea collection](https://nikari.fi/linea-collection/)
+
+## AKADEMIA ARMREST Chair
+**Design:** Wesley Walters & Salla Luhtasela  
+**Year:** 2022
+
+Designed by Wesley Walters and Salla Luhtasela, also known as duo Kaksikko, the Akademia Armrest chair combines a classic, straight frame with a softly curved seat, backrest and armrests. The available options are ash, oak natural, or light oak, with or without seat upholstery.
+
+The chair was originally the result of Master's Thesis work at Aalto University by a member of the Kaksikko team; Wesley Walters. It is a fascinating combination of different cultures - simplistic Shaker style, Japanese design traditions, and Finnish craftsmanship heritage.
+
+”After three years of carefully refining the design, we are very pleased to see the Akademia armrest chair released to market. It was a challenge adding elements to such a simple typology, but we think the final result speaks the same language as the original Akademia while having its own unique presence in space. Most importantly, aside from its unique form, the ample, curved armrests make it a supremely comfortable chair to sit in.”
+Kaksikko (Wesley Walters & Salla Luhtasela)
+
+AKADEMIA ARMREST is made of sustainably grown ash or oak and molded plywood. It functions as a dining chair, meeting chair, or visitor's chair'in various surroundings, blending gracefully into different interior styles.
+
+### Materials
+- Oak
+- Ash
+
+### Surface Finish
+- Lacquered, warm oak
+- Lacquered, light oak
+- Lacquered ash
+- Smoked oak (stain)
+- COM paint color, minimum 20pcs
+
+### Dimensions
+- **Width:** 600 mm
+- **Depth:** 470 mm
+- **Height:** 810/460 mm
+
+### Other Information
+- Option: seat upholstery
+- Fits well with Basic table
+
+[Download CARE INSTRUCTIONS](https://www.dropbox.com/sh/72ex6pt62kfuoqa/AAALld8u9JcILgr6CQ8QAqota?dl=0)  
+[Download BROCHURES and UPHOLSTERIES](https://www.dropbox.com/sh/72ex6pt62kfuoqa/AAALld8u9JcILgr6CQ8QAqota?dl=0)  
+[Download 2D/3D FILES](https://www.dropbox.com/sh/72ex6pt62kfuoqa/AAALld8u9JcILgr6CQ8QAqota?dl=0)
+
+## COLLECTION: LINEA
+
+The Linea collection includes soft, organic forms and upholstered products with round legs. Every piece of furniture is made keeping in mind the furniture making tradition of Finland and the joinery developed throughout the years at the Nikari studio workshop.
+
+[See all: Linea collection](https://nikari.fi/linea-collection/)
+`;
 
 // HUOM MUISTA TARKISTAA ETTÄ TEKSTI ON OIKEIN!
 // GPT Generoi lisää markdownia. Tässä esimerkki promptista, joka generoi lisää markdownia: 
-// Muutatko tämän annetun tekstin markdown muotoon. Tätä tekstiä tullaan käyttämään vektori tietokannassiani yhdessä LLM mallin RAG toteutuksella vastaamaan asikkaan esittämään kysymykseen ja etssimällä ensiksi tietokannasta tietoa tämän tekstin perusteella. Eli muuta markdown muotoon, jotta se sopii minun käyttötarkoitukseen:
+// Muutatko tämän aSnetun tekstin markdown muotoon. Tätä tekstiä tullaan käyttämään vektori tietokannassiani yhdessä LLM mallin RAG toteutuksella vastaamaan asikkaan esittämään kysymykseen ja etssimällä ensiksi tietokannasta tietoa tämän tekstin perusteella. Eli muuta markdown muotoon, jotta se sopii minun käyttötarkoitukseen:

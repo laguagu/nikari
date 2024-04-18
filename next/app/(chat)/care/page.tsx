@@ -13,10 +13,10 @@ export default function Page() {
   const [imageURL, setImageURL] = useState<string | null>(null);
 
   const handleSetMaterials = async (image_url: string) => {
-    setIsDetectingMaterials(true); // Aloitetaan materiaalien tunnistus
+    setIsDetectingMaterials(true);
     const detectedMaterials = await getMaterials(image_url);
     setMaterials(detectedMaterials);
-    setIsDetectingMaterials(false); // Materiaalien tunnistus valmis
+    setIsDetectingMaterials(false);
   };
 
   return (

@@ -22,6 +22,8 @@ export const runtime = "edge";
 // Apufunktio dokumenttien yhdistämiseen yhdeksi tekstiksi.
 const combineDocumentsFn = (docs: Document[]) => {
   const serializedDocs = docs.map((doc) => doc.pageContent);
+  console.log(serializedDocs, "serializedDocs");
+  
   return serializedDocs.join("\n\n");
 };
 
@@ -119,7 +121,7 @@ export async function POST(req: NextRequest) {
       model,
       new StringOutputParser(),
     ]);
-
+    
     let resolveWithDocuments: (value: Document[]) => void;
     const documentPromise = new Promise<Document[]>((resolve) => {
       resolveWithDocuments = resolve;

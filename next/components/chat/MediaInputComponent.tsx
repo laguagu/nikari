@@ -10,7 +10,7 @@ import { read } from "fs";
 
 interface MediaInputComponentProps {
   handleSetMaterials: (value: string) => void;
-  imageURL: string | null; // Lisää tämä rivi
+  imageURL: string | null; 
   setImageURL: (value: string | null) => void;
 }
 
@@ -31,23 +31,13 @@ export default function MediaInputComponent({
   const captureImage = () => {
     const screenshot = webcamRef.current?.getScreenshot();
     if (screenshot) {
+      console.log("Screenshot captured", screenshot);
+      
       setImageURL(screenshot);
     } else {
       console.error("Failed to capture image");
     }
   };
-
-  // const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-  //   const file = event.target.files?.[0];
-  //   console.log('file: ', file);
-  //   if (file) {
-  //     const reader = new FileReader();
-  //     reader.onloadend = function() {
-  //       setImageURL(reader.result as string);
-  //     }
-  //     reader.readAsDataURL(file);
-  //   }
-  // };
 
   const handleFileChange = async (
     event: React.ChangeEvent<HTMLInputElement>
@@ -72,7 +62,6 @@ export default function MediaInputComponent({
 
   const sendImageToGPT = async (imageURL: string) => {
     if (imageURL) {
-      // Oletetaan, että handleSetMaterials on funktio, joka käsittelee kuvan
       handleSetMaterials(imageURL);
       setImageURL(null); // Resetoi kuvan esikatselu
     }
@@ -91,7 +80,7 @@ export default function MediaInputComponent({
 
   const handleCameraStart = () => {
     setLoadingCamera(false);
-    setIsWebcamReady(true); // Aseta isWebcamReady true:ksi
+    setIsWebcamReady(true);
   };
 
   const handleCameraError = (error: any) => {
@@ -114,7 +103,6 @@ export default function MediaInputComponent({
             className={`rounded-xl ${isWebcamReady ? "" : "hidden"}`} // Piilota Webcam-komponentti kunnes se on valmis
             onUserMedia={handleCameraStart}
             onUserMediaError={handleCameraError}
-            // onUserMediaError={(error) => console.error('Webcam error: ', error)}
           />
           {isWebcamReady && (
             <div className="flex gap-3">
