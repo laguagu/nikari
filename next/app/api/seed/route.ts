@@ -18,6 +18,14 @@ export const runtime = "edge";
  * https://js.langchain.com/docs/modules/data_connection/vectorstores/integrations/supabase
  */
 export async function POST(req: NextRequest) {
+  function replaceMarkdownLinks(careInstructionsText: string) {
+    return careInstructionsText.replace(
+      /\[([^\]]+)\]\(([^)]+)\)/g,
+      "$2"
+    );
+  }
+  const replacedMarkdownText = replaceMarkdownLinks(careInstructionsText);
+
   try {
     const client = createClient(
       process.env.SUPABASE_URL!,
@@ -30,7 +38,7 @@ export async function POST(req: NextRequest) {
     });
 
     const splitDocuments = await splitter.createDocuments([
-      careInstructionsText,
+      replacedMarkdownText,
     ]);
 
     const vectorstore = await SupabaseVectorStore.fromDocuments(
