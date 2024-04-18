@@ -1,7 +1,13 @@
 import { NextRequest, NextResponse } from "next/server";
 
 export const config = {
-  matcher: ["/((?!api|_next/static|_next/image|favicon.ico).*)"], // Match all routes except for Next.js static files and images
+  matcher: [
+    "/api/chat/",
+    "/api/chat/lang",
+    "/api/visio",
+    "/api/seed",
+    "/((?!api|_next/static|_next/image|favicon.ico).*)",
+  ], // Match all routes except for Next.js static files and images
 };
 
 export function middleware(req: NextRequest) {
