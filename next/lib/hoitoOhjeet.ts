@@ -96,87 +96,273 @@ The initiative aims to promote furniture circular economy through the use of art
 
 # Chairs Collection
 
-## AKADEMIA Chair
+## AKADEMIA CHAIR
 **Design:** Wesley Walters & Salla Luhtasela  
-**Year:** 2019
+**Year:** 2019  
+**Materials:** Oak, Ash  
+**Surface Finish:** Lacquered, warm oak; Lacquered, light oak; Lacquered, natural ash; Black ash (stain); Smoked oak (stain); COM paint color, minimum 20pcs  
+**Dimensions:** Width: 460 mm, Depth: 470 mm, Height: 810/460 mm  
+**Other Information:** Option: seat upholstery; Fits well with Basic table  
+**[Download CARE INSTRUCTIONS](https://www.dropbox.com/sh/72ex6pt62kfuoqa/AAALld8u9JcILgr6CQ8QAqota?dl=0)**  
+**[Download BROCHURES and UPHOLSTERIES](https://www.dropbox.com/sh/72ex6pt62kfuoqa/AAALld8u9JcILgr6CQ8QAqota?dl=0)**  
+**[Download 2D/3D FILES](https://www.dropbox.com/sh/72ex6pt62kfuoqa/AAALld8u9JcILgr6CQ8QAqota?dl=0)**  
 
 Designed by Wesley Walters and Salla Luhtasela, also known as duo Kaksikko, the Akademia chair combines a classic, straight frame with a softly curved seat and backrest. The Akademia chair is made of oak or ash and is available in many different finishes. The seat can be upholstered.
-
-As its name suggests, the Akademia chair was the result of Wesley Walter’s Master’s Thesis work at Aalto University, Helsinki. The design was influenced by many different cultures: Finnish chair manufacturing heritage, simplistic Shaker style from America as well as Japanese design traditions. Part of the Linea collection, the versatile Akademia chair is well suited for private use and various public environments.
-
-### Materials
-- Oak
-- Ash
-
-### Surface Finish
-- Lacquered, warm oak
-- Lacquered, light oak
-- Lacquered, natural ash
-- Black ash (stain)
-- Smoked oak (stain)
-- COM paint color, minimum 20pcs
-
-### Dimensions
-- **Width:** 460 mm
-- **Depth:** 470 mm
-- **Height:** 810/460 mm
-
-### Other Information
-- Option: seat upholstery
-- Fits well with Basic table
-
-[Download CARE INSTRUCTIONS](https://www.dropbox.com/sh/72ex6pt62kfuoqa/AAALld8u9JcILgr6CQ8QAqota?dl=0)  
-[Download BROCHURES and UPHOLSTERIES](https://www.dropbox.com/sh/72ex6pt62kfuoqa/AAALld8u9JcILgr6CQ8QAqota?dl=0)  
-[Download 2D/3D FILES](https://www.dropbox.com/sh/72ex6pt62kfuoqa/AAALld8u9JcILgr6CQ8QAqota?dl=0)
+As its name suggests, the Akademia chair was the result of Wesley Walter's Master's Thesis work at Aalto University, Helsinki. The design was influenced by many different cultures: Finnish chair manufacturing heritage, simplistic Shaker style from America as well as Japanese design traditions. Part of the Linea collection, the versatile Akademia chair is well suited for private use and various public environments.
 
 ## COLLECTION: LINEA
 
 The Linea collection includes soft, organic forms and upholstered products with round legs. Every piece of furniture is made keeping in mind the furniture making tradition of Finland and the joinery developed throughout the years at the Nikari studio workshop.
 
-[See all: Linea collection](https://nikari.fi/linea-collection/)
+**[See all: Linea collection](https://nikari.fi/linea-collection/)**
 
-## AKADEMIA ARMREST Chair
-**Design:** Wesley Walters & Salla Luhtasela  
-**Year:** 2022
+## AKADEMIA ARMREST CHAIR
+AKADEMIA ARMREST is made of sustainably grown ash or oak and molded plywood. It functions as a dining chair, meeting chair, or visitor's chair in various surroundings, blending gracefully into different interior styles.
 
-Designed by Wesley Walters and Salla Luhtasela, also known as duo Kaksikko, the Akademia Armrest chair combines a classic, straight frame with a softly curved seat, backrest and armrests. The available options are ash, oak natural, or light oak, with or without seat upholstery.
-
-The chair was originally the result of Master's Thesis work at Aalto University by a member of the Kaksikko team; Wesley Walters. It is a fascinating combination of different cultures - simplistic Shaker style, Japanese design traditions, and Finnish craftsmanship heritage.
-
-”After three years of carefully refining the design, we are very pleased to see the Akademia armrest chair released to market. It was a challenge adding elements to such a simple typology, but we think the final result speaks the same language as the original Akademia while having its own unique presence in space. Most importantly, aside from its unique form, the ample, curved armrests make it a supremely comfortable chair to sit in.”
-Kaksikko (Wesley Walters & Salla Luhtasela)
-
-AKADEMIA ARMREST is made of sustainably grown ash or oak and molded plywood. It functions as a dining chair, meeting chair, or visitor's chair'in various surroundings, blending gracefully into different interior styles.
-
-### Materials
-- Oak
-- Ash
-
-### Surface Finish
-- Lacquered, warm oak
-- Lacquered, light oak
-- Lacquered ash
-- Smoked oak (stain)
-- COM paint color, minimum 20pcs
-
-### Dimensions
-- **Width:** 600 mm
-- **Depth:** 470 mm
-- **Height:** 810/460 mm
-
-### Other Information
-- Option: seat upholstery
-- Fits well with Basic table
-
-[Download CARE INSTRUCTIONS](https://www.dropbox.com/sh/72ex6pt62kfuoqa/AAALld8u9JcILgr6CQ8QAqota?dl=0)  
-[Download BROCHURES and UPHOLSTERIES](https://www.dropbox.com/sh/72ex6pt62kfuoqa/AAALld8u9JcILgr6CQ8QAqota?dl=0)  
-[Download 2D/3D FILES](https://www.dropbox.com/sh/72ex6pt62kfuoqa/AAALld8u9JcILgr6CQ8QAqota?dl=0)
+**Materials:** Oak, Ash  
+**Surface Finish:** Lacquered, warm oak; Lacquered, light oak; Lacquered ash; Smoked oak (stain); COM paint color, minimum 20pcs  
+**Dimensions:** Width: 600 mm, Depth: 470 mm, Height: 810/460 mm  
+**Other Information:** Option: seat upholstery; Fits well with Basic table  
+**[Download CARE INSTRUCTIONS](https://www.dropbox.com/sh/72ex6pt62kfuoqa/AAALld8u9JcILgr6CQ8QAqota?dl=0)**  
+**[Download BROCHURES and UPHOLSTERIES](https://www.dropbox.com/sh/72ex6pt62kfuoqa/AAALld8u9JcILgr6CQ8QAqota?dl=0)**  
+**[Download 2D/3D FILES](https://www.dropbox.com/sh/72ex6pt62kfuoqa/AAALld8u9JcILgr6CQ8QAqota?dl=0)**
 
 ## COLLECTION: LINEA
 
 The Linea collection includes soft, organic forms and upholstered products with round legs. Every piece of furniture is made keeping in mind the furniture making tradition of Finland and the joinery developed throughout the years at the Nikari studio workshop.
 
-[See all: Linea collection](https://nikari.fi/linea-collection/)
+**[See all: Linea collection](https://nikari.fi/linea-collection/)**
+
+## ARKITECTURE KVT7 CHAIR
+**Design:** Kari Virtanen  
+**Year:** 2009  
+**Materials:** Birch, Ash, Oak  
+**Surface Finish:** Natural wood oil mix  
+**Dimensions:** Width: 480 mm, Depth: 450 mm, Height: 830/460 mm  
+**Other Information:** Stackable (4pcs), Option: seat upholstery, Option: linking device  
+**[Download CARE INSTRUCTIONS](https://www.dropbox.com/sh/72ex6pt62kfuoqa/AAALld8u9JcILgr6CQ8QAqota?dl=0)**  
+**[Download BROCHURES and UPHOLSTERIES](https://www.dropbox.com/sh/72ex6pt62kfuoqa/AAALld8u9JcILgr6CQ8QAqota?dl=0)**  
+**[Download 2D/3D FILES](https://www.dropbox.com/sh/72ex6pt62kfuoqa/AAALld8u9JcILgr6CQ8QAqota?dl=0)**  
+
+The Arkitecture KVT7 chair, designed by Kari Virtanen, is characterised by simple, rectangular lines and an upright profile. The chair's hand-finished backrest is enlivened by beautiful grain patterns. Arkitecture KVT7 is available in oiled birch, ash, or oak, with an upholstered seat.
+The Arkitecture chairs are easy to place in rows in seminar or sacral spaces and other public environments. The chairs are stackable, and they can be connected with a linking device. Their timeless, refined design goes well together with products from the Arkitecture collection as well as with other types of furniture.
+
+## COLLECTION: ARKITECTURE
+
+Arkitecture series includes some of the most iconic Nikari classics, such as the trestle leg table by the founder of the company, Kari Virtanen. The products are streamlined and the design scarce, showing the beautiful solid wooden surfaces.
+
+**[See all: Arkitecture collection](https://nikari.fi/arkitecture-collection/)**
+
+## ARKITECTURE KVT8
+**Design:** Kari Virtanen  
+**Year:** 2009  
+**Materials:** Birch, Ash, Oak  
+**Surface Finish:** Natural wood oil mix, Lacquer  
+**Dimensions:** Width: 570 mm, Depth: 460 mm, Height: 830/670/460 mm  
+**Other Information:** Stackable (4pcs), Option: seat upholstery  
+**[Download CARE INSTRUCTIONS](https://www.dropbox.com/sh/72ex6pt62kfuoqa/AAALld8u9JcILgr6CQ8QAqota?dl=0)**  
+**[Download BROCHURES and UPHOLSTERIES](https://www.dropbox.com/sh/72ex6pt62kfuoqa/AAALld8u9JcILgr6CQ8QAqota?dl=0)**  
+**[Download 2D/3D FILES](https://www.dropbox.com/sh/72ex6pt62kfuoqa/AAALld8u9JcILgr6CQ8QAqota?dl=0)**  
+
+The Arkitecture KVT8 chair, designed by Kari Virtanen, is characterised by simple, rectangular lines and an upright profile. The chair has armrests, and its hand-finished backrest is enlivened by beautiful grain patterns. Arkitecture KVT8 is available in oiled birch, ash or oak, with an upholstered seat. 
+The Arkitecture chairs are easy to place in rows in seminar or sacral spaces and other public environments. The chairs are stackable, and they can be connected with a linking device. Their timeless, refined design goes well together with products from the Arkitecture collection as well as with other types of furniture.
+
+## COLLECTION: ARKITECTURE
+
+Arkitecture series includes some of the most iconic Nikari classics, such as the trestle leg table by the founder of the company, Kari Virtanen. The products are streamlined and the design scarce, showing the beautiful solid wooden surfaces.
+
+**[See all: Arkitecture collection](https://nikari.fi/arkitecture-collection/)**
+
+## FANEERI FOLDING CHAIR
+**Design:** Jonas Forsman  
+**Year:** 2024  
+**Materials:** Oak  
+**Surface Finish:** Lacquer  
+**Dimensions:** Width: 480 mm, Depth: 500 mm, Height: 820/460 mm  
+**Other Information:** Metal parts: black texture powder coating  
+**[Download CARE INSTRUCTIONS](https://www.dropbox.com/sh/72ex6pt62kfuoqa/AAALld8u9JcILgr6CQ8QAqota?dl=0)**  
+**[Download BROCHURES and UPHOLSTERIES](https://www.dropbox.com/sh/72ex6pt62kfuoqa/AAALld8u9JcILgr6CQ8QAqota?dl=0)**  
+**[Download 2D/3D FILES](https://www.dropbox.com/sh/72ex6pt62kfuoqa/AAALld8u9JcILgr6CQ8QAqota?dl=0)**  
+
+The Faneeri folding chair is an example of great balance between comfortability and light-weight structure. The chair can be easily stored, but even in its flat form it looks elegant. The chair can be used in contract spaces, but one might like to have it in a small home, too.
+“Faneeri is a wooden folding chair crafted to combine comfortable seating with flat storage. The backrest is made from thin cross laminated veneers connecting the front and back legs. Unfolding the chair creates a naturally curved backrest; fold it back, and it becomes flat. This construction enhances strength and comfort, eliminating the need for stretchers between the legs, creating a simple silhouette.” — Jonas Forsman, 2024
+
+## KUMU CHAIR
+**Design:** Pekka Koivikko  
+**Year:** 2024  
+**Materials:** Birch  
+**Surface Finish:** Lacquered, birch; COM paint color, minimum 20pcs  
+**Dimensions:** Width: 470 mm, Depth: 450 mm, Height: 790/460 mm  
+**Other Information:** Option: seat upholstery, linking device; Fits well with Basic table, Edi table, Periferia table  
+**[Download CARE INSTRUCTIONS](https://www.dropbox.com/sh/72ex6pt62kfuoqa/AAALld8u9JcILgr6CQ8QAqota?dl=0)**  
+**[Download BROCHURES and UPHOLSTERIES](https://www.dropbox.com/sh/72ex6pt62kfuoqa/AAALld8u9JcILgr6CQ8QAqota?dl=0)**  
+**[Download 2D/3D FILES](https://www.dropbox.com/sh/72ex6pt62kfuoqa/AAALld8u9JcILgr6CQ8QAqota?dl=0)**  
+
+Designed by Pekka Koivikko, Kumu brings a pleasant blend of versatility and customizability with the added advantage of being stackable and paintable for projects. It's designed with a focus on comfort and durability, making it a great fit for contract spaces. A close look at Kumu reveals its meticulously planned and executed technical details, which create a distinct minimalist appeal. The Kumu chair is made of birch, and it can be painted for projects. The seat can be upholstered.
+With these qualities, Kumu chair is well suited for private use and various public environments.
+“Kumu utilizes the possibilities of modern manufacturing but refrains from all exaggeration. The idea of the chair is functionality, simplicity, and consistency.” — Pekka Koivikko
+
+## LINEA RMT3 CHAIR
+**Design:** Rudi Merz  
+**Year:** 2009  
+**Materials:** Birch  
+**Surface Finish:** Natural wood oil mix, Oak colored stain  
+**Dimensions:** Width: 570 mm, Depth: 490 mm, Height: 720/460 mm  
+**Other Information:** Available only upholstered, Available also in a lower seating height, Fits well with [Linea RMT6 chair](https://nikari.fi/products/chairs,linea-collection/linea-rmt6/)  
+**[Download CARE INSTRUCTIONS](https://www.dropbox.com/sh/72ex6pt62kfuoqa/AAALld8u9JcILgr6CQ8QAqota?dl=0)**  
+**[Download BROCHURES and UPHOLSTERIES](https://www.dropbox.com/sh/72ex6pt62kfuoqa/AAALld8u9JcILgr6CQ8QAqota?dl=0)**  
+**[Download 2D/3D FILES](https://www.dropbox.com/sh/72ex6pt62kfuoqa/AAALld8u9JcILgr6CQ8QAqota?dl=0)**  
+
+The Linea RMT3 chair was designed by master cabinetmaker Rudi Merz in 2009. Its most recognisable element is the distinctive, rounded backrest that has been made using meticulously crafted finger joints. The chair is made of northern European ash with an oiled or stained finish. The wide, curved and upholstered seat ensures good seating comfort.
+The Linea chairs are characterised by sleek, soft curves and traditional joinery. The frame is made using mortise joints secured with wooden nails, which function both as structural support and aesthetic elements. You can use the chair as an individual side chair or in larger groups, for example in dining or meeting rooms.
+
+## COLLECTION: LINEA
+
+The Linea collection includes soft, organic forms and upholstered products with round legs. Every piece of furniture is made keeping in mind the furniture making tradition of Finland and the joinery developed throughout the years at the Nikari studio workshop.
+
+**[See all: Linea collection](https://nikari.fi/linea-collection/)**
+
+## LINEA RMT6 CHAIR
+**Design:** Rudi Merz  
+**Year:** 2011  
+**Materials:** Ash  
+**Surface Finish:** Natural wood oil mix, Oak colored stain  
+**Dimensions:** Width: 610 mm, Depth: 490 mm, Height: 720/460 mm  
+**Other Information:** Available only upholstered, Available also in a lower seating height, Fits well with [Linea RMT3 chair](https://nikari.fi/products/chairs,linea-collection/linea-rmt3-2/)  
+**[Download CARE INSTRUCTIONS](https://www.dropbox.com/sh/72ex6pt62kfuoqa/AAALld8u9JcILgr6CQ8QAqota?dl=0)**  
+**[Download BROCHURES and UPHOLSTERIES](https://www.dropbox.com/sh/72ex6pt62kfuoqa/AAALld8u9JcILgr6CQ8QAqota?dl=0)**  
+**[Download 2D/3D FILES](https://www.dropbox.com/sh/72ex6pt62kfuoqa/AAALld8u9JcILgr6CQ8QAqota?dl=0)**  
+
+The Linea RMT6 chair was designed by master cabinetmaker Rudi Merz in 2011. Its most recognisable element is the distinctive, horseshoe-shaped back- and armrest that has been made using meticulously crafted finger joints. The chair is made of northern European ash with an oiled or stained finish. The wide, curved and upholstered seat ensures good seating comfort.
+The Linea chairs are characterised by sleek, soft curves and traditional joinery. The frame is made using mortise joints secured with wooden nails, which function both as structural support and aesthetic elements. You can use the chair as an individual side chair or in larger groups, for example in dining or meeting rooms.  
+
+## COLLECTION: LINEA
+
+The Linea collection includes soft, organic forms and upholstered products with round legs. Every piece of furniture is made keeping in mind the furniture making tradition of Finland and the joinery developed throughout the years at the Nikari studio workshop.
+
+**[See all: Linea collection](https://nikari.fi/linea-collection/)**
+
+## OCTOBER LIGHT CHAIR
+**Design:** Samuli Naamanka  
+**Year:** 2015  
+**Materials:** Ash  
+**Surface Finish:** Water-based lacquer, Black stain  
+**Dimensions:** Width: 460 mm, Depth: 450 mm, Height: 760/460 mm  
+**Other Information:** Option: seat upholstery  
+**[Download CARE INSTRUCTIONS](https://www.dropbox.com/sh/72ex6pt62kfuoqa/AAALld8u9JcILgr6CQ8QAqota?dl=0)**  
+**[Download BROCHURES and UPHOLSTERIES](https://www.dropbox.com/sh/72ex6pt62kfuoqa/AAALld8u9JcILgr6CQ8QAqota?dl=0)**  
+**[Download 2D/3D FILES](https://www.dropbox.com/sh/72ex6pt62kfuoqa/AAALld8u9JcILgr6CQ8QAqota?dl=0)**  
+
+October Light is a skillfully designed, extremely lightweight wooden chair with meticulously done joinery that follows the traditions of Nordic cabinetmaking. This graceful chair is adorned with wood grain patterns of ash and finished either with clear lacquer or black stain. The seat is available with or without upholstery. 
+Inspired by the winds and moods of the Finnish autumn, the October Light chair is based on Samuli Naamanka's October chair from the 12 Designs for Nature collection. The reduced form helps to minimise the material use and makes the chair well suited for a range of different interiors, from private homes to conference spaces.
+
+## COLLECTION: 12 DESIGNS FOR NATURE
+
+In 2012 Nikari asked twelve designers or design studios to give their response to Nikari's design philosophy in the form of a product. The project was called Project 2012 Designs for Nature: Nikari cooperates with WWF Finland and part of the sales price is donated to protecting forests globally.
+
+**[See all: 12 DESIGNS FOR NATURE](https://nikari.fi/designs-for-nature/)**
+
+## PERIFERIA KVT3 CHAIR
+**Design:** Kari Virtanen  
+**Year:** 2001  
+**Materials:** Birch, Ash, Oak  
+**Surface Finish:** Natural wood oil mix, Lacquer  
+**Dimensions:** Width: 620 mm, Depth: 480 mm, Height: 800/450 mm  
+**Other Information:** Stackable, Option: linking device, Option: seat upholstery  
+**[Download CARE INSTRUCTIONS](https://www.dropbox.com/sh/72ex6pt62kfuoqa/AAALld8u9JcILgr6CQ8QAqota?dl=0)**  
+**[Download BROCHURES and UPHOLSTERIES](https://www.dropbox.com/sh/72ex6pt62kfuoqa/AAALld8u9JcILgr6CQ8QAqota?dl=0)**  
+**[Download 2D/3D FILES](https://www.dropbox.com/sh/72ex6pt62kfuoqa/AAALld8u9JcILgr6CQ8QAqota?dl=0)**  
+
+The Periferia KVT3 chair combines a simple, rectangular frame with beautiful, outward-opening armrests. The solid wood chair is available in birch, ash or oak, with an upholstered seat. It can also be made in a higher version for people with reduced mobility.
+Designed by Kari Virtanen, the Periferia chairs were developed for projects that needed a durable and stable chair with armrests. The chairs are thus well suited for all types of public environments, ranging from sacral spaces to conference rooms and restaurants. They go well together with the wooden tables of the Periferia collection, and their timeless appearance fits in with classic as well as more contemporary décor.
+
+## COLLECTION: PERIFERIA
+
+Kari Virtanen, the founder of Nikari, developed the Periferia products throughout the last 50 years for different needs. The surfaces bring out the beautiful, unique characteristics of solid wood, and the products fit equally well in classic and contemporary interiors.
+
+**[See all: Periferia collection](https://nikari.fi/periferia-collection/)**
+
+## SEMINAR KVT1
+**Design:** Kari Virtanen  
+**Year:** 1992  
+**Materials:** Birch, Ash, Oak  
+**Surface Finish:** Natural wood oil mix, Lacquer  
+**Dimensions:** Width: 380 mm, Depth: 420 mm, Height: 790/450 mm  
+**Other Information:** Option: linking device, Stackable version: [SEMINAR KVT2 chair](https://nikari.fi/products/chairs,seminar-collection/seminar-kvt2-2/)  
+**[Download CARE INSTRUCTIONS](https://www.dropbox.com/sh/72ex6pt62kfuoqa/AAALld8u9JcILgr6CQ8QAqota?dl=0)**  
+**[Download BROCHURES and UPHOLSTERIES](https://www.dropbox.com/sh/72ex6pt62kfuoqa/AAALld8u9JcILgr6CQ8QAqota?dl=0)**  
+**[Download 2D/3D FILES](https://www.dropbox.com/sh/72ex6pt62kfuoqa/AAALld8u9JcILgr6CQ8QAqota?dl=0)**  
+
+Seminar KVT1 is a thoughtfully crafted archetype of a traditional Ostrobothnian solid wood chair. The chair's silhouette is thoroughly clear and reduced, and the harmonious proportions are complemented by delicate wooden joints. The chair is available in birch, oak or ash, and it can be equipped with a linking device.
+The name Seminar refers to the collection's uses and origin. The Seminar chair was originally developed as a model piece for a seminar when Nikari's founder, master cabinetmaker Kari Virtanen gave a lecture for design students on traditional wooden chairs and wanted to concretise his ideas. Besides seminar halls, all items of the Seminar collection are ideal for a wide variety of public spaces.
+
+## COLLECTION: SEMINAR
+
+The durable Seminar series was developed little by little throughout the decades, starting with the light KVT1 chair and adding necessary pieces, such as a stackable chair, a bench, tables and upholstered sofas. The different features of the collection pieces make it a good choice for public premises.
+
+**[See all: SEMINAR collection](https://nikari.fi/seminar-collection/)**
+
+## SEMINAR KVT2
+**Design:** Kari Virtanen  
+**Year:** 1997  
+**Materials:** Birch, Ash, Oak  
+**Surface Finish:** Natural wood oil mix, Lacquer  
+**Dimensions:** Width: 450 mm, Depth: 450 mm, Height: 810/460 mm  
+**Other Information:** Stackable, Options: seat upholstery, linking device, chair carriage  
+**[Download CARE INSTRUCTIONS](https://www.dropbox.com/sh/72ex6pt62kfuoqa/AAALld8u9JcILgr6CQ8QAqota?dl=0)**  
+**[Download BROCHURES and UPHOLSTERIES](https://www.dropbox.com/sh/72ex6pt62kfuoqa/AAALld8u9JcILgr6CQ8QAqota?dl=0)**  
+**[Download 2D/3D FILES](https://www.dropbox.com/sh/72ex6pt62kfuoqa/AAALld8u9JcILgr6CQ8QAqota?dl=0)**  
+
+Seminar KVT2 was born when customers wanted to have a stackable version of the smaller-sized KVT1 chair. The chair's silhouette is thoroughly clear and reduced, and the harmonious proportions are complemented by delicate wooden joints. The chair can be equipped with a linking device, seat upholstery, acoustic plate underneath the seat and even a hymn book holder. Available in birch, oak and ash.
+The name Seminar refers to the collection's uses and origin. The Seminar chair was originally developed as a model piece for a seminar when Nikari's founder, master cabinetmaker Kari Virtanen gave a lecture for design students on traditional wooden chairs and wanted to concretise his ideas. Besides seminar halls, all items of the Seminar collection are ideal for a wide variety of public spaces.
+
+## COLLECTION: SEMINAR
+
+The durable Seminar series was developed little by little throughout the decades, starting with the light KVT1 chair and adding necessary pieces, such as a stackable chair, a bench, tables and upholstered sofas. The different features of the collection pieces make it a good choice for public premises.
+
+**[See all: SEMINAR collection](https://nikari.fi/seminar-collection/)**
+
+## SKANDINAVIA KVT6
+**Design:** Kari Virtanen  
+**Year:** 2014  
+**Materials:** Birch, Ash, Oak  
+**Surface Finish:** Lacquer, Black stain, Paint  
+**Dimensions:** Width: 460 mm, Depth: 460 mm, Height: 830/450 mm  
+**Dimensions (with armrest):** Width: 560 mm, Depth: 460 mm, Height: 830/450 mm  
+**Dimensions KVT6S:** Width: 400 mm, Depth: 420 mm, Height: 790/450 mm  
+**Other Information:** Stackable, Options: hanging solution, linking device, acoustic plate, chair carriage, seat upholstery for KVT6 and KVT6A chairs  
+**[Download CARE INSTRUCTIONS](https://www.dropbox.com/sh/72ex6pt62kfuoqa/AAALld8u9JcILgr6CQ8QAqota?dl=0)**  
+**[Download BROCHURES and UPHOLSTERIES](https://www.dropbox.com/sh/72ex6pt62kfuoqa/AAALld8u9JcILgr6CQ8QAqota?dl=0)**  
+**[Download 2D/3D FILES](https://www.dropbox.com/sh/72ex6pt62kfuoqa/AAALld8u9JcILgr6CQ8QAqota?dl=0)**  
+
+Skandinavia KVT6 is a stackable solid wood chair developed for active use in public environments. The chair has a clean, timeless silhouette, and its slightly tilted backrest provides a comfortable sitting position. The chair can be equipped with a linking device and an acoustic plate underneath the seat. Also available with an upholstered seat and a paint finish of your choice.
+Designed by master cabinetmaker Kari Virtanen, the Skandinavia chairs were created specifically for heavy commercial use and thus made as durable as possible. At the same time, the chairs pay respect to the traditions of Nordic cabinetmaking. The refined design makes them well suited for a range of spaces and styles.
+
+## COLLECTION: SKANDINAVIA
+
+The products of the Skandinavia series are meant for active commercial use. They are designed keeping in mind the most durable structures possible, still following the philosophy of the traditional Nordic cabinetmaking.
+
+**[See all: SKANDINAVIA collection](https://nikari.fi/skandinavia-collection/)**
+
+## STORIA SPOKE-BACK CHAIR
+**Design:** Kari Virtanen  
+**Year:** 2022  
+**Materials:** Ash, Oak  
+**Surface Finish:** Natural wood oil mix  
+**Dimensions:** Width: 540 mm, Depth: 490 mm, Height: 780/460 mm  
+**[Download CARE INSTRUCTIONS](https://www.dropbox.com/sh/72ex6pt62kfuoqa/AAALld8u9JcILgr6CQ8QAqota?dl=0)**  
+**[Download BROCHURES and UPHOLSTERIES](https://www.dropbox.com/sh/72ex6pt62kfuoqa/AAALld8u9JcILgr6CQ8QAqota?dl=0)**  
+**[Download 2D/3D FILES](https://www.dropbox.com/sh/72ex6pt62kfuoqa/AAALld8u9JcILgr6CQ8QAqota?dl=0)**  
+
+Kari Virtanen, Nikari's founder, master cabinet maker and Kaj Franck Design Award 2022 winner, wanted to celebrate his special connection to Kaj Franck, Finland's “father of modern design,” who used to work quite closely with Kari during the 1970's. The 2022 award was, therefore, very meaningful for Kari and inspired a new creation, the STORIA chair, which follows the local craftsmanship tradition of the spoke-back chair, but with modern elements and dimensions.
+This softly curved, yet very straight-forward chair, is available in sustainably grown oiled ash or oak.
+
+## COLLECTION: STORIA
+
+When Nikari turned 50 years in 2017, the company celebrated the birthday with a theme ”50 years of stories”. The Storia collection began to develop throughout the 50th anniversary year, bringing interesting addition to the company collection. It has been growing ever since, finding fresh forms by using traditional Nordic craftsmanship techniques.
+
+**[See all: STORIA collection](https://nikari.fi/storia-collection/)**
+
 `;
 
 // HUOM MUISTA TARKISTAA ETTÄ TEKSTI ON OIKEIN!
