@@ -94,7 +94,6 @@ The initiative aims to promote furniture circular economy through the use of art
 **Project Outcomes:**
 - Creation of sustainable solutions that extend the life and value of furniture through innovative use of technology.
 
-# Chairs Collection
 
 ## AKADEMIA CHAIR
 **Design:** Wesley Walters & Salla Luhtasela  
