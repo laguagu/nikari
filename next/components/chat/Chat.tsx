@@ -4,7 +4,7 @@ import { CardHover } from "./CardHover";
 export default function Chat() {
   return (
     <div>
-      <CardHover />
+        <CardHover />
     </div>
   );
 }

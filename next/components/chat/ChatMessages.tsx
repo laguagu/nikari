@@ -13,7 +13,7 @@ interface ChatFormProps {
   handleInputChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
   handleSubmit: (event: React.FormEvent<HTMLFormElement>) => void;
 }
-const endPoint = "/api/chat/lang";
+const endPoint = "/api/chat/agent";
 export default function ChatMessages() {
   const messageContainerRef = useRef<HTMLDivElement>(null);
   const [loadingResponse, setLoadingResponse] = useState(false);
@@ -89,20 +89,6 @@ export default function ChatMessages() {
       ...newMessages,
       { id: messages.length.toString(), role: "assistant", content: gptAnswer },
     ]);
-
-    // const reader = response.body?.getReader();
-    // let result = '';
-    // while (true) {
-    //   if (!reader) {
-    //     break;
-    //   }
-    //   const { done, value } = await reader.read();
-    //   if (done) {
-    //     break;
-    //   }
-    //   result += new TextDecoder("utf-8").decode(value);
-    // }
-    // console.log(result);
   };
 
   return (
@@ -172,41 +158,3 @@ function aiLoadingMessage() {
     </div>
   );
 }
-
-// Apu funktiota jos haluat lisätä viestin käyttäjälle tai avustajalle localMessages tilaan
-// const updateUserMessage = (content: string) => {
-//   setLocalMessages((prevMessages) => [
-//     ...prevMessages,
-//     { id: String(prevMessages.length + 1), role: "user", content } as Message,
-//   ]);
-// };
-
-// const updateAssistantMessage = (content: string) => {
-//   setLocalMessages((prevMessages) => [
-//     ...prevMessages,
-//     {
-//       id: String(prevMessages.length + 1),
-//       role: "assistant",
-//       content,
-//     } as Message,
-//   ]);
-// };
-
-// Fetch stream example ehkä toimii
-// async function fetchStream() {
-//   const response = await fetch('/api/your-endpoint');
-//   const reader = response.body.getReader();
-//   let receivedLength = 0;
-//   let chunks = [];
-//   while(true) {
-//     const { done, value } = await reader.read();
-//     if (done) {
-//       break;
-//     }
-//     chunks.push(value);
-//     receivedLength += value.length;
-//     // Prosessoi jokainen palanen tässä, esim. muuntaa tekstiksi ja päivittää tilaa
-//   }
-//   const completeResponse = new TextDecoder("utf-8").decode(new Uint8Array(chunks));
-//   console.log('Full response received:', completeResponse);
-// }

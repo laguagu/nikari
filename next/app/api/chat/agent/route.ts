@@ -119,7 +119,7 @@ export async function POST(req: NextRequest) {
       model,
       new StringOutputParser(),
     ]);
-    
+
     let resolveWithDocuments: (value: Document[]) => void;
     const documentPromise = new Promise<Document[]>((resolve) => {
       resolveWithDocuments = resolve;
@@ -167,25 +167,6 @@ export async function POST(req: NextRequest) {
     });
 
     return new StreamingTextResponse(stream);
-    // Odottaa dokumenttien haun valmistumista ja serialisoi lähteet.
-    // const documents = await documentPromise;
-    // const serializedSources = Buffer.from(
-    //   JSON.stringify(
-    //     documents.map((doc) => {
-    //       return {
-    //         pageContent: doc.pageContent.slice(0, 50) + "...",
-    //         metadata: doc.metadata,
-    //       };
-    //     })
-    //   )
-    // ).toString("base64");
-    // Palauttaa vastauksen ja liitetyt lähteet klientille.
-    // return new StreamingTextResponse(stream, {
-    //   headers: {
-    //     "x-message-index": (previousMessages.length + 1).toString(),
-    //     "x-sources": serializedSources,
-    //   },
-    // });
   } catch (e: any) {
     return NextResponse.json({ error: e.message }, { status: e.status ?? 500 });
   }

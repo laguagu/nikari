@@ -10,7 +10,7 @@ import { read } from "fs";
 
 interface MediaInputComponentProps {
   handleSetMaterials: (value: string) => void;
-  imageURL: string | null; 
+  imageURL: string | null;
   setImageURL: (value: string | null) => void;
 }
 
@@ -32,7 +32,7 @@ export default function MediaInputComponent({
     const screenshot = webcamRef.current?.getScreenshot();
     if (screenshot) {
       console.log("Screenshot captured", screenshot);
-      
+
       setImageURL(screenshot);
     } else {
       console.error("Failed to capture image");
@@ -104,21 +104,25 @@ export default function MediaInputComponent({
             onUserMedia={handleCameraStart}
             onUserMediaError={handleCameraError}
           />
-          {isWebcamReady && (
-            <div className="flex gap-3">
+          <div className="flex gap-3">
+            {!loadingCamera && isWebcamReady && (
               <Button onClick={captureImage}>Take Screenshot</Button>
-              <input
-                type="file"
-                ref={fileInputRef}
-                style={{ display: "none" }}
-                onChange={handleFileChange}
-                accept="image/*"
-              />
-              <Button onClick={() => fileInputRef.current?.click()}>
-                Upload Image
-              </Button>
-            </div>
-          )}
+            )}
+            {!loadingCamera && (
+              <>
+                <input
+                  type="file"
+                  ref={fileInputRef}
+                  style={{ display: "none" }}
+                  onChange={handleFileChange}
+                  accept="image/*"
+                />
+                <Button onClick={() => fileInputRef.current?.click()}>
+                  Upload Image
+                </Button>
+              </>
+            )}
+          </div>
         </>
       )}
       {imageURL && (
@@ -141,12 +145,14 @@ export default function MediaInputComponent({
           </div>
         </div>
       )}
-      {cameraError && (
-        <p>
-          Error: {cameraError}
-          <br />
-          Please plug in camera to continue.
-        </p>
+      {cameraError && !imageURL &&(
+        <div className="text-center text-lg">
+          <p>
+            Error: {cameraError}
+            <br />
+            Please plug in camera or continue by uploading from files.
+          </p>
+        </div>
       )}
       <canvas ref={canvasRef} style={{ display: "none" }} />
     </div>

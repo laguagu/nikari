@@ -1,6 +1,6 @@
 "use client";
 import SparklesUnder from "@/components/chat/sparkles-under";
-import BackButton from "@/components/ui/BackButton";
+import { HomeButton } from "@/components/ui/Buttons";
 import { Separator } from "@/components/ui/separator";
 import { TextGenerateEffect } from "@/components/ui/text-generate-effect";
 import Link from "next/link";
@@ -32,7 +32,7 @@ export default function ChatLayout({
         <div className="space-y-2">
           <div className="flex justify-between items-end">
             <h2 className="text-3xl font-bold">Support</h2>
-            <BackButton />
+            <HomeButton />
           </div>
           <TextGenerateEffect key={pathname} words={words} />
           <Separator />
