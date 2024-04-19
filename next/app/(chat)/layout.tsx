@@ -19,6 +19,8 @@ export default function ChatLayout({
     words = `You're now chatting with a AI powered support agent. Ask us anything!`;
   } else if (pathname === "/care") {
     words = `Welcome to Nikari AI! Let's identify the materials of your furniture and provide care instructions.`;
+  } else if (pathname === "/location") {
+    words = `Welcome to Nikari AI! Here you can find our Agents, Dealers And Retailers on the map.`;
   } else {
     words = `Welcome to Nikari AI! Ask about care instructions, retailers, or anything else.`;
   }

@@ -33,6 +33,7 @@ export default function GoogleMaps() {
     lng: 24.945831,
   });
   const [selectedDealer, setSelectedDealer] = useState<Dealer | null>(null);
+
   const apiKey = process.env.NEXT_PUBLIC_MAPS_API_KEY;
   const containerStyle = {
     width: "100%",
@@ -47,7 +48,7 @@ export default function GoogleMaps() {
           lng: position.coords.longitude,
         };
         setUserLocation(newPos);
-        setMapCenter(newPos); 
+        setMapCenter(newPos);
       });
     } else {
       console.error("Geolocation is not supported by this browser.");
@@ -83,7 +84,7 @@ export default function GoogleMaps() {
       <LoadScriptNext googleMapsApiKey={apiKey}>
         <GoogleMap
           mapContainerStyle={containerStyle}
-          center={mapCenter}  // Käytä mapCenter tilaa keskittämään kartta
+          center={mapCenter} // Käytä mapCenter tilaa keskittämään kartta
           zoom={10}
         >
           {dealers.map((dealer) => (
@@ -93,16 +94,24 @@ export default function GoogleMaps() {
               onClick={() => onMarkerClick(dealer)}
               label={
                 dealer === nearestDealer
-                  ? { text: "Nearest retailer", color: "black", fontSize: "16px", fontWeight: "bold" }
+                  ? {
+                      text: "Nearest retailer",
+                      color: "black",
+                      fontSize: "16px",
+                      fontWeight: "bold",
+                    }
                   : undefined
               }
               icon={
-                dealer === nearestDealer
+                typeof google !== "undefined" && dealer === nearestDealer // Tämä type tarkistus tarvitaan jotta sovellukse buildaus toimii
                   ? {
                       url: "https://maps.gstatic.com/mapfiles/ms2/micons/green.png",
-                      labelOrigin: new google.maps.Point(15, 40), // Muuta näitä arvoja siirtääksesi tekstiä
+                      labelOrigin:
+                        typeof window !== "undefined"
+                          ? new google.maps.Point(15, 40)
+                          : undefined, 
                     }
-                  : ""
+                  : undefined
               }
             />
           ))}
@@ -126,10 +135,14 @@ export default function GoogleMaps() {
                 fontSize: "16px",
                 fontWeight: "bold",
               }}
-              icon={{
-                url: "https://maps.gstatic.com/mapfiles/ms2/micons/blue.png",
-                labelOrigin: new google.maps.Point(15, 40), // Muuta näitä arvoja siirtääksesi tekstiä
-              }}
+              icon={
+                typeof google !== "undefined" // Tämä type tarkistus tarvitaan jotta sovellukse buildaus toimii
+                  ? {
+                      url: "https://maps.gstatic.com/mapfiles/ms2/micons/blue.png",
+                      labelOrigin: new google.maps.Point(15, 40), // Muuta näitä arvoja siirtääksesi tekstiä
+                    }
+                  : undefined
+              }
             />
           )}
         </GoogleMap>
