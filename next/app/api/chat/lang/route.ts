@@ -22,8 +22,6 @@ export const runtime = "edge";
 // Apufunktio dokumenttien yhdistämiseen yhdeksi tekstiksi.
 const combineDocumentsFn = (docs: Document[]) => {
   const serializedDocs = docs.map((doc) => doc.pageContent);
-  console.log(serializedDocs, "serializedDocs");
-  
   return serializedDocs.join("\n\n");
 };
 
@@ -58,7 +56,7 @@ const condenseQuestionPrompt = PromptTemplate.fromTemplate(
 const ANSWER_TEMPLATE = `You are an assistant for Nikari, a distinguished Finnish furniture manufacturer known for exquisite wooden designs. 
 Your role is to provide informative and helpful responses that reflect the company's commitment to craftsmanship and customer service.
 
-Answer the question based only on the following context and chat history:
+Answer the question based on the following context and chat history:
 <context>
   {context}
 </context>
@@ -91,7 +89,7 @@ export async function POST(req: NextRequest) {
 
     // Alustaa OpenAI-mallin ja Supabase-asiakasohjelman.
     const model = new ChatOpenAI({
-      modelName: "gpt-3.5-turbo-1106",
+      modelName: "gpt-4-turbo-2024-04-09",
       temperature: 0.2,
     });
 

@@ -19,10 +19,7 @@ export const runtime = "edge";
  */
 export async function POST(req: NextRequest) {
   function replaceMarkdownLinks(careInstructionsText: string) {
-    return careInstructionsText.replace(
-      /\[([^\]]+)\]\(([^)]+)\)/g,
-      "$2"
-    );
+    return careInstructionsText.replace(/\[([^\]]+)\]\(([^)]+)\)/g, "$2");
   }
   const replacedMarkdownText = replaceMarkdownLinks(careInstructionsText);
 

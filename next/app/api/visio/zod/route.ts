@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 
 import { z } from "zod";
 import { zodToJsonSchema } from "zod-to-json-schema";
-
+import { HumanMessage } from "@langchain/core/messages";
 import { ChatOpenAI } from "@langchain/openai";
 import { PromptTemplate } from "@langchain/core/prompts";
 import { JsonOutputFunctionsParser } from "langchain/output_parsers";
@@ -30,6 +30,18 @@ export async function POST(req: NextRequest) {
 
     const prompt = PromptTemplate.fromTemplate(TEMPLATE);
     
+    const promptMessage = new HumanMessage({
+      content: [
+        { type: "text", text: TEMPLATE },
+        {
+          type: "image_url",
+          image_url: {
+            url: image,
+            detail: "auto",
+          },
+        },
+      ],
+    });
     /**
      * Function calling is currently only supported with ChatOpenAI models
      */
