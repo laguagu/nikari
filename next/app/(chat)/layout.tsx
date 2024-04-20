@@ -26,7 +26,7 @@ export default function ChatLayout({
   }
 
   return (
-    <div className="min-h-screen bg-black w-full flex flex-col items-center justify-center overflow-y-hidden rounded-md">
+    <div className="min-h-screen bg-black w-full flex flex-col items-center justify-center overflow-y-hidden overflow-x-hidden rounded-md">
       <h1 className="md:text-5xl text-3xl lg:text-7xl font-bold text-centerrelative z-20 mb-3 text-white mt-4">
         <Link href={"/"}>Nikari AI</Link>
       </h1>
