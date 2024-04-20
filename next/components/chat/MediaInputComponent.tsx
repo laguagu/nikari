@@ -3,7 +3,6 @@ import React, { useState, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import {
   DocumentPlusIcon,
-  PhotoIcon,
   CameraIcon,
   CheckIcon,
 } from "@heroicons/react/24/outline";
@@ -109,7 +108,7 @@ export default function MediaInputComponent({
           />
           <div className="flex gap-3">
             {!loadingCamera && isWebcamReady && (
-              <Button onClick={captureImage}>
+              <Button onClick={captureImage} className="font-semibold">
                 <CameraIcon className="w-5 mr-1 flex-shrink-0 right-0" />
                 Take Screenshot
               </Button>
@@ -123,7 +122,7 @@ export default function MediaInputComponent({
                   onChange={handleFileChange}
                   accept="image/*"
                 />
-                <Button onClick={() => fileInputRef.current?.click()}>
+                <Button onClick={() => fileInputRef.current?.click()} className="font-semibold">
                   <DocumentPlusIcon className="w-5 mr-1 flex-shrink-0 right-0" />
                   Upload Image
                 </Button>
@@ -144,13 +143,13 @@ export default function MediaInputComponent({
             />
             <div className="space-y-2 mt-2 xs:space-x-0 sm:space-x-3 md:space-x-3 ">
               <Button
-                className=""
+                className="font-semibold"
                 onClick={() => sendImageToGPT(imageURL)}
               >
                 <CheckIcon className="w-5 mr-1 flex-shrink-0 right-0" />
                 Accept and Send
               </Button>
-              <Button onClick={resetStates}>
+              <Button onClick={resetStates} className="font-semibold">
                 <CameraIcon className="w-5 mr-1 flex-shrink-0 right-0" />
                 Take New Picture
               </Button>

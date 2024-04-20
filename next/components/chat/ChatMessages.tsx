@@ -1,7 +1,7 @@
 "use client";
 import { useChat } from "ai/react";
 import clsx from "clsx";
-import { UserIcon, RocketLaunchIcon } from "@heroicons/react/24/outline";
+import { UserIcon, RocketLaunchIcon, PaperAirplaneIcon } from "@heroicons/react/24/outline";
 import { use, useEffect, useRef, useState } from "react";
 import { Message } from "ai/react";
 import { Button } from "@/components/ui/button";
@@ -130,11 +130,12 @@ export default function ChatMessages() {
             onChange={handleInputChange}
           />
           <Button
-            className="h-[3rem] w-20 shrink-0"
+            className="h-[3rem] w-20 shrink-0 font-semibold "
             type="submit"
             disabled={loadingResponse}
           >
             Send
+            <PaperAirplaneIcon className="w-4 ml-1 flex-shrink-0 right-0 text-white" />
           </Button>
         </div>
       </form>

@@ -1,5 +1,5 @@
 import { Skeleton } from "@/components/ui/skeleton";
-
+import { ThreeDots } from "react-loader-spinner";
 export function CameraSkeleton() {
   return (
     <div>
@@ -19,7 +19,12 @@ export function FormSkeleton() {
     <div className="flex flex-col items-center justify-center">
       <div className="flex flex-col space-y-3">
         <Skeleton className="h-40 w-[360px] sm:h-52 md:h-64 lg:h-72 rounded-xl bg-gray-300 shadow-md" />
-        <p className="text-2xl font-semibold text-center">Identifying materials...</p>
+        <div className="item-c">
+          <p className="text-2xl font-semibold text-center flex items-center justify-center gap-3">
+            Identifying materials
+            <ThreeDots height="56" width="56" color="" />
+          </p>
+        </div>
       </div>
     </div>
   );
