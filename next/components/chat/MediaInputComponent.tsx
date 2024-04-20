@@ -1,12 +1,15 @@
 "use client";
 import React, { useState, useRef } from "react";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
+import {
+  DocumentPlusIcon,
+  PhotoIcon,
+  CameraIcon,
+  CheckIcon,
+} from "@heroicons/react/24/outline";
 import Image from "next/image";
 import Webcam from "react-webcam";
 import { CameraSkeleton } from "@/components/chat/skeletons";
-import { read } from "fs";
 
 interface MediaInputComponentProps {
   handleSetMaterials: (value: string) => void;
@@ -106,7 +109,10 @@ export default function MediaInputComponent({
           />
           <div className="flex gap-3">
             {!loadingCamera && isWebcamReady && (
-              <Button onClick={captureImage}>Take Screenshot</Button>
+              <Button onClick={captureImage}>
+                <CameraIcon className="w-5 mr-1 flex-shrink-0 right-0" />
+                Take Screenshot
+              </Button>
             )}
             {!loadingCamera && (
               <>
@@ -118,6 +124,7 @@ export default function MediaInputComponent({
                   accept="image/*"
                 />
                 <Button onClick={() => fileInputRef.current?.click()}>
+                  <DocumentPlusIcon className="w-5 mr-1 flex-shrink-0 right-0" />
                   Upload Image
                 </Button>
               </>
@@ -127,7 +134,7 @@ export default function MediaInputComponent({
       )}
       {imageURL && (
         <div className="bg-gray-200 p-3 justify-center items-center ml-3 rounded-xl">
-          <div className="text-center">
+          <div className="text-center justify-center">
             <Image
               src={imageURL}
               alt="Esikatselu"
@@ -135,17 +142,23 @@ export default function MediaInputComponent({
               width={1280}
               height={720}
             />
-            <Button
-              className="mr-2 mt-4"
-              onClick={() => sendImageToGPT(imageURL)}
-            >
-              Accept and Send
-            </Button>
-            <Button onClick={resetStates}>Take New Picture</Button>
+            <div className="space-y-2 mt-2 xs:space-x-0 sm:space-x-3 md:space-x-3 ">
+              <Button
+                className=""
+                onClick={() => sendImageToGPT(imageURL)}
+              >
+                <CheckIcon className="w-5 mr-1 flex-shrink-0 right-0" />
+                Accept and Send
+              </Button>
+              <Button onClick={resetStates}>
+                <CameraIcon className="w-5 mr-1 flex-shrink-0 right-0" />
+                Take New Picture
+              </Button>
+            </div>
           </div>
         </div>
       )}
-      {cameraError && !imageURL &&(
+      {cameraError && !imageURL && (
         <div className="text-center text-lg">
           <p>
             Error: {cameraError}
