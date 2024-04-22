@@ -2,15 +2,15 @@ from http.client import HTTPException
 import os
 import time
 from fastapi import FastAPI
+from fastapi import UploadFile
+from fastapi import File
 from openai import OpenAI
-from dotenv import load_dotenv
-from typing_extensions import override
 from openai import AssistantEventHandler
+from dotenv import load_dotenv
+
+from typing_extensions import override
 from pydantic import BaseModel
 from typing import List
-from fastapi import UploadFile
-from typing import List
-from fastapi import File
 
 load_dotenv()
 
@@ -84,7 +84,7 @@ if not existing_files.data:
     print("Files uploaded:", file_batch.status)
     print(file_batch.file_counts)
 
-
+# Define an event handler to process the assistant's messages
 class EventHandler(AssistantEventHandler):
     def __init__(self):
         super().__init__()
@@ -115,15 +115,13 @@ class EventHandler(AssistantEventHandler):
         print("\n".join(self.citations))
 
 # Route to list all files in the vector store
-
-
 @app.get("/list-files")
 def list_files():
     files = client.beta.vector_stores.files.list(
         vector_store_id=vector_store.id)
     return {"files": files.data}
 
-
+# Route to delete a file from the vector store
 @app.delete("/delete-file/{vector_store_id}/{file_id}")
 def delete_file(vector_store_id: str, file_id: str):
     try:
@@ -135,7 +133,6 @@ def delete_file(vector_store_id: str, file_id: str):
         raise HTTPException(status_code=404, detail=str(e))
 
 # Route to add files to the vector store
-
 
 @app.post("/add-files")
 async def add_files(files: List[UploadFile] = File(...)):
@@ -161,21 +158,17 @@ async def add_files(files: List[UploadFile] = File(...)):
         for file in files:
             await file.close()
 
-
 @app.get("/vector-store")
 def get_vector_store():
     store_details = client.beta.vector_stores.retrieve(
         vector_store_id=vector_store.id)
     return {"vector_store": store_details}
 
-
 class Message(BaseModel):
     role: str
     content: str
 
 # Define a route for the API
-
-
 @app.post("/message")
 async def create_message(message: Message):
     # Create a thread with the message
