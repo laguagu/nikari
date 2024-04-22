@@ -1,4 +1,7 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+
+# Nikari Chatbot
+
+Nikari Chatbot is a chatbot that uses the RAG (Retrieval-Augmented Generation) model. It's implemented with LangChain and the Supabase database. The GPT Vision feature identifies the material from a furniture image and provides care instructions for it. In the "Find a retailer" section, you can search for retailers on Google Maps and find the nearest retailer.
 
 ## Getting Started
 
