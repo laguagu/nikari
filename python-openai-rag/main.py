@@ -30,9 +30,9 @@ print("Vector Store ID:", os.environ.get('VECTOR_STORE_ID'))
 assistant_id = os.environ.get("ASSISTANT_ID")
 vector_store_id = os.environ.get("VECTOR_STORE_ID")
 
-# Tarkista, onko apuri tai vektorivarasto jo luotu
+# Tarkista, onko assistan tai vektorivarasto jo luotu
 if assistant_id is None or vector_store_id is None:
-    # Luo apuri, jos sitä ei ole
+    # Luo assistan, jos sitä ei ole
     if assistant_id is None:
         assistant = client.beta.assistants.create(
             name="Nikari chatbot assistant",
@@ -41,7 +41,7 @@ if assistant_id is None or vector_store_id is None:
             tools=[{"type": "file_search"}],
         )
         assistant_id = assistant.id
-        # Tallenna apurin ID ympäristömuuttujaan
+        # Tallenna assistant ID ympäristömuuttujaan
         os.environ["ASSISTANT_ID"] = assistant_id
         print("Assistant created:", assistant_id)
         print("Please update your .env file with the following value:", f"ASSISTANT_ID={assistant_id}")
@@ -63,7 +63,7 @@ if assistant_id is None or vector_store_id is None:
     )
     print("Assistant updated to use new vector store")
 else:
-    # Jos ID:t ovat olemassa, hae olemassa olevat objektit
+    # Jos ID:t ovat olemassa, hae olemassa olevat assitant, vektorivarasto
     assistant = client.beta.assistants.retrieve(assistant_id=assistant_id)
     vector_store = client.beta.vector_stores.retrieve(
         vector_store_id=vector_store_id)
@@ -74,7 +74,7 @@ vector_store = client.beta.vector_stores.retrieve(vector_store_id)
 existing_files = client.beta.vector_stores.files.list(
     vector_store_id=vector_store_id)
 
-# Only upload files if the store is empty
+# Only upload files if the store is empty to avoid hoito-ohje duplicates
 if not existing_files.data:
     file_paths = ["hoito-ohjeet.pdf", "lisaa-hoito.pdf"]
     file_streams = [open(file_path, "rb") for file_path in file_paths]
@@ -133,7 +133,6 @@ def delete_file(vector_store_id: str, file_id: str):
         raise HTTPException(status_code=404, detail=str(e))
 
 # Route to add files to the vector store
-
 @app.post("/add-files")
 async def add_files(files: List[UploadFile] = File(...)):
     try:
@@ -158,6 +157,7 @@ async def add_files(files: List[UploadFile] = File(...)):
         for file in files:
             await file.close()
 
+# Route to get the vector store details
 @app.get("/vector-store")
 def get_vector_store():
     store_details = client.beta.vector_stores.retrieve(
