@@ -44,7 +44,7 @@ if assistant_id is None or vector_store_id is None:
         # Tallenna apurin ID ympäristömuuttujaan
         os.environ["ASSISTANT_ID"] = assistant_id
         print("Assistant created:", assistant_id)
-
+        print("Please update your .env file with the following value:", f"ASSISTANT_ID={assistant_id}")
     # Luo vektorivarasto, jos sitä ei ole
     if vector_store_id is None:
         vector_store = client.beta.vector_stores.create(
@@ -53,7 +53,7 @@ if assistant_id is None or vector_store_id is None:
         # Tallenna vektorivaraston ID ympäristömuuttujaan
         os.environ["VECTOR_STORE_ID"] = vector_store_id
         print("Vector store created:", vector_store_id)
-
+        print("Please update your .env file with the following value:", f"VECTOR_STORE_ID={vector_store_id}")
     # Päivitä assistentin vektorivaraston viitteet
     # Step 2: Update the assistant to to use the new Vector Store
     assistant = client.beta.assistants.update(
