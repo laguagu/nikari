@@ -1,4 +1,4 @@
-import GoogleMaps from "@/components/chat/GoogleMaps";
+import GoogleMaps from "@/components/chat/maps/GoogleMaps";
 import { Suspense } from "react";
 
 export default function Page() {

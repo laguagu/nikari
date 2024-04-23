@@ -1,9 +1,8 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import {
   GoogleMap,
   Marker,
-  LoadScriptNext,
   InfoWindow,
 } from "@react-google-maps/api";
 import { dealers } from "@/lib/dealers";
@@ -19,7 +18,7 @@ interface UserLocation {
   lng: number;
 }
 
-export default function GoogleMaps() {
+export default function Map() {
   const [userLocation, setUserLocation] = useState({
     lat: 60.192059,
     lng: 24.945831,
@@ -39,6 +38,7 @@ export default function GoogleMaps() {
     width: "100%",
     height: "500px",
   };
+  const MemoizedMarker = React.memo(Marker);
 
   useEffect(() => {
     if (navigator.geolocation) {
@@ -65,10 +65,10 @@ export default function GoogleMaps() {
     }
   }, [userLocation, dealers]);
 
-  const onMarkerClick = (dealer: Dealer) => {
+  const onMarkerClick = useCallback((dealer: Dealer) => {
     setSelectedDealer(dealer);
     setMapCenter({ lat: dealer.lat, lng: dealer.lng }); // Päivitä kartan keskusta
-  };
+  }, []);
 
   const center = {
     lat: 60.192059,
@@ -79,16 +79,16 @@ export default function GoogleMaps() {
     console.error("Google Maps API key is missing.");
     return <div>Error: Google Maps API key not found</div>;
   }
+  
   return (
     <div className="flex justify-center">
-      <LoadScriptNext googleMapsApiKey={apiKey}>
         <GoogleMap
           mapContainerStyle={containerStyle}
           center={mapCenter} // Käytä mapCenter tilaa keskittämään kartta
           zoom={10}
         >
           {dealers.map((dealer) => (
-            <Marker
+            <MemoizedMarker
               key={dealer.name}
               position={{ lat: dealer.lat, lng: dealer.lng }}
               onClick={() => onMarkerClick(dealer)}
@@ -127,7 +127,7 @@ export default function GoogleMaps() {
             </InfoWindow>
           )}
           {userLocation && (
-            <Marker
+            <MemoizedMarker
               position={userLocation}
               label={{
                 text: "Your location",
@@ -146,7 +146,6 @@ export default function GoogleMaps() {
             />
           )}
         </GoogleMap>
-      </LoadScriptNext>
     </div>
   );
 }
