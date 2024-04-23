@@ -7,7 +7,7 @@ from fastapi import File
 from openai import OpenAI
 from openai import AssistantEventHandler
 from dotenv import load_dotenv
-
+from fastapi.middleware.cors import CORSMiddleware
 from typing_extensions import override
 from pydantic import BaseModel
 from typing import List
@@ -21,6 +21,19 @@ client = OpenAI()
 
 # Define the FastAPI app
 app = FastAPI()
+
+origins = [
+    "http://localhost:3000",  # Salli tämä alkuperä
+    # lisää muita alkuperiä tarvittaessa
+]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 print("API Key:", os.environ.get('OPENAI_API_KEY'))
 print("Assistant ID:", os.environ.get('ASSISTANT_ID'))
