@@ -8,12 +8,22 @@ export async function getMaterials(image_url: string) {
   });
 
   if (!response.ok) {
-    console.log("Ei ollut ok", response);
-
     const errorResponse = await response.json();
-    throw new Error(
-      errorResponse.error.message || `HTTP error! status: ${response.status}`
-    );
+    if (
+      response.status === 400 &&
+      errorResponse.error &&
+      errorResponse.error.code === "content_policy_violation"
+    ) {
+      throw new Error(
+        "Your input image may contain content that is not allowed by AI safety system" ||
+          `HTTP error! status: ${response.status}`
+      );
+    } else {
+      throw new Error(
+        errorResponse.error.message ||
+          `HTTP-virhe! Tilakoodi: ${response.status}`
+      );
+    }
   }
 
   const data = await response.json();

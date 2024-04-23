@@ -19,10 +19,11 @@ export default function Page() {
     try {
       const materials = await getMaterials(image_url);
       setMaterials(materials);
+      setIsDetectingMaterials(false);
     } catch (error) {
       setError((error as Error).message);
+      setIsDetectingMaterials(false);
     }
-    setIsDetectingMaterials(false);
   };
 
   return (
