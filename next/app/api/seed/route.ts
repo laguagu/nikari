@@ -19,7 +19,8 @@ export const runtime = "edge";
  */
 export async function POST(req: NextRequest) {
   function replaceMarkdownLinks(careInstructionsText: string) {
-    return careInstructionsText.replace(/\[([^\]]+)\]\(([^)]+)\)/g, "$2");
+    // This will replace markdown links with the format "Link Text (URL)"
+    return careInstructionsText.replace(/\[([^\]]+)\]\(([^)]+)\)/g, "$1 ($2)");
   }
   const replacedMarkdownText = replaceMarkdownLinks(careInstructionsText);
 
@@ -30,8 +31,8 @@ export async function POST(req: NextRequest) {
     );
 
     const splitter = RecursiveCharacterTextSplitter.fromLanguage("markdown", {
-      chunkSize: 900,
-      chunkOverlap: 90,
+      chunkSize: 1000,
+      chunkOverlap: 30,
     });
 
     const splitDocuments = await splitter.createDocuments([

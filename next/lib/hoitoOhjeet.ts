@@ -1,21 +1,5 @@
-export type Material =
-  | "wood"
-  | "laminate"
-  | "metal"
-  | "leather"
-  | "plastic"
-  | "fabric"
-  | "outdoor";
-
-type CareInstructions = {
-  [K in Material]?: {
-    "1": string;
-    "2": string;
-    "3": string;
-  };
-};
-
-export const careInstructions: CareInstructions = {
+import { MaterialCareInstructions } from "./definition";
+export const careInstructions: MaterialCareInstructions = {
   wood: {
     "1": "Lets start taking care of the wooden parts of the furniture: Avoid placing solid wood furniture in direct sunlight or near heat sources. In dry, cold climates, use a humidifier to maintain room humidity and prevent wood from shrinking and cracking. In humid climates, ensure the room is well-ventilated to prevent swelling of the wood.",
     "2": "For natural wood oil mixture finishes, clean spills immediately and wipe the surface clean and dry of any liquids within 15 minutes. Clean the surface with a damp cloth using organic soaps. Avoid using silicone-based or non-natural oils or waxes.",
@@ -54,7 +38,6 @@ export const careInstructions: CareInstructions = {
 };
 
 export const careInstructionsText = `
-
 # Nikari Oy, Peltorivi 13, 10470 Fiskars, Finland
 
 The contact information for Nikari includes:
@@ -384,7 +367,6 @@ This softly curved, yet very straight-forward chair, is available in sustainably
 When Nikari turned 50 years in 2017, the company celebrated the birthday with a theme ”50 years of stories”. The Storia collection began to develop throughout the 50th anniversary year, bringing interesting addition to the company collection. It has been growing ever since, finding fresh forms by using traditional Nordic craftsmanship techniques.
 
 -[See all: STORIA collection](https://nikari.fi/storia-collection/)
-
 `;
 
 // HUOM MUISTA TARKISTAA ETTÄ TEKSTI ON OIKEIN!

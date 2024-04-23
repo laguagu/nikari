@@ -3,7 +3,6 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
-
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 import {
@@ -15,29 +14,11 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
-import { toast } from "@/components/ui/use-toast";
-import { careInstructions, Material } from "@/lib/hoitoOhjeet";
+import { Material, MaterialInstructions, CareInstructionsFormProps } from "@/lib/definition";
 import { useState } from "react";
 import CareGuides from "./CareGuides";
+import { careInstructions } from "@/lib/hoitoOhjeet";
 
-export type MaterialInstructions = {
-  material: Material;
-  instructions: { "1": string; "2": string; "3": string } | undefined;
-};
-
-type CareInstructionsFormProps = {
-  materials: { [key: string]: boolean } | null;
-};
-
-// const materials = {
-//   wood: true,
-//   metal: false,
-//   leather: false,
-//   laminate: true,
-//   plastic: false,
-//   fabric: false,
-//   outdoorFurniture: false,
-// };
 
 const FormSchema = z.object({
   items: z.array(z.string()).refine((value) => value.some((item) => item), {
@@ -79,14 +60,6 @@ export default function CareInstructionsForm({
     });
     console.log(selectedCareInstructions);
     setcareGuides(selectedCareInstructions);
-    toast({
-      title: "You submitted the following values:",
-      description: (
-        <pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">
-          <code className="text-white">{JSON.stringify(data, null, 2)}</code>
-        </pre>
-      ),
-    });
   }
 
   return (
@@ -104,8 +77,9 @@ export default function CareInstructionsForm({
                 <FormItem>
                   <div className="mb-4">
                     <FormLabel className="text-base">Found Materials</FormLabel>
-                    <FormDescription>
-                      Select the items you want to display in the sidebar.
+                    <FormDescription className="flex align-middle text-left text-black">
+                    Add or remove materials that Nikari AI
+                    has identified 
                     </FormDescription>
                   </div>
                   {materialItems.map((item) => (
@@ -133,7 +107,7 @@ export default function CareInstructionsForm({
                                 }}
                               />
                             </FormControl>
-                            <FormLabel className="text-sm font-normal">
+                            <FormLabel className="text-base font-normal ">
                               {item.label}
                             </FormLabel>
                           </FormItem>

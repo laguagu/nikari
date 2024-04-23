@@ -17,7 +17,7 @@ export default function Page() {
     const detectedMaterials = await getMaterials(image_url);
     setMaterials(detectedMaterials);
     setIsDetectingMaterials(false);
-  };
+};
 
   return (
     <div>

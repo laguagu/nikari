@@ -114,7 +114,7 @@ export default function ChatMessages() {
               <RocketLaunchIcon className="w-5 mr-1 flex-shrink-0 right-0" />
             )}
             <div className="text-2xl max-w-3xl overflow-auto break-words bg-gray-200 rounded-lg p-2 ">
-              {message.content}
+            {parseMessage(message.content)}
             </div>
           </div>
         ))}
@@ -158,4 +158,43 @@ function aiLoadingMessage() {
       </div>
     </div>
   );
+}
+
+
+function parseMessage(content:string) {
+  const parts = content.split(/\*\*(.*?)\*\*/g); // Split by "**" to capture text inside and outside bold
+  return parts.map((part, index) => {
+    const parsedPart = parseLinks(part);
+    // Apply bold style if the part was inside ** markers
+    if (index % 2 === 1) {
+      return <strong key={index} className="font-bold">{parsedPart}</strong>;
+    }
+    return parsedPart; // Return normal or link-parsed text
+  });
+}
+
+function parseLinks(text:string) {
+  const parts = [];
+  let lastIndex = 0;
+  const regex = /\[([^\]]+)]\((http[s]?:\/\/[^)]+)\)/g;
+
+    text.replace(regex, (match, linkText, url, index) => {
+      // Push text before the link
+      parts.push(text.slice(lastIndex, index));
+      // Push link component styled with TailwindCSS
+      parts.push(
+        <a key={index} href={url} className="text-blue-500 hover:text-blue-700 underline" target="_blank" rel="noopener noreferrer">
+          {linkText}
+        </a>
+      );
+      lastIndex = index + match.length;
+      return ""; // Return an empty string
+    });
+
+  // Push any remaining text after the last link
+  if (lastIndex < text.length) {
+      parts.push(text.slice(lastIndex));
+  }
+
+  return parts;
 }
