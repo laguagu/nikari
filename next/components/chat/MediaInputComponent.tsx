@@ -21,11 +21,9 @@ export default function MediaInputComponent({
   setImageURL,
   imageURL,
 }: MediaInputComponentProps) {
-  // const { handleSetMaterials } = useMaterialContext();
   const webcamRef = useRef<Webcam>(null);
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
-  // const [imageURL, setImageURL] = useState<string | null>(null);
   const [loadingCamera, setLoadingCamera] = useState(true);
   const [cameraError, setCameraError] = useState(null);
   const [isWebcamReady, setIsWebcamReady] = useState(false);
@@ -137,7 +135,7 @@ export default function MediaInputComponent({
             <Image
               src={imageURL}
               alt="Esikatselu"
-              layout="responsive"
+              style={{ width: '100%', height: 'auto' }}
               width={1280}
               height={720}
             />

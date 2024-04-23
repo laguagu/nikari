@@ -1,5 +1,5 @@
 "use client";
-import { LoadScriptNext } from "@react-google-maps/api";
+import { LoadScriptNext, useJsApiLoader } from "@react-google-maps/api";
 import Map from "@/components/chat/maps/map";
 import { Suspense } from "react";
 

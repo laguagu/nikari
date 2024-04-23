@@ -1,10 +1,5 @@
-"use client";
 import React, { useCallback, useEffect, useState } from "react";
-import {
-  GoogleMap,
-  Marker,
-  InfoWindow,
-} from "@react-google-maps/api";
+import { GoogleMap, Marker, InfoWindow } from "@react-google-maps/api";
 import { dealers } from "@/lib/dealers";
 
 interface Dealer {
@@ -18,135 +13,123 @@ interface UserLocation {
   lng: number;
 }
 
+interface MarkerComponentProps {
+  position: { lat: number; lng: number };
+  iconUrl: string;
+  onClick?: () => void;
+  label?: {
+    text: string;
+    color: string;
+    fontSize: string;
+    fontWeight: string;
+  };
+}
+
+// Luo uusi MarkerComponent, joka ottaa vastaan position ja iconUrl propsit.
+const MarkerComponent: React.FC<MarkerComponentProps> = ({
+  position,
+  iconUrl,
+  onClick,
+  label,
+}) => {
+  const icon = {
+    url: iconUrl,
+    labelOrigin: new google.maps.Point(15, 40),
+  };
+
+  return (
+    <Marker position={position} icon={icon} onClick={onClick} label={label} />
+  );
+};
 export default function Map() {
-  const [userLocation, setUserLocation] = useState({
+  const [userLocation, setUserLocation] = useState<UserLocation>({
     lat: 60.192059,
     lng: 24.945831,
   });
-  const [nearestDealer, setNearestDealer] = useState<UserLocation>({
-    lat: 0,
-    lng: 0,
-  });
-  const [mapCenter, setMapCenter] = useState<UserLocation>({
-    lat: 60.192059,
-    lng: 24.945831,
-  });
+  const [nearestDealer, setNearestDealer] = useState<Dealer | null>(null);
   const [selectedDealer, setSelectedDealer] = useState<Dealer | null>(null);
 
-  const apiKey = process.env.NEXT_PUBLIC_MAPS_API_KEY;
-  const containerStyle = {
-    width: "100%",
-    height: "500px",
-  };
-  const MemoizedMarker = React.memo(Marker);
-
+  // Päivitä käyttäjän sijainti
   useEffect(() => {
     if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition((position) => {
-        const newPos = {
-          lat: position.coords.latitude,
-          lng: position.coords.longitude,
-        };
-        setUserLocation(newPos);
-        setMapCenter(newPos);
-      });
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          const newPos = {
+            lat: position.coords.latitude,
+            lng: position.coords.longitude,
+          };
+          setUserLocation(newPos); // Päivitä käyttäjän sijainti saaduilla koordinaateilla
+        },
+        (error) => {
+          console.error("Geolocation error: ", error); // Lisää virheenkäsittely
+        }
+      );
     } else {
       console.error("Geolocation is not supported by this browser.");
     }
   }, []);
+  const onMarkerClick = useCallback((dealer: Dealer) => {
+    setSelectedDealer(dealer);
+  }, []);
 
+  // Etsi lähin jälleenmyyjä
   useEffect(() => {
     if (userLocation && dealers.length) {
-      const nearestDealer = findNearestDealer(userLocation, dealers);
-      if (nearestDealer) {
-        setNearestDealer(nearestDealer);
-        console.log("Lähin jälleenmyyjä: ", nearestDealer);
-      }
+      setNearestDealer(findNearestDealer(userLocation, dealers));
     }
   }, [userLocation, dealers]);
 
-  const onMarkerClick = useCallback((dealer: Dealer) => {
-    setSelectedDealer(dealer);
-    setMapCenter({ lat: dealer.lat, lng: dealer.lng }); // Päivitä kartan keskusta
-  }, []);
-
-  const center = {
-    lat: 60.192059,
-    lng: 24.945831,
-  };
-
-  if (!apiKey) {
-    console.error("Google Maps API key is missing.");
-    return <div>Error: Google Maps API key not found</div>;
-  }
-  
   return (
-    <div className="flex justify-center">
-        <GoogleMap
-          mapContainerStyle={containerStyle}
-          center={mapCenter} // Käytä mapCenter tilaa keskittämään kartta
-          zoom={10}
+    <GoogleMap
+      mapContainerStyle={{ width: "100%", height: "500px" }}
+      center={userLocation}
+      zoom={10}
+    >
+      {dealers.map((dealer) => (
+        <MarkerComponent
+          key={dealer.name}
+          position={{ lat: dealer.lat, lng: dealer.lng }}
+          iconUrl={
+            dealer === nearestDealer
+              ? "https://maps.gstatic.com/mapfiles/ms2/micons/green.png"
+              : "http://maps.gstatic.com/mapfiles/ms2/micons/red.png"
+          }
+          onClick={() => onMarkerClick(dealer)}
+          label={
+            dealer === nearestDealer
+              ? {
+                  text: "Nearest retailer",
+                  color: "black",
+                  fontSize: "16px",
+                  fontWeight: "bold",
+                }
+              : undefined
+          }
+        />
+      ))}
+      {selectedDealer && (
+        <InfoWindow
+          position={{ lat: selectedDealer.lat, lng: selectedDealer.lng }}
+          onCloseClick={() => setSelectedDealer(null)}
         >
-          {dealers.map((dealer) => (
-            <MemoizedMarker
-              key={dealer.name}
-              position={{ lat: dealer.lat, lng: dealer.lng }}
-              onClick={() => onMarkerClick(dealer)}
-              label={
-                dealer === nearestDealer
-                  ? {
-                      text: "Nearest retailer",
-                      color: "black",
-                      fontSize: "16px",
-                      fontWeight: "bold",
-                    }
-                  : undefined
-              }
-              icon={
-                typeof google !== "undefined" && dealer === nearestDealer // Tämä type tarkistus tarvitaan jotta sovellukse buildaus toimii
-                  ? {
-                      url: "https://maps.gstatic.com/mapfiles/ms2/micons/green.png",
-                      labelOrigin:
-                        typeof window !== "undefined"
-                          ? new google.maps.Point(15, 40)
-                          : undefined, 
-                    }
-                  : undefined
-              }
-            />
-          ))}
-          {selectedDealer && (
-            <InfoWindow
-              position={{ lat: selectedDealer.lat, lng: selectedDealer.lng }}
-              onCloseClick={() => setSelectedDealer(null)}
-            >
-              <div>
-                <h2>{selectedDealer.name}</h2>
-                {/* Lisää tähän lisää tietoa jälleenmyyjästä */}
-              </div>
-            </InfoWindow>
-          )}
-          {userLocation && (
-            <MemoizedMarker
-              position={userLocation}
-              label={{
-                text: "Your location",
-                color: "black",
-                fontSize: "16px",
-                fontWeight: "bold",
-              }}
-              icon={
-                typeof google !== "undefined" // Tämä type tarkistus tarvitaan jotta sovellukse buildaus toimii
-                  ? {
-                      url: "https://maps.gstatic.com/mapfiles/ms2/micons/blue.png",
-                      labelOrigin: new google.maps.Point(15, 40), // Muuta näitä arvoja siirtääksesi tekstiä
-                    }
-                  : undefined
-              }
-            />
-          )}
-        </GoogleMap>
-    </div>
+          <div>
+            <h2>{selectedDealer.name}</h2>
+          </div>
+        </InfoWindow>
+      )}
+      {userLocation && (
+        <MarkerComponent
+          position={userLocation}
+          iconUrl="https://maps.gstatic.com/mapfiles/ms2/micons/blue-dot.png"
+          label={{
+            text: "Your location",
+            color: "black",
+            fontSize: "16px",
+            fontWeight: "bold",
+          }}
+        />
+      )}
+    </GoogleMap>
   );
 }
 
