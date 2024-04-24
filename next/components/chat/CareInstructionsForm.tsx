@@ -58,7 +58,6 @@ export default function CareInstructionsForm({
         instructions: careInstructions[material],
       };
     });
-    console.log(selectedCareInstructions);
     setcareGuides(selectedCareInstructions);
   }
 

@@ -6,6 +6,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { Material, CareGuidesProps } from "@/lib/definition";
+
 type BackgroundClasses = {
   [key in Material]: string;
 };
@@ -22,7 +23,7 @@ const backgroundClasses: BackgroundClasses = {
 
 export default function CareGuides({ careGuides }: CareGuidesProps) {
   return (
-    <div className="max-h-[500px] overflow-y-auto p-4 bg-white shadow rounded-lg">
+    <div className=" overflow-y-auto p-4 bg-white shadow rounded-lg">
       <p className="text-gray-600 mb-4">
         Below are the care instructions based on the materials identified in
         your furniture. Click on each material to view the specific care
@@ -64,6 +65,7 @@ export default function CareGuides({ careGuides }: CareGuidesProps) {
         If you need further assistance, please contact our customer
         service&nbsp;<p className="font-bold">sales@nikari.fi</p>
       </span>
+      
     </div>
   );
 }
