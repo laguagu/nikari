@@ -6,7 +6,6 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { Material, CareGuidesProps } from "@/lib/definition";
-
 type BackgroundClasses = {
   [key in Material]: string;
 };
@@ -61,11 +60,6 @@ export default function CareGuides({ careGuides }: CareGuidesProps) {
         );
       })}
 
-      <span className="flex">
-        If you need further assistance, please contact our customer
-        service&nbsp;<p className="font-bold">sales@nikari.fi</p>
-      </span>
-      
     </div>
   );
 }

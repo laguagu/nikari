@@ -5,6 +5,7 @@ import CareInstructionsForm from "@/components/chat/CareInstructionsForm";
 import { FormSkeleton } from "@/components/chat/skeletons";
 import MediaInputComponent from "@/components/chat/MediaInputComponent";
 import Error from "@/components/chat/error";
+
 export default function Page() {
   const [materials, setMaterials] = useState<{ [key: string]: boolean } | null>(
     null

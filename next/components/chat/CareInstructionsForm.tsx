@@ -1,5 +1,4 @@
 "use client";
-
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
@@ -14,12 +13,15 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
-import { Material, MaterialInstructions, CareInstructionsFormProps } from "@/lib/definition";
+import {
+  Material,
+  MaterialInstructions,
+  CareInstructionsFormProps,
+} from "@/lib/definition";
 import { useState } from "react";
 import CareGuides from "./CareGuides";
 import { careInstructions } from "@/lib/hoitoOhjeet";
-
-
+import { useRouter } from "next/navigation";
 const FormSchema = z.object({
   items: z.array(z.string()).refine((value) => value.some((item) => item), {
     message: "You have to select at least one item.",
@@ -29,6 +31,7 @@ const FormSchema = z.object({
 export default function CareInstructionsForm({
   materials,
 }: CareInstructionsFormProps) {
+  const router = useRouter();
   const [careGuides, setcareGuides] = useState<MaterialInstructions[]>([]);
   const materialItems = materials
     ? Object.entries(materials).map(([key, value]) => ({
@@ -37,7 +40,6 @@ export default function CareInstructionsForm({
         checked: value,
       }))
     : [];
-
   const defaultSelectedMaterials = materialItems
     .filter((item) => item.checked)
     .map((item) => item.id);
@@ -51,7 +53,19 @@ export default function CareInstructionsForm({
 
   // Muuta server komponentiksi omaan kansioon
   function onSubmit(data: z.infer<typeof FormSchema>) {
+    const selecterMaterialParams = data.items.join(",");
+    console.log(selecterMaterialParams);
+    const params = new URLSearchParams();
+    params.set('materials', selecterMaterialParams);
+    console.log(params.toString())
+    console.log(params, "params")
+    
+    
+    router.push(`/care/search?materials=${selecterMaterialParams}`)
+
     const selectedMaterials = data.items as Material[];
+    console.log(selecterMaterialParams);
+
     const selectedCareInstructions = selectedMaterials.map((material) => {
       return {
         material,
@@ -77,8 +91,7 @@ export default function CareInstructionsForm({
                   <div className="mb-4">
                     <FormLabel className="text-base">Found Materials</FormLabel>
                     <FormDescription className="flex align-middle text-left text-black">
-                    Add or remove materials that Nikari AI
-                    has identified 
+                      Add or remove materials that Nikari AI has identified
                     </FormDescription>
                   </div>
                   {materialItems.map((item) => (
