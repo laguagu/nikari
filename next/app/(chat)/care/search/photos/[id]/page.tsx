@@ -1,30 +1,27 @@
-import Link from 'next/link'
-import photos, { Photo } from '@/lib/photos'
-import PhotoCard from '@/components/chat/PhotoCard'
-
+"use client";
+import photos, { Photo } from "@/lib/photos";
+import PhotoCard from "@/components/chat/PhotoCard";
+import { useRouter } from "next/navigation";
+import { Button } from "@/components/ui/button";
 export default function PhotoPage({
-  params: { id }
+  params: { id },
 }: {
-  params: { id: string }
+  params: { id: string };
 }) {
-  const photo: Photo = photos.find(p => p.id === id)!
-
+  const photo: Photo = photos.find((p) => p.id === id)!;
+  const router = useRouter();
   return (
-    <section className='py-24'>
-      <div className='container'>
+    <section className="py-10">
+      <div className="container flex flex-col items-center justify-center">
         <div>
-          <Link
-            href='/care/search/'
-            className='font-semibold italic text-sky-600 underline'
-          >
-            Back to photos
-          </Link>
+          <Button onClick={() => router.back()} className="">
+            Back to care instructions
+          </Button>
         </div>
-
-        <div className='mt-10 w-1/3'>
+        <div className="mt-4 w-2/3">
           <PhotoCard photo={photo} />
         </div>
       </div>
     </section>
-  )
+  );
 }

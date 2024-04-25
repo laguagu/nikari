@@ -4,7 +4,7 @@ import { HoverEffect } from "../ui/card-hover-effect";
 export function CardHover() {
   return (
     <div className="max-w-5xl mx-auto px-8">
-      <Suspense fallback={<div>Loading...</div>}>
+      <Suspense fallback={<div>Loading cards...</div>}>
         <HoverEffect items={projects} />
       </Suspense>
     </div>

@@ -6,7 +6,7 @@ export default function Photos() {
   return (
     <section className='mt-12'>
       <div className='container'>
-        <h1 className='font-serif text-3xl font-bold text-gray-700'>Photos</h1>
+        <h1 className='font-serif text-3xl font-bold text-gray-700'>Care instructions</h1>
 
         <ul className='mt-10 grid auto-rows-max grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4'>
           {photos.map(({ id, imageSrc }) => (
