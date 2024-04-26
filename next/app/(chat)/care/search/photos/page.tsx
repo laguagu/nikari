@@ -11,7 +11,10 @@ export default function Photos() {
           <h1 className="font-serif text-3xl font-bold text-gray-700">
             Care instructions
           </h1>
-          <BackButton><ArrowUturnLeftIcon className="w-4 mr-2"/>Go Back  </BackButton>
+          <BackButton>
+            <ArrowUturnLeftIcon className="w-4 mr-2" />
+            Go Back{" "}
+          </BackButton>
         </div>
         <div className="border-b mt-2"></div>
         <ul className="mt-10 grid auto-rows-max grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">

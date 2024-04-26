@@ -11,6 +11,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { Button } from "../ui/button";
 import { buttonVariants } from "@/components/ui/button";
+import { Separator } from "@/components/ui/separator"
+
 type BackgroundClasses = {
   [key in Material]: string;
 };
@@ -38,7 +40,7 @@ const backgroundImages = {
 export default function CareGuides({ careGuides }: CareGuidesProps) {
   return (
     <div>
-      <div className=" overflow-y-auto p-4 bg-white shadow rounded-lg">
+      <div className=" overflow-y-auto p-4 bg-zinc-50  shadow rounded-lg">
         <p className="text-gray-600 mb-4">
           Below are the care instructions based on the materials identified in
           your furniture. Click on each material to view the specific care
@@ -98,39 +100,40 @@ export default function CareGuides({ careGuides }: CareGuidesProps) {
           );
         })}
       </div>
-      <div className="flex flex-col p-4 mt-2">
-        <div className="flex items-center mb-2 justify-start">
+      <div className="flex flex-col p-4 mt-2 space-y-2 ">
+        <div className="flex items-center justify-start">
           <p className="text-xl">
             You can find all the images of care instructions in the photo
             gallery.
           </p>
           <Link href="/care/search/photos">
-            <Button className="font-bold shadow-md ml-5" variant="outline">
+            <Button className="font-bold shadow-md md:ml-3" variant="outline">
               Photos
             </Button>
           </Link>
+          
         </div>
         <div className="flex justify-start items-center">
           <p className="text-xl">
             or visit Nikaris official material care collection
           </p>
-          <Link
-            href="https://www.dropbox.com/sh/72ex6pt62kfuoqa/AAALld8u9JcILgr6CQ8QAqota?e=1&dl=0"
-            className={buttonVariants({ variant: "link" })}
-          >
+          <Link href="https://www.dropbox.com/sh/72ex6pt62kfuoqa/AAALld8u9JcILgr6CQ8QAqota?e=1&dl=0">
+            <Button className="font-bold shadow-md md:ml-3 ml-1" variant="outline">
             Collection
+            </Button>
           </Link>
         </div>
-        <p className="text-lg mt-2">
+        <p className="text-lg font-light">
           If you need more information, please contact our customer
           service:&nbsp;
           <Link
             href="mailto:sales@nikari.fi"
-            className="text-blue-500 underline"
+            className="text-blue-500 underline italic"
           >
             sales@nikari.fi
           </Link>
         </p>
+      <Separator />
       </div>
     </div>
   );
