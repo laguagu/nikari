@@ -2,7 +2,7 @@
 import { useSearchParams } from "next/navigation";
 import { careInstructions } from "@/lib/hoitoOhjeet";
 import { MaterialCareInstructions } from "@/lib/definition";
-import CareGuides from "@/components/chat/CareGuides";
+import CareGuides from "@/components/chat/care/CareGuides";
 
 function Page() {
   const [searchParams] = useSearchParams();

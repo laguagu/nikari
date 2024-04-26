@@ -1,4 +1,5 @@
 import { MaterialCareInstructions } from "./definition";
+
 export const careInstructions: MaterialCareInstructions = {
   wood: {
     "1": "Lets start taking care of the wooden parts of the furniture: Avoid placing solid wood furniture in direct sunlight or near heat sources. In dry, cold climates, use a humidifier to maintain room humidity and prevent wood from shrinking and cracking. In humid climates, ensure the room is well-ventilated to prevent swelling of the wood.",
@@ -370,5 +371,5 @@ When Nikari turned 50 years in 2017, the company celebrated the birthday with a 
 `;
 
 // HUOM MUISTA TARKISTAA ETTÄ TEKSTI ON OIKEIN!
-// GPT Generoi lisää markdownia. Tässä esimerkki promptista, joka generoi lisää markdownia: 
+// GPT Generoi lisää markdownia. Tässä esimerkki promptista, joka generoi lisää markdownia:
 // Muutatko tämän aSnetun tekstin markdown muotoon. Tätä tekstiä tullaan käyttämään vektori tietokannassiani yhdessä LLM mallin RAG toteutuksella vastaamaan asikkaan esittämään kysymykseen ja etssimällä ensiksi tietokannasta tietoa tämän tekstin perusteella. Eli muuta markdown muotoon, jotta se sopii minun käyttötarkoitukseen:
