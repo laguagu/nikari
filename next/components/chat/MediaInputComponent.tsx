@@ -9,7 +9,9 @@ import {
 import Image from "next/image";
 import Webcam from "react-webcam";
 import { CameraSkeleton } from "@/components/chat/skeletons";
-
+import Link from "next/link";
+import { PhotoIcon } from "@heroicons/react/24/outline";
+import { buttonVariants } from "@/components/ui/button";
 interface MediaInputComponentProps {
   handleSetMaterials: (value: string) => void;
   imageURL: string | null;
@@ -87,9 +89,26 @@ export default function MediaInputComponent({
   };
 
   return (
-    <div className="flex flex-col items-center justify-center space-y-4 mt-8 relative min-h-[520px]">
+    <div className="flex flex-col items-center justify-center space-y-4 md:mt-4 relative ">
+      <div className="text-center text-lg md:mx-20 flex-col">
+        <p className="font-bold mb-2">
+          Please take or upload a photo of the furniture piece for which you
+          need care instructions. Alternatively, you can view all our care
+          instructions immediately by clicking the button below.
+        </p>
+        <div className="inline-block p-2 border-b-2">
+          <span className="font-normal">
+            Want to view all material care instructions right now?
+          </span>
+          <Link
+            href="/care/search?materials=metal%2Cleather%2Claminate%2Cplastic%2Cfabric%2Coutdoor%2Cwood"
+            className={buttonVariants({ variant: "outline" }) + " ml-2"}
+          >
+            Click here
+          </Link>
+        </div>
+      </div>
       {loadingCamera && <CameraSkeleton />}
-
       {!imageURL && (
         <>
           <Webcam
@@ -117,7 +136,10 @@ export default function MediaInputComponent({
                   onChange={handleFileChange}
                   accept="image/*"
                 />
-                <Button onClick={() => fileInputRef.current?.click()} className="font-semibold">
+                <Button
+                  onClick={() => fileInputRef.current?.click()}
+                  className="font-semibold"
+                >
                   <DocumentPlusIcon className="w-5 mr-1 flex-shrink-0 right-0" />
                   Upload Image
                 </Button>
@@ -132,7 +154,7 @@ export default function MediaInputComponent({
             <Image
               src={imageURL}
               alt="Esikatselu"
-              style={{ width: '100%', height: 'auto' }}
+              style={{ width: "100%", height: "auto" }}
               width={1280}
               height={720}
             />

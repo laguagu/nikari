@@ -10,7 +10,7 @@ import photos from "@/lib/photos";
 import Image from "next/image";
 import Link from "next/link";
 import { Button } from "../ui/button";
-
+import { buttonVariants } from "@/components/ui/button";
 type BackgroundClasses = {
   [key in Material]: string;
 };
@@ -99,28 +99,29 @@ export default function CareGuides({ careGuides }: CareGuidesProps) {
         })}
       </div>
       <div className="flex flex-col p-4 mt-2">
-        <div className="flex justify-start item-center space-x-2 mb-2">
+        <div className="flex items-center mb-2 justify-start">
           <p className="text-xl">
             You can find all the images of care instructions in the photo
-            gallery. <br /> or visit Nikaris official material care collection
-            page{" "}
-            <Link
-              href={
-                "https://www.dropbox.com/sh/72ex6pt62kfuoqa/AAALld8u9JcILgr6CQ8QAqota?e=1&dl=0"
-              }
-              className="text-blue-500 underline"
-            >
-              Collection
-            </Link>
-            .
+            gallery.
           </p>
           <Link href="/care/search/photos">
-            <Button className="rounded-full font-bold shadow-md ml-2">
+            <Button className="font-bold shadow-md ml-5" variant="outline">
               Photos
             </Button>
           </Link>
         </div>
-        <p className="text-lg mt-4">
+        <div className="flex justify-start items-center">
+          <p className="text-xl">
+            or visit Nikaris official material care collection
+          </p>
+          <Link
+            href="https://www.dropbox.com/sh/72ex6pt62kfuoqa/AAALld8u9JcILgr6CQ8QAqota?e=1&dl=0"
+            className={buttonVariants({ variant: "link" })}
+          >
+            Collection
+          </Link>
+        </div>
+        <p className="text-lg mt-2">
           If you need more information, please contact our customer
           service:&nbsp;
           <Link

@@ -5,7 +5,7 @@ import BackButton from "@/components/chat/BackButton";
 import { ArrowUturnLeftIcon } from "@heroicons/react/24/outline";
 export default function Photos() {
   return (
-    <section className="mt-12">
+    <section className="mt-6">
       <div className="container">
         <div className="flex justify-between">
           <h1 className="font-serif text-3xl font-bold text-gray-700">
