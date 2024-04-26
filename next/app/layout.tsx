@@ -3,9 +3,9 @@ import { montserrat } from "./fonts";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Nikari AI",
+  title: "Kaluste Assari",
   description:
-    "Nikari AI chatbot application. We help you find the right care guide for your furniture.",
+    "Kaluste Assari application. We help you find the right care guide for your furniture.",
 };
 
 export default function RootLayout({

@@ -56,6 +56,4 @@ export async function POST(req: Request, res: Response) {
       status: 500,
     });
   }
-
-
 }

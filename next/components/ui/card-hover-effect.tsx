@@ -1,5 +1,6 @@
 import { cn } from "@/lib/utils";
 import { AnimatePresence, motion } from "framer-motion";
+import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 
@@ -23,37 +24,43 @@ export const HoverEffect = ({
         className
       )}
     >
-      {items.map((item, idx) => (
-        <Link
-          href={item?.link}
-          key={item?.link}
-          className="relative group  block p-2 h-full w-full"
-          onMouseEnter={() => setHoveredIndex(idx)}
-          onMouseLeave={() => setHoveredIndex(null)}
-        >
-          <AnimatePresence>
-            {hoveredIndex === idx && (
-              <motion.span
-                className="absolute inset-0 h-full w-full bg-neutral-200 dark:bg-slate-800/[0.8] block  rounded-3xl"
-                layoutId="hoverBackground"
-                initial={{ opacity: 0 }}
-                animate={{
-                  opacity: 1,
-                  transition: { duration: 0.15 },
-                }}
-                exit={{
-                  opacity: 0,
-                  transition: { duration: 0.15, delay: 0.2 },
-                }}
-              />
-            )}
-          </AnimatePresence>
-          <Card>
-            <CardTitle>{item.title}</CardTitle>
-            <CardDescription>{item.description}</CardDescription>
-          </Card>
-        </Link>
-      ))}
+      {items.map((item, idx) => {
+        const isLastItem = idx === items.length - 1;
+        const isFirstItem = idx === 0
+        return (
+          <Link
+            href={item?.link}
+            key={item?.link}
+            className={`relative group block p-2 h-full w-full ${
+              isLastItem ? "cursor-pointer" : "cursor-default"
+            }`}
+            onMouseEnter={() => setHoveredIndex(idx)}
+            onMouseLeave={() => setHoveredIndex(null)}
+          >
+            <AnimatePresence>
+              {hoveredIndex === idx && (
+                <motion.span
+                  className="absolute inset-0 h-full w-full bg-neutral-200 dark:bg-slate-800/[0.8] block  rounded-3xl"
+                  layoutId="hoverBackground"
+                  initial={{ opacity: 0 }}
+                  animate={{
+                    opacity: 1,
+                    transition: { duration: 0.15 },
+                  }}
+                  exit={{
+                    opacity: 0,
+                    transition: { duration: 0.15, delay: 0.2 },
+                  }}
+                />
+              )}
+            </AnimatePresence>
+            <Card isLastItem={isLastItem} isFirstItem={isFirstItem}>
+              <CardTitle>{item.title}</CardTitle>
+              <CardDescription>{item.description}</CardDescription>
+            </Card>
+          </Link>
+        );
+      })}
     </div>
   );
 };
@@ -61,17 +68,32 @@ export const HoverEffect = ({
 export const Card = ({
   className,
   children,
+  isLastItem,
+  isFirstItem,
 }: {
   className?: string;
   children: React.ReactNode;
+  isLastItem: boolean;
+  isFirstItem?: boolean;
 }) => {
   return (
     <div
       className={cn(
-        "rounded-2xl h-full w-full p-4 overflow-hidden bg-black border border-transparent dark:border-white/[0.2] group-hover:border-slate-700 relative z-20",
+        "rounded-2xl h-full w-full p-4 overflow-hidden bg-zinc-800 border border-transparent dark:border-white/[0.2] group-hover:border-slate-700 relative z-20 flex justify-center items-center",
+        isLastItem ? "bg-black hover" : "",
         className
       )}
     >
+      {!isLastItem && (
+        <Image
+          alt=""
+          src={"/background/fabric.jpg"}
+          height={200}
+          width={200}
+          className="aspect-square rounded-xl object-cover shadow-lg items-center justify-center align-middle flex"
+          // style={{ width: '200px', height: '200px' }}
+        />
+      )}
       <div className="relative z-50">
         <div className="p-4">{children}</div>
       </div>

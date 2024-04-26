@@ -6,7 +6,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { Material, CareGuidesProps } from "@/lib/definition";
-import photos from "@/lib/photos";
+import photos, { materialPhotos } from "@/lib/photos";
 import Image from "next/image";
 import Link from "next/link";
 import {
@@ -52,7 +52,9 @@ export default function CareGuides({ careGuides }: CareGuidesProps) {
         </p>
         {careGuides.map((careGuide, index) => {
           const materialKey = careGuide.material;
-          const photo = photos.find((photo) => photo.name === materialKey);
+          const multiPhotosMaterial = materialPhotos.find(
+            (photo) => photo.name === materialKey
+          );
 
           return (
             <Accordion key={index} type="single" collapsible className="mb-4">
@@ -72,32 +74,37 @@ export default function CareGuides({ careGuides }: CareGuidesProps) {
                     <CarouselContent>
                       {careGuide.instructions &&
                         Object.entries(careGuide.instructions).map(
-                          ([key, instruction], idx) => (
-                            <CarouselItem
-                              key={idx}
-                              className="p-4 flex flex-col justify-around"
-                            >
-                              <p className="text-gray-800 md:text-lg text-left tracking-tight border-b">
-                                {instruction}
-                              </p>
-                              {photo && (
-                                <div className="flex flex-col items-center">
-                                  <Link
-                                    href={`/care/search/photos/${photo.id}`}
-                                  >
-                                    <Image
-                                      alt=""
-                                      src={photo.imageSrc}
-                                      height={200}
-                                      width={200}
-                                      className="w-auto rounded-xl mt-4 cursor-pointer shadow-xl object-cover"
-                                      title="Click to view care instructions"
-                                    />
-                                  </Link>
-                                </div>
-                              )}
-                            </CarouselItem>
-                          )
+                          ([key, instruction], idx) => {
+                            const photo = multiPhotosMaterial?.photos[idx];
+                            console.log(idx, "idx", photo, "photo");
+
+                            return (
+                              <CarouselItem
+                                key={idx}
+                                className="p-4 flex flex-col justify-around"
+                              >
+                                <p className="text-gray-800 md:text-lg text-left tracking-tight border-b">
+                                  {instruction}
+                                </p>
+                                {photo && (
+                                  <div className="flex flex-col items-center">
+                                    <Link
+                                      href={`/care/search/photos/${photo.id}`}
+                                    >
+                                      <Image
+                                        alt=""
+                                        src={photo.imageSrc}
+                                        height={200}
+                                        width={200}
+                                        className="w-auto rounded-xl mt-4 cursor-pointer shadow-xl object-cover"
+                                        title="Click to view care instructions"
+                                      />
+                                    </Link>
+                                  </div>
+                                )}
+                              </CarouselItem>
+                            );
+                          }
                         )}
                     </CarouselContent>
                     <CarouselPrevious />
