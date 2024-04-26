@@ -13,7 +13,7 @@ export default function PhotoCard({ photo }: { photo: Photo }) {
       />
 
       <div className=' bg-white p-2 px-4'>
-        <h3 className='font-serif text-xl font-medium'>{photo.name}</h3>
+        <h3 className='font-serif text-xl font-medium'>How to take care for {photo.name} material</h3>
         <p className='text-sm text-gray-500'>Taken by {photo.username}</p>
       </div>
     </>

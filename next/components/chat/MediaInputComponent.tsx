@@ -31,8 +31,6 @@ export default function MediaInputComponent({
   const captureImage = () => {
     const screenshot = webcamRef.current?.getScreenshot();
     if (screenshot) {
-      console.log("Screenshot captured", screenshot);
-
       setImageURL(screenshot);
     } else {
       console.error("Failed to capture image");
@@ -43,7 +41,6 @@ export default function MediaInputComponent({
     event: React.ChangeEvent<HTMLInputElement>
   ) => {
     const file = event.target.files?.[0];
-    console.log("file: ", typeof file);
     if (file) {
       const response = await fetch("/api/visio/resizeImage/", {
         method: "POST",

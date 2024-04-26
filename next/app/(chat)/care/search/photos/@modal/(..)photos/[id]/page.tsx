@@ -1,6 +1,6 @@
 import photos, { Photo } from "@/lib/photos";
-import PhotoCard from "@/components/chat/PhotoCard";
-import Modal from "@/components/chat/Modal";
+import PhotoCard from "@/components/chat/photos/PhotoCard";
+import Modal from "@/components/chat/photos/Modal";
 
 export default function PhotoPage({
   params: { id },

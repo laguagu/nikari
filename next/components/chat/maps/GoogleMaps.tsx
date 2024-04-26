@@ -1,7 +1,6 @@
 "use client";
-import { LoadScriptNext, useJsApiLoader } from "@react-google-maps/api";
+import { LoadScriptNext } from "@react-google-maps/api";
 import Map from "@/components/chat/maps/map";
-import { Suspense } from "react";
 
 export default function GoogleMaps() {
   const apiKey = process.env.NEXT_PUBLIC_MAPS_API_KEY;
@@ -14,9 +13,7 @@ export default function GoogleMaps() {
   return (
     <div>
       <LoadScriptNext googleMapsApiKey={apiKey} libraries={["places"]}>
-        <Suspense fallback={<div>Loading Map...</div>}>
-          <Map />
-        </Suspense>
+        <Map />
       </LoadScriptNext>
     </div>
   );

@@ -51,11 +51,11 @@ export default function CareInstructionsForm({
   }
 
   return (
-    <div className="flex justify-center items-center">
+    <div className="flex justify-center items-center ">
       <Form {...form}>
         <form
           onSubmit={form.handleSubmit(onSubmit)}
-          className="space-y-8 align-middle p-4 rounded-lg border-2 shadow-xl"
+          className="space-y-8 align-middle p-4 rounded-lg border-2 shadow-xl bg-zinc-50"
         >
           <FormField
             control={form.control}

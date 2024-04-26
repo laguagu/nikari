@@ -1,7 +1,8 @@
+import Loader from "@/components/chat/Loader";
 export default function Page() {
   return (
     <div>
-      <h1>Loading care instructions...</h1>
+      <Loader>Loading care instructions</Loader>
     </div>
   );
 }

@@ -94,7 +94,7 @@ export default function ChatMessages() {
   return (
     <div>
       <div
-        className="max-h-[55vh] space-y-4 overflow-y-auto"
+        className="max-h-[65vh] space-y-4 overflow-y-auto"
         ref={messageContainerRef}
       >
         {messages.map((message, index) => (
@@ -113,7 +113,7 @@ export default function ChatMessages() {
             ) : (
               <RocketLaunchIcon className="w-5 mr-1 flex-shrink-0 right-0" />
             )}
-            <div className="text-2xl max-w-3xl overflow-auto break-words bg-gray-200 rounded-lg p-2 ">
+            <div className="text-xl max-w-3xl overflow-auto break-words bg-gray-200 rounded-lg p-2 ">
             {parseMessage(message.content)}
             </div>
           </div>

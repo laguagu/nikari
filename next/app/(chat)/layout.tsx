@@ -1,5 +1,5 @@
 import SparklesUnder from "@/components/chat/sparkles-under";
-import { HomeButton } from "@/components/ui/Buttons";
+import { HomeButton } from "@/components/ui/HomeButton";
 import Link from "next/link";
 import React from "react";
 import { TextGenerateEffect } from "@/components/ui/text-generate-effect";
@@ -9,7 +9,7 @@ export default function ChatLayout({
 }: {
   children: React.ReactNode;
 }) {
-  let words = `You're now chatting with a AI powered support agent. Ask us anything!`;
+  let words = `You're now connected to Nikari's AI support!`;
   return (
     <div className="min-h-screen bg-black w-full flex flex-col items-center justify-center overflow-y-hidden overflow-x-hidden rounded-md">
       <h1 className="md:text-5xl text-3xl lg:text-7xl font-bold text-centerrelative z-20 mb-3 text-white mt-4">
