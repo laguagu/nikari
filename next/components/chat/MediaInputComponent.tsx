@@ -26,9 +26,10 @@ export default function MediaInputComponent({
   const webcamRef = useRef<Webcam>(null);
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
-  const [loadingCamera, setLoadingCamera] = useState(true);
+  const [loadingCamera, setLoadingCamera] = useState(false);
   const [cameraError, setCameraError] = useState(null);
   const [isWebcamReady, setIsWebcamReady] = useState(false);
+  const [isCameraActive, setIsCameraActive] = useState(false);
 
   const captureImage = () => {
     const screenshot = webcamRef.current?.getScreenshot();
@@ -68,7 +69,6 @@ export default function MediaInputComponent({
 
   const resetStates = () => {
     setImageURL(null);
-    setLoadingCamera(true);
   };
 
   const videoConstraints = {
@@ -80,12 +80,22 @@ export default function MediaInputComponent({
   const handleCameraStart = () => {
     setLoadingCamera(false);
     setIsWebcamReady(true);
+    setIsCameraActive(true);
   };
 
   const handleCameraError = (error: any) => {
     console.error("Camera error:", error);
     setCameraError(error.message);
     setLoadingCamera(false);
+  };
+
+  const toggleCamera = () => {
+    setIsCameraActive(!isCameraActive);
+    if (!isCameraActive) {
+      setLoadingCamera(true);
+    } else {
+      setLoadingCamera(false);
+    }
   };
 
   return (
@@ -108,8 +118,35 @@ export default function MediaInputComponent({
           </Link>
         </div>
       </div>
-      {loadingCamera && <CameraSkeleton />}
+
+      {loadingCamera && !imageURL && <CameraSkeleton />}
       {!imageURL && (
+        <div className="flex gap-3">
+          <Button onClick={toggleCamera} className="font-semibold">
+            {isCameraActive ? "Turn Off Camera" : "Activate Camera"}
+            <CameraIcon className="w-5 ml-2" />
+          </Button>
+          {!isCameraActive && (
+            <>
+              <input
+                type="file"
+                ref={fileInputRef}
+                style={{ display: "none" }}
+                onChange={handleFileChange}
+                accept="image/*"
+              />
+              <Button
+                onClick={() => fileInputRef.current?.click()}
+                className="font-semibold"
+              >
+                <DocumentPlusIcon className="w-5 mr-1 flex-shrink-0 right-0" />
+                Upload Image
+              </Button>
+            </>
+          )}
+        </div>
+      )}
+      {isCameraActive && !imageURL && (
         <>
           <Webcam
             audio={false}

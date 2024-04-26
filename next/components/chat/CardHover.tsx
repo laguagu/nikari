@@ -13,21 +13,28 @@ export function CardHover() {
 
 export const projects = [
   {
-    title: "Find Care Instructions",
+    title:
+      "Step 1 - Take a picture",
     description:
-      "Help me find care instructions for my furniture based on a photo.",
+      "Capture a clear photo of your furniture that you are seeking care instructions for. Ensure the photo is well-lit and the entire piece of furniture is visible in the shot.",
+    link: "/",
+  },
+  {
+    title: "Step 2 - Review and adjust",
+    description:
+      "Examine the materials identified by AI and make any necessary adjustments: you can add missing materials or remove incorrectly identified ones. Check the boxes for the materials you want to keep on the list.",
+    link: "/",
+  },
+  {
+    title: "Step 3 - Explore care instructions",
+    description:
+      "You can now access the care instructions for the selected materials. Read the instructions carefully to ensure you maintain your furniture in the best possible condition.",
+    link: "/",
+  },
+  {
+    title: "Click here to continue",
+    description:
+      "Click here to start over and analyze another piece of furniture.",
     link: "/care",
-  },
-  {
-    title: "Find a retailer",
-    description:
-      "I want to know where the nearest Nikari furniture Agents, Dealers and Retailer is located.",
-    link: "/location",
-  },
-  {
-    title: "Talk to Nikari AI",
-    description:
-      "None of the above. Proceed to chat with the Nikari AI assistant.",
-    link: "/chatbot",
   },
 ];

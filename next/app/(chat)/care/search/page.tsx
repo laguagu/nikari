@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import { useSearchParams } from "next/navigation";
 import { careInstructions } from "@/lib/hoitoOhjeet";
 import { MaterialCareInstructions } from "@/lib/definition";
@@ -16,9 +16,9 @@ function Page() {
       instructions: careInstructions[key],
     };
   });
-  
+
   return (
-    <div >
+    <div>
       <CareGuides careGuides={careGuides} />
     </div>
   );
