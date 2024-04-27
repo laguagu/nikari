@@ -122,7 +122,7 @@ export default function MediaInputComponent({
       {loadingCamera && !imageURL && <CameraSkeleton />}
       {!imageURL && (
         <div className="flex gap-3">
-          <Button onClick={toggleCamera} className="font-semibold">
+          <Button onClick={toggleCamera} className="font-semibold" variant={"outline"}>
             {isCameraActive ? "Turn Off Camera" : "Activate Camera"}
             <CameraIcon className="w-5 ml-2" />
           </Button>
@@ -136,6 +136,7 @@ export default function MediaInputComponent({
                 accept="image/*"
               />
               <Button
+                variant={"outline"}
                 onClick={() => fileInputRef.current?.click()}
                 className="font-semibold"
               >
@@ -174,6 +175,7 @@ export default function MediaInputComponent({
                   accept="image/*"
                 />
                 <Button
+                  variant={"outline"}
                   onClick={() => fileInputRef.current?.click()}
                   className="font-semibold"
                 >
@@ -197,13 +199,14 @@ export default function MediaInputComponent({
             />
             <div className="space-y-2 mt-2 xs:space-x-0 sm:space-x-3 md:space-x-3 ">
               <Button
+                variant={"outline"}
                 className="font-semibold"
                 onClick={() => sendImageToGPT(imageURL)}
               >
                 <CheckIcon className="w-5 mr-1 flex-shrink-0 right-0" />
                 Accept and Send
               </Button>
-              <Button onClick={resetStates} className="font-semibold">
+              <Button onClick={resetStates} variant={"outline"} className="font-semibold">
                 <CameraIcon className="w-5 mr-1 flex-shrink-0 right-0" />
                 Take New Picture
               </Button>

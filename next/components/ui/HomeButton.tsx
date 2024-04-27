@@ -6,7 +6,7 @@ export function HomeButton() {
   return (
     <div>
       <Link href={"/"}>
-        <Button className="font-semibold">
+        <Button variant={"outline"} className="font-semibold">
           <HomeIcon className="w-5 mr-2 " />
           Home
         </Button>

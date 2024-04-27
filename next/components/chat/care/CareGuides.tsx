@@ -76,8 +76,7 @@ export default function CareGuides({ careGuides }: CareGuidesProps) {
                         Object.entries(careGuide.instructions).map(
                           ([key, instruction], idx) => {
                             const photo = multiPhotosMaterial?.photos[idx];
-                            console.log(idx, "idx", photo, "photo");
-
+                            
                             return (
                               <CarouselItem
                                 key={idx}
