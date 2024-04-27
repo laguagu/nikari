@@ -1,4 +1,4 @@
-import photos, { Photo } from "@/lib/photos";
+import photos, { Photo, } from "@/lib/photos";
 import PhotoCard from "@/components/chat/photos/PhotoCard";
 import BackButton from "@/components/chat/BackButton";
 import { ArrowUturnLeftIcon } from "@heroicons/react/24/outline";

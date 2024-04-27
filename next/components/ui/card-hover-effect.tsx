@@ -18,15 +18,10 @@ export const HoverEffect = ({
   let [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
   return (
-    <div
-      className={cn(
-        "grid grid-cols-1 md:grid-cols-2  lg:grid-cols-2  py-2",
-        className
-      )}
-    >
+    <div className={cn("grid grid-cols-1 lg:grid-cols-2 py-2", className)}>
       {items.map((item, idx) => {
         const isLastItem = idx === items.length - 1;
-        const isFirstItem = idx === 0
+        const isFirstItem = idx === 0;
         return (
           <Link
             href={item?.link}
@@ -55,7 +50,7 @@ export const HoverEffect = ({
               )}
             </AnimatePresence>
             <Card isLastItem={isLastItem} isFirstItem={isFirstItem}>
-              <CardTitle>{item.title}</CardTitle>
+              <CardTitle isLastItem={isLastItem}>{item.title}</CardTitle>
               <CardDescription>{item.description}</CardDescription>
             </Card>
           </Link>
@@ -79,8 +74,8 @@ export const Card = ({
   return (
     <div
       className={cn(
-        "rounded-2xl h-full w-full p-4 overflow-hidden bg-zinc-800 border border-transparent dark:border-white/[0.2] group-hover:border-slate-700 relative z-20 flex justify-center items-center",
-        isLastItem ? "bg-black hover" : "",
+        "rounded-2xl h-full w-full p-4 overflow-hidden bg-zinc-200  bg-opacity-30 border border-transparent dark:border-white/[0.2] group-hover:border-slate-700 relative z-20 flex flex-col md:flex-row justify-center items-center",
+        isLastItem ? "bg-zinc-200 bg-opacity-90" : "",
         className
       )}
     >
@@ -90,8 +85,8 @@ export const Card = ({
           src={"/background/fabric.jpg"}
           height={200}
           width={200}
-          className="aspect-square rounded-xl object-cover shadow-lg items-center justify-center align-middle flex"
-          // style={{ width: '200px', height: '200px' }}
+          className="aspect-square rounded-xl object-cover shadow-lg items-center justify-center align-middle flex flex-row order-last md:order-first lg:ml-4 xl:ml-0"
+          // className="mt-4 sm:mt-0 sm:ml-4 aspect-square rounded-xl object-cover shadow-lg"
         />
       )}
       <div className="relative z-50">
@@ -103,14 +98,22 @@ export const Card = ({
 export const CardTitle = ({
   className,
   children,
+  isLastItem,
 }: {
   className?: string;
   children: React.ReactNode;
+  isLastItem?: boolean;
 }) => {
   return (
-    <h4 className={cn("text-zinc-100 font-bold tracking-wide mt-4", className)}>
+    <h4 className={cn("text-black font-bold tracking-wide mt-4", className)}>
       {children}
     </h4>
+    // Tämä muuttaa Titlen näyttämään nappulalta
+    //   <h4 className={cn("text-black font-bold tracking-wide mt-4", className)}>
+    //   <div className={cn(isLastItem ? "border-2 p-2 bg-zinc-400 text-center rounded-full text-white inline-block" : "")}>
+    //     {children}
+    //   </div>
+    // </h4>
   );
 };
 export const CardDescription = ({
@@ -123,7 +126,7 @@ export const CardDescription = ({
   return (
     <p
       className={cn(
-        "mt-8 text-zinc-400 tracking-wide leading-relaxed text-sm",
+        "mt-8 text-zinc-700 tracking-wide leading-relaxed text-sm",
         className
       )}
     >

@@ -8,7 +8,6 @@ import {
 import { Material, CareGuidesProps } from "@/lib/definition";
 import photos, { materialPhotos } from "@/lib/photos";
 import Image from "next/image";
-import Link from "next/link";
 import {
   Carousel,
   CarouselContent,
@@ -21,29 +20,29 @@ type BackgroundClasses = {
   [key in Material]: string;
 };
 
-const backgroundClasses: BackgroundClasses = {
-  wood: "bg-yellow-100 text-zinc-50",
-  laminate: "bg-gray-200 text-zinc-50",
-  metal: "bg-gray-300",
-  leather: "bg-amber-300 text-zinc-50",
-  plastic: "bg-blue-100",
-  fabric: "bg-gray-100 text-zinc-700",
-  outdoor: "bg-green-100",
-};
+// const backgroundClasses: BackgroundClasses = {
+//   wood: "bg-yellow-100 text-zinc-50",
+//   laminate: "bg-gray-200 text-zinc-50",
+//   metal: "bg-gray-300",
+//   leather: "bg-amber-300 text-zinc-50",
+//   plastic: "bg-blue-100",
+//   fabric: "bg-gray-100 text-zinc-700",
+//   outdoor: "bg-green-100",
+// };
 
-const backgroundImages = {
-  wood: "/background/wood.jpg",
-  laminate: "/background/laminate.jpg",
-  metal: "",
-  leather: "/background/nahkaa.jpg",
-  plastic: "",
-  fabric: "/background/fabric.jpg",
-  outdoor: "",
-};
+// const backgroundImages = {
+//   wood: "/background/wood.jpg",
+//   laminate: "/background/laminate.jpg",
+//   metal: "",
+//   leather: "/background/nahkaa.jpg",
+//   plastic: "",
+//   fabric: "/background/fabric.jpg",
+//   outdoor: "",
+// };
 
 export default function CareGuides({ careGuides }: CareGuidesProps) {
   return (
-    <div>
+    <div className="md:p-4 ">
       <div className=" overflow-y-auto p-4 bg-zinc-50  shadow rounded-lg">
         <p className="text-gray-600 mb-4 text-lg tracking-tight">
           Below are the care instructions based on the materials identified in
@@ -60,10 +59,10 @@ export default function CareGuides({ careGuides }: CareGuidesProps) {
             <Accordion key={index} type="single" collapsible className="mb-4">
               <AccordionItem value={careGuide.material}>
                 <AccordionTrigger
-                  style={{
-                    backgroundImage: `url(${backgroundImages[materialKey]})`,
-                  }}
-                  className={`${backgroundClasses[materialKey]} relative cursor-pointer px-6 py-3 rounded-lg text-lg font-semibold group `}
+                  // style={{
+                  //   backgroundImage: `url(${backgroundImages[materialKey]})`,
+                  // }}
+                  className={`bg-zinc-100 relative cursor-pointer px-6 py-3 rounded-lg text-lg font-semibold group `}
                 >
                   <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-10 rounded-lg transition-all duration-300 ease-in-out"></div>
                   {careGuide.material.charAt(0).toUpperCase() +
@@ -80,25 +79,21 @@ export default function CareGuides({ careGuides }: CareGuidesProps) {
                             return (
                               <CarouselItem
                                 key={idx}
-                                className="p-4 flex flex-col justify-around"
+                                className="flex flex-col justify-around"
                               >
                                 <p className="text-gray-800 md:text-lg text-left tracking-tight border-b">
                                   {instruction}
                                 </p>
                                 {photo && (
                                   <div className="flex flex-col items-center">
-                                    <Link
-                                      href={`/care/search/photos/${photo.id}`}
-                                    >
                                       <Image
-                                        alt=""
+                                        alt="Furniture care instructions"
                                         src={photo.imageSrc}
-                                        height={200}
-                                        width={200}
-                                        className="w-auto rounded-xl mt-4 cursor-pointer shadow-xl object-cover"
-                                        title="Click to view care instructions"
+                                        height={250}
+                                        width={250}
+                                        className="w-auto rounded-xl mt-4 cursor-pointer shadow-md object-cover"
+                                        title="Furniture care instructions"
                                       />
-                                    </Link>
                                   </div>
                                 )}
                               </CarouselItem>

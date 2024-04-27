@@ -13,8 +13,7 @@ export function CardHover() {
 
 export const projects = [
   {
-    title:
-      "Step 1 - Take a picture",
+    title: "Step 1 - Take a picture",
     description:
       "Capture a clear photo of your furniture that you are seeking care instructions for. Ensure the photo is well-lit and the entire piece of furniture is visible in the shot.",
     link: "/",
@@ -34,7 +33,7 @@ export const projects = [
   {
     title: "Click here to continue",
     description:
-      "Click here to start over and analyze another piece of furniture.",
+      "Click here to start identifying the materials of your furniture.",
     link: "/care",
   },
 ];

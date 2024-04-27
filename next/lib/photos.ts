@@ -5,7 +5,7 @@ export type Photo = {
   imageSrc: string;
 };
 
-type MaterialPhotos = {
+export type MaterialPhotos = {
   name: string;
   photos: Photo[];
 };

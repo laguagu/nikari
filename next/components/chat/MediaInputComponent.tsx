@@ -106,23 +106,29 @@ export default function MediaInputComponent({
           need care instructions. Alternatively, you can view all our care
           instructions immediately by clicking the button below.
         </p>
-        <div className="inline-block p-2 border-b-2">
-          <span className="font-normal">
-            Want to view all material care instructions right now?
-          </span>
-          <Link
-            href="/care/search?materials=metal%2Cleather%2Claminate%2Cplastic%2Cfabric%2Coutdoor%2Cwood"
-            className={buttonVariants({ variant: "outline" }) + " ml-2"}
-          >
-            Click here
-          </Link>
+        <div className="inline-block p-2 border-b-2 items-center">
+          <div className="flex items-center">
+            <span className="font-normal text-sm">
+              Want to view all material care instructions right now?
+            </span>
+            <Button variant={"outline"} className="ml-2 font-bold">
+              <PhotoIcon className="w-5 mr-1 flex-shrink-0 right-0" />
+              <Link href="/care/search?materials=metal%2Cleather%2Claminate%2Cplastic%2Cfabric%2Coutdoor%2Cwood">
+                Explore
+              </Link>
+            </Button>
+          </div>
         </div>
       </div>
 
       {loadingCamera && !imageURL && <CameraSkeleton />}
       {!imageURL && (
         <div className="flex gap-3">
-          <Button onClick={toggleCamera} className="font-semibold" variant={"outline"}>
+          <Button
+            onClick={toggleCamera}
+            className="font-semibold"
+            variant={"outline"}
+          >
             {isCameraActive ? "Turn Off Camera" : "Activate Camera"}
             <CameraIcon className="w-5 ml-2" />
           </Button>
@@ -160,7 +166,7 @@ export default function MediaInputComponent({
           />
           <div className="flex gap-3">
             {!loadingCamera && isWebcamReady && (
-              <Button onClick={captureImage} className="font-semibold">
+              <Button onClick={captureImage} className="font-semibold" variant={"outline"}>
                 <CameraIcon className="w-5 mr-1 flex-shrink-0 right-0" />
                 Take Screenshot
               </Button>
@@ -193,6 +199,7 @@ export default function MediaInputComponent({
             <Image
               src={imageURL}
               alt="Esikatselu"
+              className=""
               style={{ width: "100%", height: "auto" }}
               width={1280}
               height={720}
@@ -206,7 +213,11 @@ export default function MediaInputComponent({
                 <CheckIcon className="w-5 mr-1 flex-shrink-0 right-0" />
                 Accept and Send
               </Button>
-              <Button onClick={resetStates} variant={"outline"} className="font-semibold">
+              <Button
+                onClick={resetStates}
+                variant={"outline"}
+                className="font-semibold"
+              >
                 <CameraIcon className="w-5 mr-1 flex-shrink-0 right-0" />
                 Take New Picture
               </Button>
