@@ -100,7 +100,7 @@ export default function MediaInputComponent({
 
   return (
     <div className="flex flex-col items-center justify-center space-y-4 md:mt-4 relative ">
-      <div className="text-center text-lg md:mx-22 flex-col ">
+      <div className="text-center text-lg md:mx-20 flex-col">
         <p className="font-semibold mb-2 tracking-tight ">
         Please take or upload a photo of the furniture piece for which you
   need care instructions. Alternatively, you can view all our care
