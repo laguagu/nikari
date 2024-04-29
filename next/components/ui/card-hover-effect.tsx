@@ -49,7 +49,7 @@ export const HoverEffect = ({
                 />
               )}
             </AnimatePresence>
-            <Card isLastItem={isLastItem} isFirstItem={isFirstItem}>
+            <Card isLastItem={isLastItem} isFirstItem={isFirstItem} index={idx}>
               <CardTitle isLastItem={isLastItem}>{item.title}</CardTitle>
               <CardDescription>{item.description}</CardDescription>
             </Card>
@@ -65,21 +65,23 @@ export const Card = ({
   children,
   isLastItem,
   isFirstItem,
+  index,
 }: {
   className?: string;
   children: React.ReactNode;
   isLastItem: boolean;
   isFirstItem?: boolean;
+  index: number;
 }) => {
   return (
     <div
       className={cn(
-        "rounded-2xl h-full w-full p-4 overflow-hidden bg-zinc-200  bg-opacity-30 border border-transparent dark:border-white/[0.2] group-hover:border-slate-700 relative z-20 flex flex-col md:flex-row justify-center items-center",
-        isLastItem ? "bg-zinc-200 bg-opacity-90" : "",
+        "rounded-2xl h-full w-full p-4 overflow-hidden bg-zinc-300 bg-opacity-30 border border-transparent dark:border-white/[0.2] group-hover:border-slate-700 relative z-20 flex flex-col md:flex-row justify-center items-center",
+        isLastItem ? "bg-zinc-200 bg-opacity-100" : "",
         className
       )}
     >
-      {!isLastItem && (
+      {/* {isLastItem && (
         <Image
           alt=""
           src={"/background/fabric.jpg"}
@@ -88,7 +90,37 @@ export const Card = ({
           className="aspect-square rounded-xl object-cover shadow-lg items-center justify-center align-middle flex flex-row order-last md:order-first lg:ml-4 xl:ml-0"
           // className="mt-4 sm:mt-0 sm:ml-4 aspect-square rounded-xl object-cover shadow-lg"
         />
+      )} */}
+      {isFirstItem && (
+        <Image
+          alt=""
+          src={"/steps/step-1.webp"}
+          height={200}
+          width={200}
+          className="aspect-square rounded-xl object-cover shadow-lg items-center justify-center align-middle flex flex-row order-last md:order-first lg:ml-4 xl:ml-0"
+          // className="mt-4 sm:mt-0 sm:ml-4 aspect-square rounded-xl object-cover shadow-lg"
+        />
       )}
+      {index === 1 && (
+               <Image
+               alt=""
+               src={"/steps/step-2.webp"}
+               height={200}
+               width={200}
+               className="aspect-square rounded-xl object-cover shadow-lg items-center justify-center align-middle flex flex-row order-last md:order-first lg:ml-4 xl:ml-0"
+               // className="mt-4 sm:mt-0 sm:ml-4 aspect-square rounded-xl object-cover shadow-lg"
+             />
+      )}
+      {/* {index === 2 && (
+               <Image
+               alt=""
+               src={"/steps/step-3.png"}
+               height={200}
+               width={200}
+               className="aspect-square rounded-xl object-fill shadow-lg items-center justify-center align-middle flex flex-row order-last md:order-first lg:ml-4 xl:ml-0"
+               // className="mt-4 sm:mt-0 sm:ml-4 aspect-square rounded-xl object-cover shadow-lg"
+             />
+      )} */}
       <div className="relative z-50">
         <div className="p-4">{children}</div>
       </div>

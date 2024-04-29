@@ -89,9 +89,9 @@ export default function CareGuides({ careGuides }: CareGuidesProps) {
                                       <Image
                                         alt="Furniture care instructions"
                                         src={photo.imageSrc}
-                                        height={250}
-                                        width={250}
-                                        className="w-auto rounded-xl mt-4 cursor-pointer shadow-md object-cover"
+                                        height={400}
+                                        width={400}
+                                        className="aspect-[1/1] rounded-xl mt-4 cursor-pointer shadow-md object-cover"
                                         title="Furniture care instructions"
                                       />
                                   </div>
