@@ -18,7 +18,7 @@ export const HoverEffect = ({
   let [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
   return (
-    <div className={cn("grid grid-cols-1 lg:grid-cols-2 py-2", className)}>
+    <div className={cn("grid grid-cols-1 lg:grid-cols-1 xl:grid-cols-2 py-2", className)}>
       {items.map((item, idx) => {
         const isLastItem = idx === items.length - 1;
         const isFirstItem = idx === 0;
