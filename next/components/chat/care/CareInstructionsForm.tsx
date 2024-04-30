@@ -46,12 +46,13 @@ export default function CareInstructionsForm({
 
   // Jos nahka on true näytä lisää uusi form lomake jolla kysytään mikä nahka kyseessä.
   function onSubmit(data: z.infer<typeof FormSchema>) {
+    console.log("data.items", data.items);
     const selecterMaterialParams = data.items.join(",");
     router.push(`/care/search?materials=${selecterMaterialParams}`);
   }
 
-// Jos outdoori on true näytä vain outdoor hoito-ohjeet
-// Vaihad outdoor nimekssi outdoor furniture
+  // Jos outdoori on true näytä vain outdoor hoito-ohjeet
+  // Vaihad outdoor nimekssi outdoor furniture
   return (
     <div className="flex justify-center items-center ">
       <Form {...form}>
@@ -70,39 +71,46 @@ export default function CareInstructionsForm({
                     Add or remove materials as needed.
                   </FormDescription>
                 </div>
-                {materialItems.map((item) => (
-                  <FormField
-                    key={item.id}
-                    control={form.control}
-                    name="items"
-                    render={({ field }) => {
-                      return (
-                        <FormItem
-                          key={item.id}
-                          className="flex flex-row items-start space-x-3 space-y-0"
-                        >
-                          <FormControl>
-                            <Checkbox
-                              checked={field.value?.includes(item.id)}
-                              onCheckedChange={(checked: any) => {
-                                return checked
-                                  ? field.onChange([...field.value, item.id])
-                                  : field.onChange(
-                                      field.value?.filter(
-                                        (value) => value !== item.id
-                                      )
-                                    );
-                              }}
-                            />
-                          </FormControl>
-                          <FormLabel className="text-base font-normal ">
-                            {item.label}
-                          </FormLabel>
-                        </FormItem>
-                      );
-                    }}
-                  />
-                ))}
+                {materialItems.map((item) => {
+                  let label = item.label;
+                  if (label === "Outdoor") {
+                    label = "Outdoor furniture";
+                  }
+
+                  return (
+                    <FormField
+                      key={item.id}
+                      control={form.control}
+                      name="items"
+                      render={({ field }) => {
+                        return (
+                          <FormItem
+                            key={item.id}
+                            className="flex flex-row items-start space-x-3 space-y-0"
+                          >
+                            <FormControl>
+                              <Checkbox
+                                checked={field.value?.includes(item.id)}
+                                onCheckedChange={(checked: any) => {
+                                  return checked
+                                    ? field.onChange([...field.value, item.id])
+                                    : field.onChange(
+                                        field.value?.filter(
+                                          (value) => value !== item.id
+                                        )
+                                      );
+                                }}
+                              />
+                            </FormControl>
+                            <FormLabel className="text-base font-normal ">
+                              {label}
+                            </FormLabel>
+                          </FormItem>
+                        );
+                      }}
+                    />
+                  );
+                })}
                 <FormMessage />
               </FormItem>
             )}
