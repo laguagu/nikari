@@ -199,7 +199,7 @@ export default function MediaInputComponent({
             <Image
               src={imageURL}
               alt="Esikatselu"
-              className=""
+              className="rounded-md"
               style={{ width: "100%", height: "auto" }}
               width={1280}
               height={720}

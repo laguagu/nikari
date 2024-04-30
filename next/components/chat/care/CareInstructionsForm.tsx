@@ -44,7 +44,6 @@ export default function CareInstructionsForm({
     },
   });
 
-  // Muuta server komponentiksi omaan kansioon
   function onSubmit(data: z.infer<typeof FormSchema>) {
     const selecterMaterialParams = data.items.join(",");
     router.push(`/care/search?materials=${selecterMaterialParams}`);
