@@ -102,9 +102,10 @@ export default function MediaInputComponent({
     <div className="flex flex-col items-center justify-center space-y-4 md:mt-4 relative ">
       <div className="text-center text-lg md:mx-20 flex-col">
         <p className="font-semibold mb-2 tracking-tight ">
-        Please take or upload a photo of the furniture piece for which you
-  need care instructions. Alternatively, you can view all our care
-  instructions immediately by clicking the button at the bottom of the screen.
+          Please take or upload a photo of the furniture piece for which you
+          need care instructions. Alternatively, you can view all our care
+          instructions immediately by clicking the button at the bottom of the
+          screen.
         </p>
       </div>
 
@@ -153,7 +154,11 @@ export default function MediaInputComponent({
           />
           <div className="flex gap-3">
             {!loadingCamera && isWebcamReady && (
-              <Button onClick={captureImage} className="font-semibold" variant={"outline"}>
+              <Button
+                onClick={captureImage}
+                className="font-semibold"
+                variant={"outline"}
+              >
                 <CameraIcon className="w-5 mr-1 flex-shrink-0 right-0" />
                 Take Screenshot
               </Button>
