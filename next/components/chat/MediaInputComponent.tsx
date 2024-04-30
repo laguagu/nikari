@@ -101,24 +101,12 @@ export default function MediaInputComponent({
   return (
     <div className="flex flex-col items-center justify-center space-y-4 md:mt-4 relative ">
       <div className="text-center text-lg md:mx-20 flex-col">
-        <p className="font-bold mb-2">
+        <p className="font-semibold mb-2 tracking-tight ">
           Please take or upload a photo of the furniture piece for which you
           need care instructions. Alternatively, you can view all our care
-          instructions immediately by clicking the button below.
+          instructions immediately by clicking the button at the bottom of the
+          screen.
         </p>
-        <div className="inline-block p-2 border-b-2 items-center">
-          <div className="flex items-center">
-            <span className="font-normal text-sm">
-              Want to view all material care instructions right now?
-            </span>
-            <Button variant={"outline"} className="ml-2 font-bold">
-              <PhotoIcon className="w-5 mr-1 flex-shrink-0 right-0" />
-              <Link href="/care/search?materials=metal%2Cleather%2Claminate%2Cplastic%2Cfabric%2Coutdoor%2Cwood">
-                Explore
-              </Link>
-            </Button>
-          </div>
-        </div>
       </div>
 
       {loadingCamera && !imageURL && <CameraSkeleton />}
@@ -166,7 +154,11 @@ export default function MediaInputComponent({
           />
           <div className="flex gap-3">
             {!loadingCamera && isWebcamReady && (
-              <Button onClick={captureImage} className="font-semibold" variant={"outline"}>
+              <Button
+                onClick={captureImage}
+                className="font-semibold"
+                variant={"outline"}
+              >
                 <CameraIcon className="w-5 mr-1 flex-shrink-0 right-0" />
                 Take Screenshot
               </Button>
@@ -235,6 +227,21 @@ export default function MediaInputComponent({
         </div>
       )}
       <canvas ref={canvasRef} style={{ display: "none" }} />
+      <div className="text-center text-base font-light md:mx-20 flex-col">
+        <div className="inline-block p-2 border-b-2 items-center">
+          <div className="flex items-center">
+            <span className="font-normal text-sm">
+              Want to view all material care instructions right now?
+            </span>
+            <Button variant={"outline"} className="ml-2 font-bold">
+              <PhotoIcon className="w-5 mr-1 flex-shrink-0 right-0" />
+              <Link href="/care/search?materials=metal%2Cleather%2Claminate%2Cplastic%2Cfabric%2Coutdoor%2Cwood">
+                Explore
+              </Link>
+            </Button>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
