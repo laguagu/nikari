@@ -114,7 +114,7 @@ export const CardTitle = ({
   isLastItem?: boolean;
 }) => {
   return (
-    <h4 className={cn("text-black font-bold tracking-wide", isLastItem ? "mt-0" : "mt-4", className)}>
+    <h4 className={cn("text-black font-bold tracking-wide", isLastItem ? "mt-0 tracking-tighter sm:tracking-normal" : "mt-4", className)}>
       {children}
     </h4>
     // Tämä muuttaa Titlen näyttämään nappulalta
