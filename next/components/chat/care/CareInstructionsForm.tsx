@@ -46,7 +46,6 @@ export default function CareInstructionsForm({
 
   // Jos nahka on true näytä lisää uusi form lomake jolla kysytään mikä nahka kyseessä.
   function onSubmit(data: z.infer<typeof FormSchema>) {
-    console.log("data.items", data.items);
     const selecterMaterialParams = data.items.join(",");
     router.push(`/care/search?materials=${selecterMaterialParams}`);
   }

@@ -86,16 +86,6 @@ export const Card = ({
         className
       )}
     >
-      {/* {isLastItem && (
-        <Image
-          alt=""
-          src={"/background/fabric.jpg"}
-          height={200}
-          width={200}
-          className="aspect-square rounded-xl object-cover shadow-lg items-center justify-center align-middle flex flex-row order-last md:order-first lg:ml-4 xl:ml-0"
-          // className="mt-4 sm:mt-0 sm:ml-4 aspect-square rounded-xl object-cover shadow-lg"
-        />
-      )} */}
       {isFirstItem && (
         <Image
           alt=""
@@ -103,31 +93,13 @@ export const Card = ({
           height={175}
           width={175}
           className="aspect-square rounded-xl object-cover shadow-lg items-center justify-center align-middle flex flex-row order-last md:order-first lg:ml-4 xl:ml-0"
-          // className="mt-4 sm:mt-0 sm:ml-4 aspect-square rounded-xl object-cover shadow-lg"
         />
       )}
-      {/* {index === 1 && (
-        <Image
-          alt=""
-          src={"/steps/step-2.webp"}
-          height={175}
-          width={175}
-          className="aspect-square rounded-xl object-cover shadow-lg items-center justify-center align-middle flex flex-row order-last md:order-first lg:ml-4 xl:ml-0"
-          // className="mt-4 sm:mt-0 sm:ml-4 aspect-square rounded-xl object-cover shadow-lg"
-        />
-      )} */}
-      {/* {index === 2 && (
-               <Image
-               alt=""
-               src={"/steps/step-3.png"}
-               height={200}
-               width={200}
-               className="aspect-square rounded-xl object-fill shadow-lg items-center justify-center align-middle flex flex-row order-last md:order-first lg:ml-4 xl:ml-0"
-               // className="mt-4 sm:mt-0 sm:ml-4 aspect-square rounded-xl object-cover shadow-lg"
-             />
-      )} */}
       <div className="relative z-50">
-        <div className="p-4">{children}</div>
+        <div className={cn("p-4", isLastItem 
+          ? "flex items-center" : "")}>
+            {children}
+        </div>
       </div>
     </div>
   );
@@ -142,7 +114,7 @@ export const CardTitle = ({
   isLastItem?: boolean;
 }) => {
   return (
-    <h4 className={cn("text-black font-bold tracking-wide mt-4", className)}>
+    <h4 className={cn("text-black font-bold tracking-wide", isLastItem ? "mt-0" : "mt-4", className)}>
       {children}
     </h4>
     // Tämä muuttaa Titlen näyttämään nappulalta
