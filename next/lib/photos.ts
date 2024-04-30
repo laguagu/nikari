@@ -172,7 +172,6 @@ export const materialPhotos: MaterialPhotos[] = [
       },
     ],
   },
-  // ... sama rakenne muille materiaaleille
 ];
 
 const photos: Photo[] = [

@@ -2,7 +2,7 @@ import { MaterialCareInstructions } from "./definition";
 
 export const careInstructions: MaterialCareInstructions = {
   wood: {
-    "1": "Lets start taking care of the wooden parts of the furniture: Avoid placing solid wood furniture in direct sunlight or near heat sources. In dry, cold climates, use a humidifier to maintain room humidity and prevent wood from shrinking and cracking. In humid climates, ensure the room is well-ventilated to prevent swelling of the wood.",
+    "1": "Lets start taking care of the wooden parts of the furniture: Avoid placing solid wood furniture  in direct sunlight or near heat sources. In dry, cold climates, use a humidifier to maintain room humidity and prevent wood from shrinking and cracking. In humid climates, ensure the room is well-ventilated to prevent swelling of the wood.",
     "2": "For natural wood oil mixture finishes, clean spills immediately and wipe the surface clean and dry of any liquids within 15 minutes. Clean the surface with a damp cloth using organic soaps. Avoid using silicone-based or non-natural oils or waxes.",
     "3": "Maintain the wood by cleaning the tabletop with the finest sandy cloth once every two years, then treating it with natural matte wood oil or wax. Allow the oil or wax to impregnate for 15-20 minutes before wiping off the excess and polishing with a clean cloth.",
   },

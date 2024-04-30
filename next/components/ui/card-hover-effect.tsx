@@ -18,7 +18,12 @@ export const HoverEffect = ({
   let [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
   return (
-    <div className={cn("grid grid-cols-1 lg:grid-cols-1 xl:grid-cols-2 py-2", className)}>
+    <div
+      className={cn(
+        "grid grid-cols-1 lg:grid-cols-1 xl:grid-cols-2 py-2",
+        className
+      )}
+    >
       {items.map((item, idx) => {
         const isLastItem = idx === items.length - 1;
         const isFirstItem = idx === 0;
@@ -95,22 +100,22 @@ export const Card = ({
         <Image
           alt=""
           src={"/steps/step-1.webp"}
-          height={200}
-          width={200}
+          height={175}
+          width={175}
           className="aspect-square rounded-xl object-cover shadow-lg items-center justify-center align-middle flex flex-row order-last md:order-first lg:ml-4 xl:ml-0"
           // className="mt-4 sm:mt-0 sm:ml-4 aspect-square rounded-xl object-cover shadow-lg"
         />
       )}
-      {index === 1 && (
-               <Image
-               alt=""
-               src={"/steps/step-2.webp"}
-               height={200}
-               width={200}
-               className="aspect-square rounded-xl object-cover shadow-lg items-center justify-center align-middle flex flex-row order-last md:order-first lg:ml-4 xl:ml-0"
-               // className="mt-4 sm:mt-0 sm:ml-4 aspect-square rounded-xl object-cover shadow-lg"
-             />
-      )}
+      {/* {index === 1 && (
+        <Image
+          alt=""
+          src={"/steps/step-2.webp"}
+          height={175}
+          width={175}
+          className="aspect-square rounded-xl object-cover shadow-lg items-center justify-center align-middle flex flex-row order-last md:order-first lg:ml-4 xl:ml-0"
+          // className="mt-4 sm:mt-0 sm:ml-4 aspect-square rounded-xl object-cover shadow-lg"
+        />
+      )} */}
       {/* {index === 2 && (
                <Image
                alt=""

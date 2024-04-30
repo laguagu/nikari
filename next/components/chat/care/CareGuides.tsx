@@ -45,8 +45,7 @@ export default function CareGuides({ careGuides }: CareGuidesProps) {
     <div className="md:p-4 ">
       <div className=" overflow-y-auto p-4 bg-zinc-50  shadow rounded-lg">
         <p className="text-gray-600 mb-4 text-lg tracking-tight">
-          Below are the care instructions based on the materials identified in
-          your furniture. Click on each material to view the specific care
+           Click on each material to view the specific care
           instructions.
         </p>
         {careGuides.map((careGuide, index) => {

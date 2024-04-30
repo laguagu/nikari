@@ -103,9 +103,7 @@ export default function MediaInputComponent({
       <div className="text-center text-lg md:mx-20 flex-col">
         <p className="font-semibold mb-2 tracking-tight ">
           Please take or upload a photo of the furniture piece for which you
-          need care instructions. Alternatively, you can view all our care
-          instructions immediately by clicking the button at the bottom of the
-          screen.
+          need care instructions.
         </p>
       </div>
 
@@ -227,7 +225,7 @@ export default function MediaInputComponent({
         </div>
       )}
       <canvas ref={canvasRef} style={{ display: "none" }} />
-      <div className="text-center text-base font-light md:mx-20 flex-col">
+      {/* <div className="text-center text-base font-light md:mx-20 flex-col">
         <div className="inline-block p-2 border-b-2 items-center">
           <div className="flex items-center">
             <span className="font-normal text-sm">
@@ -241,7 +239,7 @@ export default function MediaInputComponent({
             </Button>
           </div>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 }

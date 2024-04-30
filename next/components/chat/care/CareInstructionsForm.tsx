@@ -44,11 +44,14 @@ export default function CareInstructionsForm({
     },
   });
 
+  // Jos nahka on true näytä lisää uusi form lomake jolla kysytään mikä nahka kyseessä.
   function onSubmit(data: z.infer<typeof FormSchema>) {
     const selecterMaterialParams = data.items.join(",");
     router.push(`/care/search?materials=${selecterMaterialParams}`);
   }
 
+// Jos outdoori on true näytä vain outdoor hoito-ohjeet
+// Vaihad outdoor nimekssi outdoor furniture
   return (
     <div className="flex justify-center items-center ">
       <Form {...form}>
@@ -64,7 +67,7 @@ export default function CareInstructionsForm({
                 <div className="mb-4">
                   <FormLabel className="text-base">Found Materials</FormLabel>
                   <FormDescription className="flex align-middle text-left text-black">
-                    Add or remove materials that Nikari AI has identified
+                    Add or remove materials as needed.
                   </FormDescription>
                 </div>
                 {materialItems.map((item) => (
