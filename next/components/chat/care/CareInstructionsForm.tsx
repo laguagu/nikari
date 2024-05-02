@@ -91,7 +91,7 @@ export default function CareInstructionsForm({
       .join(",");
     console.log(allSelectedOptions);
 
-    // router.push(`/care/search?materials=${selecterMaterialParams}`);
+    router.push(`/care/search?materials=${allSelectedOptions}`);
   }
 
   const { watch, setValue } = form;
@@ -132,24 +132,26 @@ export default function CareInstructionsForm({
                         return (
                           <FormItem
                             key={item.id}
-                            className="flex flex-row items-start space-x-3 space-y-0"
+                            className="flex flex-row items-center justify-between space-x-3"
                           >
-                            <FormControl>
-                              <Checkbox
-                                checked={field.value?.includes(item.id)}
-                                onCheckedChange={(checked: boolean) => {
-                                  const newValue = checked
-                                    ? [...field.value, item.id]
-                                    : field.value.filter(
-                                        (value: string) => value !== item.id
-                                      );
-                                  setValue("items", newValue);
-                                }}
-                              />
-                            </FormControl>
-                            <FormLabel className="text-base font-normal">
-                              {label}
-                            </FormLabel>
+                            <div className="flex flex-row items-center space-x-3">
+                              <FormControl>
+                                <Checkbox
+                                  checked={field.value?.includes(item.id)}
+                                  onCheckedChange={(checked: boolean) => {
+                                    const newValue = checked
+                                      ? [...field.value, item.id]
+                                      : field.value.filter(
+                                          (value: string) => value !== item.id
+                                        );
+                                    setValue("items", newValue);
+                                  }}
+                                />
+                              </FormControl>
+                              <FormLabel className="text-base font-normal">
+                                {label}
+                              </FormLabel>
+                            </div>
                             {(item.id === "wood" || item.id === "leather") &&
                               items.includes(item.id) && (
                                 <FormField
@@ -166,17 +168,30 @@ export default function CareInstructionsForm({
                                         defaultValue={field.value}
                                       >
                                         <FormControl>
-                                          <SelectTrigger>
+                                          <SelectTrigger className="justify-end ">
                                             <SelectValue placeholder="Select an option" />
                                           </SelectTrigger>
                                         </FormControl>
                                         <SelectContent>
-                                        <SelectItem value={item.id === "wood" ? "woodOption1" : "leatherOption1"}>
-                                            Option 1
-                                          </SelectItem>
-                                          <SelectItem value={item.id === "wood" ? "woodOption2" : "leatherOption2"}>
-                                            Option 2
-                                          </SelectItem>
+                                          {item.id === "wood" ? (
+                                            <>
+                                              <SelectItem value="wood">
+                                                Wood
+                                              </SelectItem>
+                                              <SelectItem value="specialWood">
+                                                Special Wood
+                                              </SelectItem>
+                                            </>
+                                          ) : (
+                                            <>
+                                              <SelectItem value="vegetableTannedLeather">
+                                                Vegetable Tanned Leather
+                                              </SelectItem>
+                                              <SelectItem value="leather">
+                                                Elmo Leather
+                                              </SelectItem>
+                                            </>
+                                          )}
                                         </SelectContent>
                                       </Select>
                                       {fieldState.error && (

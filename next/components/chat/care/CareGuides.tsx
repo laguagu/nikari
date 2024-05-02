@@ -24,6 +24,8 @@ export default function CareGuides({ careGuides }: CareGuidesProps) {
           Click on each material to view the specific care instructions.
         </p>
         {careGuides.map((careGuide, index) => {
+          console.log(careGuide.material)
+          
           const materialKey = careGuide.material;
           const multiPhotosMaterial = materialPhotos.find(
             (photo) => photo.name === materialKey

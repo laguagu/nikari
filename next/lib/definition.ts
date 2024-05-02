@@ -1,11 +1,13 @@
 export type Material =
   | "wood"
+  | "specialWood"
   | "laminate"
   | "metal"
   | "leather"
   | "plastic"
   | "fabric"
-  | "outdoor";
+  | "outdoor"
+  | "vegetableTannedLeather"
 
 export type MaterialCareInstructions = {
   [K in Material]?: {
