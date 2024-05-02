@@ -16,7 +16,6 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 
-
 export default function CareGuides({ careGuides }: CareGuidesProps) {
   return (
     <div className="md:p-4 ">
@@ -29,7 +28,10 @@ export default function CareGuides({ careGuides }: CareGuidesProps) {
           const multiPhotosMaterial = materialPhotos.find(
             (photo) => photo.name === materialKey
           );
-          let materialDisplay = careGuide.material === 'outdoor' ? 'outdoor furniture' : careGuide.material;
+          let materialDisplay =
+            careGuide.material === "outdoor"
+              ? "outdoor furniture"
+              : careGuide.material;
           return (
             <Accordion key={index} type="single" collapsible className="mb-4">
               <AccordionItem value={careGuide.material}>
@@ -37,7 +39,8 @@ export default function CareGuides({ careGuides }: CareGuidesProps) {
                   className={`bg-zinc-100 relative cursor-pointer px-6 py-3 rounded-lg text-lg font-semibold group `}
                 >
                   <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-10 rounded-lg transition-all duration-300 ease-in-out"></div>
-                  {materialDisplay.charAt(0).toUpperCase() + materialDisplay.slice(1)}
+                  {materialDisplay.charAt(0).toUpperCase() +
+                    materialDisplay.slice(1)}
                 </AccordionTrigger>
                 <AccordionContent className="px-6 py-4 rounded-lg bg-zinc-100 bg-opacity-50 my-2 shadow-lg hover:shadow-xl transition-shadow duration-200">
                   <Carousel>
@@ -51,9 +54,6 @@ export default function CareGuides({ careGuides }: CareGuidesProps) {
                                 key={idx}
                                 className="flex flex-col justify-around"
                               >
-                                <p className="text-gray-800 md:text-lg text-left tracking-tight border-b">
-                                  {instruction}
-                                </p>
                                 {photo && (
                                   <div className="flex flex-col items-center">
                                     <Image
@@ -61,11 +61,14 @@ export default function CareGuides({ careGuides }: CareGuidesProps) {
                                       src={photo.imageSrc}
                                       height={400}
                                       width={400}
-                                      className="aspect-[1/1] rounded-xl mt-4 cursor-pointer shadow-md object-cover"
+                                      className="aspect-[1/1] rounded-xl mb-4 cursor-pointer shadow-md object-cover"
                                       title="Furniture care instructions"
                                     />
                                   </div>
                                 )}
+                                <p className="text-gray-800 md:text-lg text-left tracking-tight border-b">
+                                  {instruction}
+                                </p>
                               </CarouselItem>
                             );
                           }
