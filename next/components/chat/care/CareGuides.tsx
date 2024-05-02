@@ -32,6 +32,7 @@ export default function CareGuides({ careGuides }: CareGuidesProps) {
             careGuide.material === "outdoor"
               ? "outdoor furniture"
               : careGuide.material;
+              
           return (
             <Accordion key={index} type="single" collapsible className="mb-4">
               <AccordionItem value={careGuide.material}>
