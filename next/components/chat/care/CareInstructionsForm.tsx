@@ -57,7 +57,6 @@ export default function CareInstructionsForm({
     },
   });
 
-  const items = form.watch("items");
   // Jos nahka on true näytä lisää uusi form lomake jolla kysytään mikä nahka kyseessä.
   function onSubmit(data: z.infer<typeof FormSchema>) {
     const selecterMaterialParams = data.items.join(",");
@@ -65,7 +64,7 @@ export default function CareInstructionsForm({
     const selectedLeatherOption = data.leatherOption; // Lisää tämä rivi
     console.log(selectedWoodOption); // Lisää tämä rivi
     console.log(selectedLeatherOption); // Lisää tämä rivi
-    console.log(selecterMaterialParams); // Lisää tämä rivi
+    console.log(selecterMaterialParams);
 
     // router.push(`/care/search?materials=${selecterMaterialParams}`);
   }
@@ -113,9 +112,7 @@ export default function CareInstructionsForm({
                                 onCheckedChange={(checked: boolean) => {
                                   const newValue = checked
                                     ? [...field.value, item.id]
-                                    : field.value.filter(
-                                        (value: string) => value !== item.id
-                                      );
+                                    : field.value.filter((value: string) => value !== item.id);
                                   field.onChange(newValue);
                                 }}
                               />
@@ -138,14 +135,14 @@ export default function CareInstructionsForm({
                                   >
                                     <FormControl>
                                       <SelectTrigger>
-                                        <SelectValue placeholder="Select Type" />
+                                        <SelectValue placeholder="Select an option" />
                                       </SelectTrigger>
                                     </FormControl>
                                     <SelectContent>
-                                      <SelectItem value="Type1">
+                                      <SelectItem value="option1">
                                         Option 1
                                       </SelectItem>
-                                      <SelectItem value="Type2">
+                                      <SelectItem value="option2">
                                         Option 2
                                       </SelectItem>
                                     </SelectContent>
