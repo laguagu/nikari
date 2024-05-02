@@ -110,16 +110,16 @@ export default function MediaInputComponent({
       {loadingCamera && !imageURL && <CameraSkeleton />}
       {!imageURL && (
         <div className="flex gap-3">
-          <Button
-            onClick={toggleCamera}
-            className="font-semibold"
-            variant={"outline"}
-          >
-            {isCameraActive ? "Turn Off Camera" : "Activate Camera"}
-            <CameraIcon className="w-5 ml-2" />
-          </Button>
           {!isCameraActive && (
             <>
+              <Button
+                onClick={toggleCamera}
+                className="font-semibold"
+                variant={"outline"}
+              >
+                Activate Camera
+                <CameraIcon className="w-5 ml-2" />
+              </Button>
               <input
                 type="file"
                 ref={fileInputRef}

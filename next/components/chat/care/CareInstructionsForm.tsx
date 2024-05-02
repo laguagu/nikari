@@ -15,16 +15,27 @@ import {
 } from "@/components/ui/form";
 import { CareInstructionsFormProps } from "@/lib/definition";
 import { useRouter } from "next/navigation";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import { useState } from "react";
 
 const FormSchema = z.object({
   items: z.array(z.string()).refine((value) => value.some((item) => item), {
     message: "You have to select at least one item.",
   }),
+  woodOption: z.string().optional(), // Lisää tämä rivi
+  leatherOption: z.string().optional(), // Lisää tämä rivi
 });
 
 export default function CareInstructionsForm({
   materials,
 }: CareInstructionsFormProps) {
+  const [selectValue, setSelectValue] = useState<string>("");
   const router = useRouter();
   const materialItems = materials
     ? Object.entries(materials).map(([key, value]) => ({
@@ -41,13 +52,22 @@ export default function CareInstructionsForm({
     resolver: zodResolver(FormSchema),
     defaultValues: {
       items: defaultSelectedMaterials,
+      woodOption: undefined,
+      leatherOption: undefined,
     },
   });
 
+  const items = form.watch("items");
   // Jos nahka on true näytä lisää uusi form lomake jolla kysytään mikä nahka kyseessä.
   function onSubmit(data: z.infer<typeof FormSchema>) {
     const selecterMaterialParams = data.items.join(",");
-    router.push(`/care/search?materials=${selecterMaterialParams}`);
+    const selectedWoodOption = data.woodOption; // Lisää tämä rivi
+    const selectedLeatherOption = data.leatherOption; // Lisää tämä rivi
+    console.log(selectedWoodOption); // Lisää tämä rivi
+    console.log(selectedLeatherOption); // Lisää tämä rivi
+    console.log(selecterMaterialParams); // Lisää tämä rivi
+
+    // router.push(`/care/search?materials=${selecterMaterialParams}`);
   }
 
   // Jos outdoori on true näytä vain outdoor hoito-ohjeet
@@ -90,20 +110,49 @@ export default function CareInstructionsForm({
                             <FormControl>
                               <Checkbox
                                 checked={field.value?.includes(item.id)}
-                                onCheckedChange={(checked: any) => {
-                                  return checked
-                                    ? field.onChange([...field.value, item.id])
-                                    : field.onChange(
-                                        field.value?.filter(
-                                          (value) => value !== item.id
-                                        )
+                                onCheckedChange={(checked: boolean) => {
+                                  const newValue = checked
+                                    ? [...field.value, item.id]
+                                    : field.value.filter(
+                                        (value: string) => value !== item.id
                                       );
+                                  field.onChange(newValue);
                                 }}
                               />
                             </FormControl>
-                            <FormLabel className="text-base font-normal ">
+                            <FormLabel className="text-base font-normal">
                               {label}
                             </FormLabel>
+                            {(item.id === "wood" || item.id === "leather") && (
+                              <FormField
+                                control={form.control}
+                                name={
+                                  item.id === "wood"
+                                    ? "woodOption"
+                                    : "leatherOption"
+                                }
+                                render={({ field }) => (
+                                  <Select
+                                    onValueChange={field.onChange}
+                                    defaultValue={field.value}
+                                  >
+                                    <FormControl>
+                                      <SelectTrigger>
+                                        <SelectValue placeholder="Select Type" />
+                                      </SelectTrigger>
+                                    </FormControl>
+                                    <SelectContent>
+                                      <SelectItem value="Type1">
+                                        Option 1
+                                      </SelectItem>
+                                      <SelectItem value="Type2">
+                                        Option 2
+                                      </SelectItem>
+                                    </SelectContent>
+                                  </Select>
+                                )}
+                              />
+                            )}
                           </FormItem>
                         );
                       }}
