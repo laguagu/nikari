@@ -1,6 +1,6 @@
 export type Material =
   | "wood"
-  | "specialWood"
+  | "lacqueredWood"
   | "laminate"
   | "metal"
   | "leather"
@@ -14,12 +14,13 @@ export type MaterialCareInstructions = {
     "1": string;
     "2": string;
     "3": string;
+    "4"?: string;
   };
 };
 
 export type MaterialInstructions = {
     material: Material;
-    instructions: { "1": string; "2": string; "3": string } | undefined;
+    instructions: { "1": string; "2": string; "3": string; "4"?: string } | undefined;
   };
   
 export type CareInstructionsFormProps = {

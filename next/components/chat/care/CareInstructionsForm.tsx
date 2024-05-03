@@ -23,6 +23,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { useState } from "react";
+import { toast } from "sonner"
 
 const FormSchema = z
   .object({
@@ -52,7 +53,6 @@ const FormSchema = z
 export default function CareInstructionsForm({
   materials,
 }: CareInstructionsFormProps) {
-  const [selectValue, setSelectValue] = useState<string>("");
   const router = useRouter();
   const materialItems = materials
     ? Object.entries(materials).map(([key, value]) => ({
@@ -100,11 +100,11 @@ export default function CareInstructionsForm({
   // Jos outdoori on true näytä vain outdoor hoito-ohjeet
   // Vaihad outdoor nimekssi outdoor furniture
   return (
-    <div className="flex justify-center items-center ">
+    <div className="flex justify-center items-center">
       <Form {...form}>
         <form
           onSubmit={form.handleSubmit(onSubmit)}
-          className="space-y-8 align-middle p-4 rounded-lg border-2 shadow-xl bg-zinc-50"
+          className="space-y-8 align-middle p-4 rounded-lg border-2 shadow-xl bg-zinc-50 min-w-[325px] sm:min-w-[375px]"
         >
           <FormField
             control={form.control}
@@ -168,18 +168,18 @@ export default function CareInstructionsForm({
                                         defaultValue={field.value}
                                       >
                                         <FormControl>
-                                          <SelectTrigger className="justify-end ">
-                                            <SelectValue placeholder="Select an option" />
+                                          <SelectTrigger className="justify-end">
+                                            <SelectValue placeholder="Select material type" />
                                           </SelectTrigger>
                                         </FormControl>
                                         <SelectContent>
                                           {item.id === "wood" ? (
                                             <>
                                               <SelectItem value="wood">
-                                                Wood
+                                                Unlacquered Wood
                                               </SelectItem>
-                                              <SelectItem value="specialWood">
-                                                Special Wood
+                                              <SelectItem value="lacqueredWood">
+                                                Lacquered Wood
                                               </SelectItem>
                                             </>
                                           ) : (
@@ -188,7 +188,7 @@ export default function CareInstructionsForm({
                                                 Vegetable Tanned Leather
                                               </SelectItem>
                                               <SelectItem value="leather">
-                                                Elmo Leather
+                                                Normal Leather
                                               </SelectItem>
                                             </>
                                           )}
@@ -215,9 +215,24 @@ export default function CareInstructionsForm({
               </FormItem>
             )}
           />
+
           <Button type="submit">Submit</Button>
         </form>
       </Form>
+      {/* <Button
+      variant="outline"
+      onClick={() =>
+        toast("Event has been created", {
+          description: "Sunday, December 03, 2023 at 9:00 AM",
+          action: {
+            label: "Undo",
+            onClick: () => console.log("Undo"),
+          },
+        })
+      }
+    >
+      Show Toast
+    </Button> */}
     </div>
   );
 }

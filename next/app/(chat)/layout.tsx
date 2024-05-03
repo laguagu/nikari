@@ -1,7 +1,7 @@
 import { HomeButton } from "@/components/ui/HomeButton";
 import Link from "next/link";
 import React from "react";
-
+import { Toaster } from "@/components/ui/sonner"
 export default function ChatLayout({
   children,
 }: {
@@ -20,6 +20,7 @@ export default function ChatLayout({
           <div className="border-b-2"></div>
         </div>
         {children}
+        <Toaster />
       </div>
     </div>
   );

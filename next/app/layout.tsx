@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { montserrat } from "./fonts";
 import "./globals.css";
-
 export const metadata: Metadata = {
   title: "Kaluste Assari",
   description:

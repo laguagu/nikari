@@ -32,7 +32,7 @@ export async function POST(req: Request, res: Response) {
           content: [
             {
               type: "text",
-              text: "Analyze the image provided. If the image contains furniture, identify the materials present and specify whether each material is present as true or false. Use the following JSON format for your response: { wood: false, metal: false, leather: false, laminate: false, plastic: false, fabric: false, outdoor: false }. If no furniture is visible in the image, return the JSON object with all values set to false.",
+              text: "Analyze the image provided. If the image contains furniture, identify the materials present and specify whether each material is present as true or false. Use the following JSON format for your response: { wood: false, leather: false, metal: false, laminate: false, plastic: false, fabric: false, outdoor: false }. If no furniture is visible in the image, return the JSON object with all values set to false.",
             },
             {
               type: "image_url",

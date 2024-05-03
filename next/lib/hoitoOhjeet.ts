@@ -6,10 +6,11 @@ export const careInstructions: MaterialCareInstructions = {
     "2": "For natural wood oil mixture finishes, clean spills immediately and wipe the surface clean and dry of any liquids within 15 minutes. Clean the surface with a damp cloth using organic soaps. Avoid using silicone-based or non-natural oils or waxes.",
     "3": "Maintain the wood by cleaning the tabletop with the finest sandy cloth once every two years, then treating it with natural matte wood oil or wax. Allow the oil or wax to impregnate for 15-20 minutes before wiping off the excess and polishing with a clean cloth.",
   },
-  specialWood: {
+  lacqueredWood: {
     "1": "Lets start taking care of the wooden parts of the furniture: Avoid placing solid wood furniture  in direct sunlight or near heat sources. In dry, cold climates, use a humidifier to maintain room humidity and prevent wood from shrinking and cracking. In humid climates, ensure the room is well-ventilated to prevent swelling of the wood.",
     "2": "For natural wood oil mixture finishes, clean spills immediately and wipe the surface clean and dry of any liquids within 15 minutes. Clean the surface with a damp cloth using organic soaps. Avoid using silicone-based or non-natural oils or waxes.",
     "3": "Maintain the wood by cleaning the tabletop with the finest sandy cloth once every two years, then treating it with natural matte wood oil or wax. Allow the oil or wax to impregnate for 15-20 minutes before wiping off the excess and polishing with a clean cloth.",
+    "4": "When some spilling or staining occurs, it is recommended to wipe it clean and dry quickly with a damp cloth, using organic soaps. In case the water - based lacquer surface is damaged, it should be sanded and the lacquer treatment redone.",
   },
   laminate: {
     "1": "Lets start taking care of the laminate parts of the furniture: Clean regularly with a damp cloth and warm water or mild detergent. This material does not require special maintenance, and most household cleaning products or disinfectants are safe to use.",
@@ -26,6 +27,11 @@ export const careInstructions: MaterialCareInstructions = {
     "2": "Avoid exposing leather to direct sunlight or heat sources, which can cause drying and fading. Keep the leather supple by using a leather conditioner every 6-12 months.",
     "3": "Immediately blot spills with a clean, absorbent cloth. Do not rub. For tougher stains, consult a professional leather cleaner.",
   },
+  vegetableTannedLeather: {
+    "1": "Lets start taking care of the of the vegetable tanned leather: Anytime that your leather is stained or when it has dried out after being wet repeat step 1 and 2. Over time you will develop your own “hand feel” for when cleaning or care is needed.",
+    "2": "Remove any dirt or stains with a clean natural sponge or soft cloth before applying any oils or conditioners Varieties of leather leaning products are available and can be divided into two groups distinguished by their active ingredients: ⚪Surfectants that clean the surface of the leather ⚪Leather soaps that deep clean Try both types of cleaners to find your preference",
+    "3": "After cleaning, it is important to apply something that will nourish the leather, protect it and help it to retain moisture. Use a product that contains a natural wax. The wax will protect the leather in the same way that wax protects the paint of a car.",
+  },
   plastic: {
     "1": "Lets start taking care of the plastic parts of the furniture: Clean using a soft cloth or sponge with mild soap and lukewarm water. Avoid abrasive cleaners and scrubbers that can scratch the surface.",
     "2": "Rinse with clean water and dry thoroughly to prevent water spots and streaks.",
@@ -37,11 +43,6 @@ export const careInstructions: MaterialCareInstructions = {
     "3": "Rotate cushions and pillows regularly to ensure even wear. Avoid placing fabric furniture in direct sunlight to prevent fading.",
   },
   outdoor: {
-    "1": "Lets start taking care of the of the outdoor furniture: After exposure to rain, promptly wipe the furniture clean and dry to prevent the wood from becoming wet and to minimize the graying process. Use a soft cloth or sponge to gently remove water and prevent the formation of odd spots and dots as the wood begins to gray naturally over time.",
-    "2": "Apply OsmoColor UV Protection Oil annually at the end of the summer if the furniture stays outside, following the product's instructions meticulously. Start by thoroughly cleaning the furniture to remove all dirt and ensure the wood is dry before applying the oil to protect the wood and maintain its original coloring as long as possible.",
-    "3": "Be mindful of the furniture's exposure to iron particles, especially with oak wood, which is sensitive to iron oxide leading to dark spots or areas when mixed with water. Regularly inspect and clean the furniture to prevent the buildup of iron particles. Move the furniture indoors before the rainy season to prevent water-related damage and the acceleration of the graying process.",
-  },
-  vegetableTannedLeather: {
     "1": "Lets start taking care of the of the outdoor furniture: After exposure to rain, promptly wipe the furniture clean and dry to prevent the wood from becoming wet and to minimize the graying process. Use a soft cloth or sponge to gently remove water and prevent the formation of odd spots and dots as the wood begins to gray naturally over time.",
     "2": "Apply OsmoColor UV Protection Oil annually at the end of the summer if the furniture stays outside, following the product's instructions meticulously. Start by thoroughly cleaning the furniture to remove all dirt and ensure the wood is dry before applying the oil to protect the wood and maintain its original coloring as long as possible.",
     "3": "Be mindful of the furniture's exposure to iron particles, especially with oak wood, which is sensitive to iron oxide leading to dark spots or areas when mixed with water. Regularly inspect and clean the furniture to prevent the buildup of iron particles. Move the furniture indoors before the rainy season to prevent water-related damage and the acceleration of the graying process.",

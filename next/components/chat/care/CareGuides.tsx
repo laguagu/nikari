@@ -16,6 +16,16 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 
+function formatMaterialName(name: string): string {
+  // Muuntaa camelCase-muotoisen merkkijonon sanoiksi
+  const words = name.replace(/([a-z])([A-Z])/g, '$1 $2');
+
+  // Muuntaa jokaisen sanan ensimmäisen kirjaimen isoksi
+  const titleCase = words.replace(/\b(\w)/g, (char) => char.toUpperCase());
+
+  return titleCase;
+}
+
 export default function CareGuides({ careGuides }: CareGuidesProps) {
   return (
     <div className="md:p-4 ">
@@ -23,9 +33,7 @@ export default function CareGuides({ careGuides }: CareGuidesProps) {
         <p className="text-gray-600 mb-4 text-lg tracking-tight">
           Click on each material to view the specific care instructions.
         </p>
-        {careGuides.map((careGuide, index) => {
-          console.log(careGuide.material)
-          
+        {careGuides.map((careGuide, index) => {        
           const materialKey = careGuide.material;
           const multiPhotosMaterial = materialPhotos.find(
             (photo) => photo.name === materialKey
@@ -42,8 +50,7 @@ export default function CareGuides({ careGuides }: CareGuidesProps) {
                   className={`bg-zinc-100 relative cursor-pointer px-6 py-3 rounded-lg text-lg font-semibold group `}
                 >
                   <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-10 rounded-lg transition-all duration-300 ease-in-out"></div>
-                  {materialDisplay.charAt(0).toUpperCase() +
-                    materialDisplay.slice(1)}
+                  {formatMaterialName(materialDisplay)}
                 </AccordionTrigger>
                 <AccordionContent className="px-6 py-4 rounded-lg bg-zinc-100 bg-opacity-50 my-2 shadow-lg hover:shadow-xl transition-shadow duration-200">
                   <Carousel>
