@@ -143,17 +143,12 @@ export default function CareInstructionsForm({
                                       : field.value.filter(
                                           (value: string) => value !== item.id
                                         );
-                                        console.log(item.id, checked);
-                                        
                                     setValue("items", newValue);
-
-                                    // Tarkista onko 'Outdoor furniture' valittu ja näytä toast-viesti
-                                    if (
-                                      item.id === "outdoor" &&
-                                      checked
-                                    ) {
+                                    
+                                    if (item.id === "outdoor" && checked) {
                                       toast("Outdoor Furniture Selected", {
-                                        description: "Please note that only specific care instructions apply to Outdoor Furniture. Do not apply other selected care instructions.",
+                                        description:
+                                          "Please note that only specific care instructions apply to Outdoor Furniture. Do not apply other selected care instructions.",
                                         duration: 10000,
                                         action: {
                                           label: "Undo",
