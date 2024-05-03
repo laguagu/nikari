@@ -22,8 +22,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { useState } from "react";
-import { toast } from "sonner"
+import { toast } from "sonner";
 
 const FormSchema = z
   .object({
@@ -104,7 +103,7 @@ export default function CareInstructionsForm({
       <Form {...form}>
         <form
           onSubmit={form.handleSubmit(onSubmit)}
-          className="space-y-8 align-middle p-4 rounded-lg border-2 shadow-xl bg-zinc-50 min-w-[325px] sm:min-w-[375px]"
+          className="space-y-8 align-middle p-4 rounded-lg border-2 shadow-xl bg-zinc-50 min-w-[339px] sm:min-w-[375px]"
         >
           <FormField
             control={form.control}
@@ -144,7 +143,24 @@ export default function CareInstructionsForm({
                                       : field.value.filter(
                                           (value: string) => value !== item.id
                                         );
+                                        console.log(item.id, checked);
+                                        
                                     setValue("items", newValue);
+
+                                    // Tarkista onko 'Outdoor furniture' valittu ja näytä toast-viesti
+                                    if (
+                                      item.id === "outdoor" &&
+                                      checked
+                                    ) {
+                                      toast("Outdoor Furniture Selected", {
+                                        description: "Please note that only specific care instructions apply to Outdoor Furniture. Do not apply other selected care instructions.",
+                                        duration: 10000,
+                                        action: {
+                                          label: "Undo",
+                                          onClick: () => console.log("Undo"),
+                                        },
+                                      });
+                                    }
                                   }}
                                 />
                               </FormControl>
@@ -219,20 +235,6 @@ export default function CareInstructionsForm({
           <Button type="submit">Submit</Button>
         </form>
       </Form>
-      {/* <Button
-      variant="outline"
-      onClick={() =>
-        toast("Event has been created", {
-          description: "Sunday, December 03, 2023 at 9:00 AM",
-          action: {
-            label: "Undo",
-            onClick: () => console.log("Undo"),
-          },
-        })
-      }
-    >
-      Show Toast
-    </Button> */}
     </div>
   );
 }
