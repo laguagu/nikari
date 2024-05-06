@@ -8,6 +8,7 @@ export type Material =
   | "fabric"
   | "outdoor"
   | "vegetableTannedLeather"
+  | "aniline"
 
 export type MaterialCareInstructions = {
   [K in Material]?: {

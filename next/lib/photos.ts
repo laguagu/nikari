@@ -208,7 +208,7 @@ export const materialPhotos: MaterialPhotos[] = [
         id: "1",
         name: "outdoor",
         href: "outdoor",
-        imageSrc: "/care-instructions/wood.jpg",
+        imageSrc: "/care-instructions/outdoor.jpg",
       },
       {
         id: "2",

@@ -103,7 +103,7 @@ export default function CareInstructionsForm({
       <Form {...form}>
         <form
           onSubmit={form.handleSubmit(onSubmit)}
-          className="space-y-8 align-middle p-4 rounded-lg border-2 shadow-xl bg-zinc-50 min-w-[339px] sm:min-w-[375px]"
+          className="space-y-8 align-middle p-4 mb-2 mt-1 rounded-lg border-2 shadow-xl bg-zinc-50 min-w-[339px] sm:min-w-[375px]"
         >
           <FormField
             control={form.control}

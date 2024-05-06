@@ -29,8 +29,13 @@ export const careInstructions: MaterialCareInstructions = {
   },
   vegetableTannedLeather: {
     "1": "Lets start taking care of the of the vegetable tanned leather: Anytime that your leather is stained or when it has dried out after being wet repeat step 1 and 2. Over time you will develop your own “hand feel” for when cleaning or care is needed.",
-    "2": "Remove any dirt or stains with a clean natural sponge or soft cloth before applying any oils or conditioners Varieties of leather leaning products are available and can be divided into two groups distinguished by their active ingredients: ⚪Surfectants that clean the surface of the leather ⚪Leather soaps that deep clean Try both types of cleaners to find your preference",
+    "2": "Remove any dirt or stains with a clean natural sponge or soft cloth before applying any oils or conditioners Varieties of leather leaning products are available and can be divided into two groups distinguished by their active ingredients: Surfectants that clean the surface of the leather Leather soaps that deep clean Try both types of cleaners to find your preference",
     "3": "After cleaning, it is important to apply something that will nourish the leather, protect it and help it to retain moisture. Use a product that contains a natural wax. The wax will protect the leather in the same way that wax protects the paint of a car.",
+  },
+  aniline: {
+    "1": "Lets start taking care of the of the aniline leather: Leather Soft Cleaner is a gentle cleaning fluid for leather. Shake the bottle well. Wet the sponge and squeeze out foam. Clean the entire part/cushion with light circular motions out to the nearest seam to avoid water rings when it dries. Do not rub! Dry with a clean cloth. Use 6 to 12 times a year or as needed",
+    "2": "In case of any stains, start by dabbing these. Do not rub! Then keep the leather wet out to the nearest seam for approx. 6 hours by spraying water over the leather. This is done in order for stains and unevenness to dissolve and fade out. Allow to dry",
+    "3": "Then treat the leather with Leather Protection Cream/Premium to protect against stains, improve wear resistance and keep the leather soft and smooth. Use 2 to 4 times a year or as needed. Note! Always test on a small and if possible hidden area for possible colour leakage prior to any treatment.",
   },
   plastic: {
     "1": "Lets start taking care of the plastic parts of the furniture: Clean using a soft cloth or sponge with mild soap and lukewarm water. Avoid abrasive cleaners and scrubbers that can scratch the surface.",
