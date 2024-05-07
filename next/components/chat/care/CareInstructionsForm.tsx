@@ -144,7 +144,7 @@ export default function CareInstructionsForm({
                                           (value: string) => value !== item.id
                                         );
                                     setValue("items", newValue);
-                                    
+
                                     if (item.id === "outdoor" && checked) {
                                       toast("Outdoor Furniture Selected", {
                                         description:
@@ -187,19 +187,19 @@ export default function CareInstructionsForm({
                                           {item.id === "wood" ? (
                                             <>
                                               <SelectItem value="wood">
-                                                Unlacquered Wood
+                                                Oiled
                                               </SelectItem>
                                               <SelectItem value="lacqueredWood">
-                                                Lacquered Wood
+                                                Lacquered
                                               </SelectItem>
                                             </>
                                           ) : (
                                             <>
-                                              <SelectItem value="vegetableTannedLeather">
-                                                Vegetable Tanned Leather
-                                              </SelectItem>
                                               <SelectItem value="leather">
-                                                Normal Leather
+                                                Normal
+                                              </SelectItem>
+                                              <SelectItem value="vegetableTannedLeather">
+                                                Vegetable Tanned
                                               </SelectItem>
                                             </>
                                           )}

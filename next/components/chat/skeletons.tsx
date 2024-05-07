@@ -18,7 +18,7 @@ export function FormSkeleton() {
   return (
     <div className="flex flex-col items-center justify-center">
       <div className="flex flex-col space-y-3">
-        <Skeleton className="h-40 w-[360px] sm:h-52 md:h-64 lg:h-72 rounded-xl bg-gray-300 shadow-md" />
+        <Skeleton className="h-80 w-[339px] sm:min-w-[375px] rounded-xl bg-gray-300 shadow-md" />
         <div className="item-c">
           <span className="text-2xl font-semibold text-center flex items-center justify-center gap-3">
             Identifying materials

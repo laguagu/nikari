@@ -47,7 +47,7 @@ export default function Page() {
           imageURL={imageURL}
         />
       )}
-      {isDetectingMaterials && (
+      {!isDetectingMaterials && (
         <div className="flex justify-center">
           <FormSkeleton />
         </div>
