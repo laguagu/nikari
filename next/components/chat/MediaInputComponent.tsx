@@ -100,14 +100,14 @@ export default function MediaInputComponent({
   };
 
   return (
-    <div className="flex flex-col items-center justify-center space-y-4 md:mt-4 relative ">
+    <div className="flex flex-col items-center justify-center space-y-4 md:my-6 my-3 relative ">
       {/* <div className="text-center text-lg md:mx-20 flex-col ">
         <p className="font-semibold mb-2 tracking-tight ">
           Please take or upload a photo of the furniture piece for which you
           need care instructions.
         </p>
       </div> */}
-      {!isCameraActive && (
+      {!isCameraActive && !imageURL && (
         <div className="flex flex-col md:flex-row items-center justify-center max-w-md mx-auto p-4 bg-gray-200 border rounded-xl">
           <Image
             alt="instructions step 1"
@@ -123,6 +123,7 @@ export default function MediaInputComponent({
         </div>
       )}
       {loadingCamera && !imageURL && <CameraSkeleton />}
+      {true && <CameraSkeleton />}
       {!imageURL && (
         <div className="flex gap-3">
           {!isCameraActive && (
