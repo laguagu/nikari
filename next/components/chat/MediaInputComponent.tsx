@@ -108,7 +108,7 @@ export default function MediaInputComponent({
         </p>
       </div> */}
       {!isCameraActive && !imageURL && (
-        <div className="flex flex-col md:flex-row items-center justify-center max-w-md mx-auto p-4 bg-gray-200 border rounded-xl">
+        <div className="md:mb-2s border-white flex flex-col md:flex-row items-center justify-center max-w-md mx-auto p-4 bg-zinc-200 border-2 rounded-xl">
           <Image
             alt="instructions step 1"
             src={"/steps/step-1.webp"}
@@ -123,7 +123,6 @@ export default function MediaInputComponent({
         </div>
       )}
       {loadingCamera && !imageURL && <CameraSkeleton />}
-      {true && <CameraSkeleton />}
       {!imageURL && (
         <div className="flex gap-3">
           {!isCameraActive && (

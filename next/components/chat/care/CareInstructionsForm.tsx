@@ -148,7 +148,7 @@ export default function CareInstructionsForm({
                                     if (item.id === "outdoor" && checked) {
                                       toast("Outdoor Furniture Selected", {
                                         description:
-                                          "Please note that only specific care instructions apply to Outdoor Furniture. Do not apply other selected care instructions.",
+                                          "Please note that only specific care instructions apply to outdoor furnitures. Do not apply other selected care instructions.",
                                         duration: 10000,
                                         action: {
                                           label: "Undo",

@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import { open_sans } from "./fonts";
 import "./globals.css";
 export const metadata: Metadata = {
-  title: "Kaluste Assari",
+  title: "Care Instructor",
   description:
-    "Kaluste Assari application. We help you find the right care guide for your furniture.",
+    "Care Instructor application. We help you find the right care guide for your furniture.",
 };
 
 export default function RootLayout({
