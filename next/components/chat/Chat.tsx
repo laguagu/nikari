@@ -1,10 +1,8 @@
-"use client";
-import { CardHover } from "./CardHover";
-
+import { Cards } from "@/components/chat/Cards";
 export default function Chat() {
   return (
     <div>
-        <CardHover />
+        <Cards />
     </div>
   );
 }

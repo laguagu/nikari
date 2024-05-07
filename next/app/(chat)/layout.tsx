@@ -14,7 +14,7 @@ export default function ChatLayout({
       </h1>
       <div className="grid w-full max-w-md sm:max-w-lg md:max-w-2xl lg:max-w-3xl xl:max-w-6xl grid-cols-1 gap-4 p-4 rounded-lg border-2 shadow-xl border-gray-200 dark:border-gray-800 mx-auto bg-zinc-100">
         <div className="space-y-2">
-          <div className="flex justify-center items-end">
+          <div className="flex justify-center items-end mb-4">
             <HomeButton />
           </div>
           <div className="border-b-2"></div>
