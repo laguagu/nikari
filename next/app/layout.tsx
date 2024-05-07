@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { montserrat } from "./fonts";
+import { open_sans } from "./fonts";
 import "./globals.css";
 export const metadata: Metadata = {
   title: "Kaluste Assari",
@@ -14,7 +14,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${montserrat.className} antialiased`}>
+      <body className={`${open_sans.className} antialiased`}>
         <main>{children}</main>
       </body>
     </html>
