@@ -12,6 +12,7 @@ import { CameraSkeleton } from "@/components/chat/skeletons";
 import Link from "next/link";
 import { PhotoIcon } from "@heroicons/react/24/outline";
 import { buttonVariants } from "@/components/ui/button";
+import { Card, CardContent } from "../ui/card";
 interface MediaInputComponentProps {
   handleSetMaterials: (value: string) => void;
   imageURL: string | null;
@@ -100,13 +101,27 @@ export default function MediaInputComponent({
 
   return (
     <div className="flex flex-col items-center justify-center space-y-4 md:mt-4 relative ">
-      <div className="text-center text-lg md:mx-20 flex-col">
+      {/* <div className="text-center text-lg md:mx-20 flex-col ">
         <p className="font-semibold mb-2 tracking-tight ">
           Please take or upload a photo of the furniture piece for which you
           need care instructions.
         </p>
-      </div>
-
+      </div> */}
+      {!isCameraActive && (
+        <div className="flex flex-col md:flex-row items-center justify-center max-w-md mx-auto p-4 bg-gray-200 border rounded-xl">
+          <Image
+            alt="instructions step 1"
+            src={"/steps/step-1.webp"}
+            height={175}
+            width={175}
+            className="aspect-square rounded-xl object-cover shadow-lg mx-4 my-2"
+          />
+          <p className="text-start break-words max-w-xs md:max-w-sm">
+            Capture a clear photo of your furniture. Ensure the photo is
+            well-lit and the entire piece of furniture is visible in the shot.
+          </p>
+        </div>
+      )}
       {loadingCamera && !imageURL && <CameraSkeleton />}
       {!imageURL && (
         <div className="flex gap-3">
