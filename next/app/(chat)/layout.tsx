@@ -12,7 +12,7 @@ export default function ChatLayout({
       <h1 className="md:text-5xl text-3xl lg:text-6xl font-bold text-centerrelative z-20 mb-3 text-black mt-4">
         <Link href={"/"}>Care-Instructor</Link>
       </h1>
-      <div className="grid w-full max-w-md sm:max-w-lg md:max-w-2xl lg:max-w-3xl xl:max-w-6xl grid-cols-1 gap-4 p-4 rounded-lg border-2 shadow-xl border-gray-200 dark:border-gray-800 mx-auto bg-zinc-100">
+      <div className="grid w-full max-w-md sm:max-w-lg md:max-w-2xl lg:max-w-3xl xl:max-w-4xl 2xl:max-w-5xl grid-cols-1 gap-4 p-4 rounded-lg border-2 shadow-xl border-gray-200 dark:border-gray-800 mx-auto bg-zinc-100">
         <div className="space-y-2">
           <div className="flex justify-center items-end mb-4">
             <HomeButton />
