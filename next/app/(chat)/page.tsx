@@ -1,8 +1,8 @@
-import Chat from "@/components/chat/Chat";
+import { Cards } from "@/components/chat/Cards";
 export default async function Page() {
   return (
     <div>
-      <Chat />
+      <Cards />
     </div>
   );
 }

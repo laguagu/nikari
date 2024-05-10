@@ -9,10 +9,7 @@ import {
 import Image from "next/image";
 import Webcam from "react-webcam";
 import { CameraSkeleton } from "@/components/chat/skeletons";
-import Link from "next/link";
-import { PhotoIcon } from "@heroicons/react/24/outline";
-import { buttonVariants } from "@/components/ui/button";
-import { Card, CardContent } from "../ui/card";
+
 interface MediaInputComponentProps {
   handleSetMaterials: (value: string) => void;
   imageURL: string | null;
@@ -101,12 +98,6 @@ export default function MediaInputComponent({
 
   return (
     <div className="flex flex-col items-center justify-center space-y-4 md:my-6 my-3 relative ">
-      {/* <div className="text-center text-lg md:mx-20 flex-col ">
-        <p className="font-semibold mb-2 tracking-tight ">
-          Please take or upload a photo of the furniture piece for which you
-          need care instructions.
-        </p>
-      </div> */}
       {!isCameraActive && !imageURL && (
         <div className="md:mb-2s border-white flex flex-col md:flex-row items-center justify-center max-w-md mx-auto p-4 bg-zinc-200 border-2 rounded-xl">
           <Image
@@ -199,15 +190,14 @@ export default function MediaInputComponent({
         </>
       )}
       {imageURL && (
-        <div className="bg-gray-200 p-3 justify-center items-center ml-3 rounded-xl">
+        <div className="bg-gray-200 md:p-8 p-5 justify-center items-center ml-3 rounded-xl border-white border-2 shadow-md border-opacity-80 ">
           <div className="text-center justify-center">
             <Image
               src={imageURL}
               alt="Esikatselu"
-              className="rounded-md"
-              style={{ width: "100%", height: "auto" }}
-              width={1280}
-              height={720}
+              className="rounded-md object-contain md:max-w-lg md:max-h-none max-h-96 w-full h-auto"
+              width={640}
+              height={360}
             />
             <div className="space-y-2 mt-2 xs:space-x-0 sm:space-x-3 md:space-x-3 ">
               <Button

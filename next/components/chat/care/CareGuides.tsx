@@ -29,8 +29,8 @@ function formatMaterialName(name: string): string {
 export default function CareGuides({ careGuides }: CareGuidesProps) {
   return (
     <div className="md:p-4 ">
-      <div className=" overflow-y-auto p-4 bg-zinc-50  shadow rounded-lg">
-        <p className="text-gray-600 mb-4 text-lg tracking-tight">
+      <div className=" overflow-y-auto p-4 bg-zinc-50 bg-opacity-90 shadow rounded-lg outline outline-white">
+        <p className="text-gray-700 mb-4 text-lg tracking-tight border-b">
           Click on each material to view the specific care instructions.
         </p>
         {careGuides.map((careGuide, index) => {        
@@ -52,7 +52,7 @@ export default function CareGuides({ careGuides }: CareGuidesProps) {
                   <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-10 rounded-lg transition-all duration-300 ease-in-out"></div>
                   {formatMaterialName(materialDisplay)}
                 </AccordionTrigger>
-                <AccordionContent className="px-6 py-4 rounded-lg bg-zinc-100 bg-opacity-50 my-2 shadow-lg hover:shadow-xl transition-shadow duration-200">
+                <AccordionContent className="px-6 py-4 rounded-lg bg-zinc-100 bg-opacity-50 my-2 shadow-md hover:shadow-lg transition-shadow duration-200 border-2">
                   <Carousel>
                     <CarouselContent>
                       {careGuide.instructions &&
@@ -71,7 +71,7 @@ export default function CareGuides({ careGuides }: CareGuidesProps) {
                                       src={photo.imageSrc}
                                       height={400}
                                       width={400}
-                                      className="aspect-[1/1] rounded-xl mb-4 cursor-pointer shadow-md object-cover"
+                                      className="aspect-[1/1] rounded-xl mb-4 cursor-pointer shadow-md object-cover border-2 border-white"
                                       title="Furniture care instructions"
                                     />
                                   </div>

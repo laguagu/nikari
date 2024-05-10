@@ -79,6 +79,9 @@
     font-feature-settings: "rlig" 1, "calt" 1;
   }
   .hoverEffect {
-    @apply transition-colors duration-200 ease-in-out hover:bg-gray-200 hover:shadow-lg;
+    @apply transition-colors duration-300 ease-in-out  hover:shadow-xl;
+  }
+  .group:hover .textColor {
+    @apply text-black;
   }
 }
