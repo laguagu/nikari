@@ -4,7 +4,7 @@
 export $(grep -v '^#' .env.local | xargs)
 
 # Rakennetaan Docker-kuva ja välitetään ympäristömuuttujat
-docker build \
+docker build --no-cache \
   --build-arg OPENAI_API_KEY=$OPENAI_API_KEY \
   --build-arg NEXT_PUBLIC_MAPS_API_KEY=$NEXT_PUBLIC_MAPS_API_KEY \
   --build-arg SUPABASE_PRIVATE_KEY=$SUPABASE_PRIVATE_KEY \
