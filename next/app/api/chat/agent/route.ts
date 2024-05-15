@@ -17,7 +17,7 @@ import {
   StringOutputParser,
 } from "@langchain/core/output_parsers";
 
-export const runtime = "edge";
+export const runtime = "";
 
 // Apufunktio dokumenttien yhdistämiseen yhdeksi tekstiksi.
 const combineDocumentsFn = (docs: Document[]) => {
