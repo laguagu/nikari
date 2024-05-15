@@ -23,6 +23,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { toast } from "sonner";
+import { useEffect, useRef } from "react";
 
 const FormSchema = z
   .object({
@@ -73,6 +74,23 @@ export default function CareInstructionsForm({
     },
   });
 
+  // Näytä Sonner/Toast kun komponentti vain kerran kun se renderöidään
+  const toastDisplayed = useRef(false);
+  useEffect(() => {
+    if (!toastDisplayed.current) {
+      toast.info("Notification", {
+        description:
+          "Please ensure that the materials suggested by the AI are correct. If you are unsure, please contact sales@nikari.fi",
+        duration: Infinity,
+        action: {
+          label: "Undo",
+          onClick: () => console.log("Undo"),
+        },
+      });
+      toastDisplayed.current = true;
+    }
+  }, []);
+
   // Jos nahka on true näytä lisää uusi form lomake jolla kysytään mikä nahka kyseessä.
   function onSubmit(data: z.infer<typeof FormSchema>) {
     const selectedWoodOption = data.woodOption;
@@ -100,6 +118,17 @@ export default function CareInstructionsForm({
   // Vaihad outdoor nimekssi outdoor furniture
   return (
     <div className="flex justify-center items-center">
+      {/* {
+        toast("Warning", {
+          description:
+            "Please note that only specific care instructions apply to outdoor furnitures. Do not apply other selected care instructions.",
+          duration: 10000,
+          action: {
+            label: "Undo",
+            onClick: () => console.log("Undo"),
+          },
+        })
+      } */}
       <Form {...form}>
         <form
           onSubmit={form.handleSubmit(onSubmit)}
@@ -146,10 +175,11 @@ export default function CareInstructionsForm({
                                     setValue("items", newValue);
 
                                     if (item.id === "outdoor" && checked) {
-                                      toast("Outdoor Furniture Selected", {
+                                      toast.info("Outdoor Furniture Selected", {
                                         description:
                                           "Please note that only specific care instructions apply to outdoor furnitures. Do not apply other selected care instructions.",
                                         duration: 10000,
+
                                         action: {
                                           label: "Undo",
                                           onClick: () => console.log("Undo"),
