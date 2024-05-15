@@ -39,7 +39,7 @@ FROM base AS runner
 WORKDIR /app
 
 ENV NODE_ENV production
-ENV OPENAI_API_KEY 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
+# ENV OPENAI_API_KEY apikey
 # Uncomment the following line in case you want to disable telemetry during runtime.
 ENV NEXT_TELEMETRY_DISABLED 1
 
