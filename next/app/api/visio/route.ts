@@ -14,16 +14,16 @@ export async function POST(req: Request, res: Response) {
         status: 400,
       });
     }
-    // return Response.json({
-    //   index: 0,
-    //   message: {
-    //     role: "assistant",
-    //     content:
-    //       '{ "wood": true, "leather": true, "metal": true, "laminate": false, "plastic": false, "fabric": false, "outdoor": false }',
-    //   },
-    //   logprobs: null,
-    //   finish_reason: "stop",
-    // });
+    return Response.json({
+      index: 0,
+      message: {
+        role: "assistant",
+        content:
+          '{ "wood": true, "leather": true, "metal": true, "laminate": false, "plastic": false, "fabric": false }',
+      },
+      logprobs: null,
+      finish_reason: "stop",
+    });
     const response = await openai.chat.completions.create({
       model: "gpt-4o",
       messages: [
@@ -32,7 +32,7 @@ export async function POST(req: Request, res: Response) {
           content: [
             {
               type: "text",
-              text: "Analyze the image provided. If the image contains furniture, identify the materials present and specify whether each material is present as true or false. Use the following JSON format for your response: { wood: false, leather: false, metal: false, laminate: false, plastic: false, fabric: false, outdoor: false }. If no furniture is visible in the image, return the JSON object with all values set to false.",
+              text: "Analyze the image provided. If the image contains furniture, identify the materials present and specify whether each material is present as true or false. Use the following JSON format for your response: { wood: false, leather: false, metal: false, laminate: false, plastic: false, fabric: false }. If no furniture is visible in the image, return the JSON object with all values set to false.",
             },
             {
               type: "image_url",

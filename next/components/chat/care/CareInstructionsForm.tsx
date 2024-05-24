@@ -83,7 +83,7 @@ export default function CareInstructionsForm({
           "Please ensure that the materials suggested by the AI are correct. If you are unsure, please contact sales@nikari.fi",
         duration: Infinity,
         action: {
-          label: "Undo",
+          label: "Ok",
           onClick: () => console.log("Undo"),
         },
       });
@@ -91,7 +91,6 @@ export default function CareInstructionsForm({
     }
   }, []);
 
-  // Jos nahka on true näytä lisää uusi form lomake jolla kysytään mikä nahka kyseessä.
   function onSubmit(data: z.infer<typeof FormSchema>) {
     const selectedWoodOption = data.woodOption;
     const selectedLeatherOption = data.leatherOption;
@@ -181,7 +180,7 @@ export default function CareInstructionsForm({
                                         duration: 10000,
 
                                         action: {
-                                          label: "Undo",
+                                          label: "Ok",
                                           onClick: () => console.log("Undo"),
                                         },
                                       });
@@ -221,6 +220,9 @@ export default function CareInstructionsForm({
                                               </SelectItem>
                                               <SelectItem value="lacqueredWood">
                                                 Lacquered
+                                              </SelectItem>
+                                              <SelectItem value="outdoor">
+                                                Outdoor furniture
                                               </SelectItem>
                                             </>
                                           ) : (
