@@ -212,6 +212,29 @@ export const materialPhotos: MaterialPhotos[] = [
       },
     ],
   },
+  {
+    name: "sauna",
+    photos: [
+      {
+        id: "1",
+        name: "sauna",
+        href: "sauna",
+        imageSrc: "/care-instructions/outdoor/outdoor2.jpeg",
+      },
+      {
+        id: "2",
+        name: "sauna",
+        href: "sauna",
+        imageSrc: "/care-instructions/outdoor/outdoor2.jpeg",
+      },
+      {
+        id: "3",
+        name: "sauna",
+        href: "sauna",
+        imageSrc: "/care-instructions/outdoor/outdoor2.jpeg",
+      },
+    ],
+  },
 ];
 
 const photos: Photo[] = [

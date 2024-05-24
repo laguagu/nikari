@@ -89,7 +89,7 @@ export default function CareInstructionsForm({
           "Please ensure that the materials suggested by the AI are correct. If you are unsure, please contact sales@nikari.fi",
         duration: Infinity,
         action: {
-          label: "Ok",
+          label: "OK",
           onClick: () => setClickedOk(true)
         },
       });
@@ -185,7 +185,7 @@ export default function CareInstructionsForm({
                                         duration: 10000,
 
                                         action: {
-                                          label: "Ok",
+                                          label: "OK",
                                           onClick: () => console.log("Undo"),
                                         },
                                       });
@@ -228,6 +228,9 @@ export default function CareInstructionsForm({
                                               </SelectItem>
                                               <SelectItem value="outdoor">
                                                 Outdoor furniture
+                                              </SelectItem>
+                                              <SelectItem value="sauna">
+                                                Sauna furniture
                                               </SelectItem>
                                             </>
                                           ) : (

@@ -50,6 +50,10 @@ export const careInstructions: MaterialCareInstructions = {
     "2": "Apply OsmoColor UV Protection Oil annually at the end of the summer if the furniture stays outside, following the product's instructions meticulously. Start by thoroughly cleaning the furniture to remove all dirt and ensure the wood is dry before applying the oil to protect the wood and maintain its original coloring as long as possible.",
     "3": "Be mindful of the furniture's exposure to iron particles, especially with oak wood, which is sensitive to iron oxide leading to dark spots or areas when mixed with water. Regularly inspect and clean the furniture to prevent the buildup of iron particles. Move the furniture indoors before the rainy season to prevent water-related damage and the acceleration of the graying process.",
   },
+  sauna: {
+    "1": "Lets start taking care of the of the sauna furniture: The traditional classic sauna stool by Kari Virtanen has been made at Nikari in various different forms throughout the decades. This version was created in the 90'ss for a very special sauna area located in Moscow, Russia. ",
+    "2": "Kari Virtanen, the founder of Nikari, developed the Periferia products throughout the last 50 years for different needs. The surfaces bring out the beautiful, unique characteristics of solid wood, and the products fit equally well in classic and contemporary interiors.",
+  },
 };
 
 export const careInstructionsText = `
