@@ -8,9 +8,7 @@ export const careInstructions: MaterialCareInstructions = {
   },
   lacqueredWood: {
     "1": "Lets start taking care of the wooden parts of the furniture: Avoid placing solid wood furniture  in direct sunlight or near heat sources. In dry, cold climates, use a humidifier to maintain room humidity and prevent wood from shrinking and cracking. In humid climates, ensure the room is well-ventilated to prevent swelling of the wood.",
-    "2": "For natural wood oil mixture finishes, clean spills immediately and wipe the surface clean and dry of any liquids within 15 minutes. Clean the surface with a damp cloth using organic soaps. Avoid using silicone-based or non-natural oils or waxes.",
-    "3": "Maintain the wood by cleaning the tabletop with the finest sandy cloth once every two years, then treating it with natural matte wood oil or wax. Allow the oil or wax to impregnate for 15-20 minutes before wiping off the excess and polishing with a clean cloth.",
-    "4": "When some spilling or staining occurs, it is recommended to wipe it clean and dry quickly with a damp cloth, using organic soaps. In case the water - based lacquer surface is damaged, it should be sanded and the lacquer treatment redone.",
+    "2": "When some spilling or staining occurs, it is recommended to wipe it clean and dry quickly with a damp cloth, using organic soaps. In case the water - based lacquer surface is damaged, it should be sanded and the lacquer treatment redone.",
   },
   laminate: {
     "1": "Lets start taking care of the laminate parts of the furniture: Clean regularly with a damp cloth and warm water or mild detergent. This material does not require special maintenance, and most household cleaning products or disinfectants are safe to use.",

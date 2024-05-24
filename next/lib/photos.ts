@@ -47,18 +47,6 @@ export const materialPhotos: MaterialPhotos[] = [
         id: "2",
         name: "lacqueredWood",
         href: "wood",
-        imageSrc: "/care-instructions/wood/Wood-2.jpg",
-      },
-      {
-        id: "3",
-        name: "lacqueredWood",
-        href: "wood",
-        imageSrc: "/care-instructions/wood/Wood-3.jpg",
-      },
-      {
-        id: "4",
-        name: "lacqueredWood",
-        href: "wood",
         imageSrc: "/care-instructions/wood.jpg",
       },
     ],

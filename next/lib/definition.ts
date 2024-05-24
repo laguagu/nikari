@@ -14,14 +14,14 @@ export type MaterialCareInstructions = {
   [K in Material]?: {
     "1": string;
     "2": string;
-    "3": string;
+    "3"?: string;
     "4"?: string;
   };
 };
 
 export type MaterialInstructions = {
     material: Material;
-    instructions: { "1": string; "2": string; "3": string; "4"?: string } | undefined;
+    instructions: { "1": string; "2": string; "3"?: string; "4"?: string } | undefined;
   };
   
 export type CareInstructionsFormProps = {
