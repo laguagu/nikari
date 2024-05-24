@@ -14,16 +14,16 @@ export async function POST(req: Request, res: Response) {
         status: 400,
       });
     }
-    return Response.json({
-      index: 0,
-      message: {
-        role: "assistant",
-        content:
-          '{ "wood": true, "leather": true, "metal": true, "laminate": false, "plastic": false, "fabric": false }',
-      },
-      logprobs: null,
-      finish_reason: "stop",
-    });
+    // return Response.json({
+    //   index: 0,
+    //   message: {
+    //     role: "assistant",
+    //     content:
+    //       '{ "wood": true, "leather": true, "metal": true, "laminate": false, "plastic": false, "fabric": false }',
+    //   },
+    //   logprobs: null,
+    //   finish_reason: "stop",
+    // });
     const response = await openai.chat.completions.create({
       model: "gpt-4o",
       messages: [
