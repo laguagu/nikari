@@ -23,7 +23,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { toast } from "sonner";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const FormSchema = z
   .object({
@@ -54,6 +54,7 @@ export default function CareInstructionsForm({
   materials,
 }: CareInstructionsFormProps) {
   const router = useRouter();
+  const [clickedOk, setClickedOk] = useState(false);
   const materialItems = materials
     ? Object.entries(materials).map(([key, value]) => ({
         id: key,
@@ -73,7 +74,12 @@ export default function CareInstructionsForm({
       leatherOption: undefined,
     },
   });
+  useEffect(() => {
+    console.log(clickedOk);
+  }
+  , [clickedOk]);
 
+    
   // Näytä Sonner/Toast kun komponentti vain kerran kun se renderöidään
   const toastDisplayed = useRef(false);
   useEffect(() => {
@@ -84,7 +90,7 @@ export default function CareInstructionsForm({
         duration: Infinity,
         action: {
           label: "Ok",
-          onClick: () => console.log("Undo"),
+          onClick: () => setClickedOk(true)
         },
       });
       toastDisplayed.current = true;
@@ -146,9 +152,9 @@ export default function CareInstructionsForm({
                 </div>
                 {materialItems.map((item) => {
                   let label = item.label;
-                  if (label === "Outdoor") {
-                    label = "Outdoor furniture";
-                  }
+                  // if (label === "Outdoor") {
+                  //   label = "Outdoor furniture";
+                  // }
 
                   return (
                     <FormField
@@ -173,10 +179,9 @@ export default function CareInstructionsForm({
                                         );
                                     setValue("items", newValue);
 
-                                    if (item.id === "outdoor" && checked) {
-                                      toast.info("Outdoor Furniture Selected", {
-                                        description:
-                                          "Please note that only specific care instructions apply to outdoor furnitures. Do not apply other selected care instructions.",
+                                    if (checked) {
+                                      toast.info(`${label} Selected`, {
+                                        description: `Please note that only specific care instructions apply to ${label}. Do not apply other selected care instructions.`,
                                         duration: 10000,
 
                                         action: {
@@ -259,7 +264,7 @@ export default function CareInstructionsForm({
             )}
           />
 
-          <Button type="submit">Submit</Button>
+          <Button type="submit" disabled={!clickedOk}>Submit</Button>
         </form>
       </Form>
     </div>
