@@ -13,3 +13,6 @@ Rahti 2 - Rahti Image registry
 docker tag my-nextjs-app image-registry.apps.2.rahti.csc.fi/alyakokeilut/nikari:latest
 docker login -u g -p $(oc whoami -t) image-registry.apps.2.rahti.csc.fi
 docker push image-registry.apps.2.rahti.csc.fi/alyakokeilut/nikari:latest
+
+-Tarkista imagestream
+oc get imagestream nikari
