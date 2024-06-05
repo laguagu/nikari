@@ -68,14 +68,18 @@ RUN adduser --system --uid 1001 nextjs
 COPY --from=builder /app/public ./public
 
 # Set the correct permission for prerender cache
-RUN mkdir .next
-RUN chown nextjs:nodejs .next
+# RUN mkdir .next
+# RUN chown nextjs:nodejs .next
+RUN mkdir -p .next/cache/images
+RUN chown -R nextjs:nodejs .next/cache/images
 
 # Automatically leverage output traces to reduce image size
 # https://nextjs.org/docs/advanced-features/output-file-tracing
 COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
 COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
 
+# Anna käyttäjälle nextjs oikeudet sovelluksen hakemistoon ja sen sisältöön
+RUN chown -R 1001:0 /app && chmod -R g+rwX /app
 USER nextjs
 
 EXPOSE 3000
