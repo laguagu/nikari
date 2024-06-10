@@ -4,6 +4,4 @@ Muutoksia:
 - Muissa tuotteissa musta väri tai muu väri tarkoittaa sen olevan lakattu (maalattu).
 - Jokaiseen valintaan Sonner niinkuin oli outdoorissa
 
-4.6.2024
-- Fiksaa kuviksi tyhjät templatet, jos ei ole hoito-ohje kuvia.
-- Kysy saunakalusteiden hoito-ohjeita
+puunvärinen saunajakkara huolletaan samoin kuin normaalit öljytyt huonekalut. Mustan saunajakkaran tilanne on hieman eri: mikäli musta väri ei ole kulunut puhki, käytetään samaa ohjeistusta kuin kaikissa öljytyissä. Jos musta väri on kulunut puhki, pyydetään ottamaan yhteyttä sales@nikari.fi 
