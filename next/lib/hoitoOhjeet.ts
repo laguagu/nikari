@@ -51,9 +51,12 @@ export const careInstructions: MaterialCareInstructions = {
     "3": "Be mindful of the furniture's exposure to iron particles, especially with oak wood, which is sensitive to iron oxide leading to dark spots or areas when mixed with water. Regularly inspect and clean the furniture to prevent the buildup of iron particles. Move the furniture indoors before the rainy season to prevent water-related damage and the acceleration of the graying process.",
   },
   sauna: {
-    "1": "Lets start taking care of the of the sauna furniture: The traditional classic sauna stool by Kari Virtanen has been made at Nikari in various different forms throughout the decades. This version was created in the 90'ss for a very special sauna area located in Moscow, Russia. ",
-    "2": "Kari Virtanen, the founder of Nikari, developed the Periferia products throughout the last 50 years for different needs. The surfaces bring out the beautiful, unique characteristics of solid wood, and the products fit equally well in classic and contemporary interiors.",
+    "1": "Lets start taking care of the sauna furniture: The natural wood-colored sauna stool should be maintained in the same way as normal oiled furniture. Use these same care instructions as for oiled furniture. For the black sauna stool, the care instructions are slightly different, if the black color has not worn through, follow the same maintenance instructions as for oiled furniture. If the black color has worn through, please contact us at sales@nikari.fi for further assistance.",
+    "2": "Avoid placing solid wood furniture in direct sunlight or near heat sources. In dry, cold climates, use a humidifier to maintain room humidity and prevent wood from shrinking and cracking. In humid climates, ensure the room is well-ventilated to prevent swelling of the wood.",
+    "3": "For natural wood oil mixture finishes, clean spills immediately and wipe the surface clean and dry of any liquids within 15 minutes. Clean the surface with a damp cloth using organic soaps. Avoid using silicone-based or non-natural oils or waxes.",
+    "4": "Maintain the wood by cleaning the tabletop with the finest sandy cloth once every two years, then treating it with natural matte wood oil or wax. Allow the oil or wax to impregnate for 15-20 minutes before wiping off the excess and polishing with a clean cloth.",
   },
+  
 };
 
 export const careInstructionsText = `
