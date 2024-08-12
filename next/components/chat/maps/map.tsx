@@ -62,7 +62,7 @@ export default function Map() {
         },
         (error) => {
           console.error("Geolocation error: ", error); // Lisää virheenkäsittely
-        }
+        },
       );
     } else {
       console.error("Geolocation is not supported by this browser.");
@@ -135,19 +135,19 @@ export default function Map() {
 
 function findNearestDealer(
   userLocation: UserLocation,
-  dealers: Dealer[]
+  dealers: Dealer[],
 ): Dealer | null {
   if (!userLocation) return null;
 
   return dealers.reduce((nearest: Dealer | null, dealer) => {
     const distanceToCurrentDealer = Math.sqrt(
       Math.pow(dealer.lat - userLocation.lat, 2) +
-        Math.pow(dealer.lng - userLocation.lng, 2)
+        Math.pow(dealer.lng - userLocation.lng, 2),
     );
     const distanceToNearestDealer = nearest
       ? Math.sqrt(
           Math.pow(nearest.lat - userLocation.lat, 2) +
-            Math.pow(nearest.lng - userLocation.lng, 2)
+            Math.pow(nearest.lng - userLocation.lng, 2),
         )
       : Infinity;
 

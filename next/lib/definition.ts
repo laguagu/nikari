@@ -8,8 +8,8 @@ export type Material =
   | "fabric"
   | "outdoor"
   | "vegetableTannedLeather"
-  | "aniline" 
-  | "sauna" 
+  | "aniline"
+  | "sauna";
 
 export type MaterialCareInstructions = {
   [K in Material]?: {
@@ -21,14 +21,16 @@ export type MaterialCareInstructions = {
 };
 
 export type MaterialInstructions = {
-    material: Material;
-    instructions: { "1": string; "2": string; "3"?: string; "4"?: string } | undefined;
-  };
-  
+  material: Material;
+  instructions:
+    | { "1": string; "2": string; "3"?: string; "4"?: string }
+    | undefined;
+};
+
 export type CareInstructionsFormProps = {
-    materials: { [key: string]: boolean } | null;
-  };
+  materials: { [key: string]: boolean } | null;
+};
 
 export interface CareGuidesProps {
-    careGuides: MaterialInstructions[];
-  }
+  careGuides: MaterialInstructions[];
+}

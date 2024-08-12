@@ -8,7 +8,7 @@ import Error from "@/components/chat/error";
 
 export default function Page() {
   const [materials, setMaterials] = useState<{ [key: string]: boolean } | null>(
-    null
+    null,
   );
   const [isDetectingMaterials, setIsDetectingMaterials] = useState(false);
   const [imageURL, setImageURL] = useState<string | null>(null);

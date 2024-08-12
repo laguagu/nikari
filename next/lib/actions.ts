@@ -16,12 +16,12 @@ export async function getMaterials(image_url: string) {
     ) {
       throw new Error(
         "Your input image may contain content that is not allowed by AI safety system" ||
-          `HTTP error! status: ${response.status}`
+          `HTTP error! status: ${response.status}`,
       );
     } else {
       throw new Error(
         errorResponse.error.message ||
-          `HTTP-virhe! Tilakoodi: ${response.status}`
+          `HTTP-virhe! Tilakoodi: ${response.status}`,
       );
     }
   }

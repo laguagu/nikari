@@ -10,8 +10,8 @@ export default function PhotoPage({
   const photo: Photo = photos.find((p) => p.id === id)!;
 
   return (
-      <Modal>
-        <PhotoCard key={photo.id} photo={photo} />
-      </Modal>
+    <Modal>
+      <PhotoCard key={photo.id} photo={photo} />
+    </Modal>
   );
 }

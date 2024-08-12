@@ -33,8 +33,7 @@ export const projects = [
   },
   {
     title: "Click here to get started",
-    description:
-      "",
+    description: "",
     link: "/care",
   },
 ];

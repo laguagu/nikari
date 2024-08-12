@@ -38,7 +38,10 @@ export function Cards() {
               <h3 className="text-xl md:text-2xl font-semibold text-gray-700 textColor">
                 Get started
               </h3>
-              <Button className="mt-2 font-semibold bg-gray-800 bg-opacity-90"  size="lg">
+              <Button
+                className="mt-2 font-semibold bg-gray-800 bg-opacity-90"
+                size="lg"
+              >
                 Click here
               </Button>
             </CardContent>

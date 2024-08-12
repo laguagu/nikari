@@ -27,7 +27,7 @@ export async function POST(req: NextRequest) {
   try {
     const client = createClient(
       process.env.SUPABASE_URL!,
-      process.env.SUPABASE_PRIVATE_KEY!
+      process.env.SUPABASE_PRIVATE_KEY!,
     );
 
     const splitter = RecursiveCharacterTextSplitter.fromLanguage("markdown", {
@@ -46,7 +46,7 @@ export async function POST(req: NextRequest) {
         client,
         tableName: "documents",
         queryName: "match_documents",
-      }
+      },
     );
 
     return NextResponse.json({ ok: true }, { status: 200 });

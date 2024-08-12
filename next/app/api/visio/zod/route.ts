@@ -29,7 +29,7 @@ export async function POST(req: NextRequest) {
     const image = data.image_url;
 
     const prompt = PromptTemplate.fromTemplate(TEMPLATE);
-    
+
     const promptMessage = new HumanMessage({
       content: [
         { type: "text", text: TEMPLATE },
@@ -91,7 +91,7 @@ export async function POST(req: NextRequest) {
     const result = await chain.invoke({
       input: image,
     });
-    
+
     return NextResponse.json(result, { status: 200 });
   } catch (e: any) {
     return NextResponse.json({ error: e.message }, { status: e.status ?? 500 });

@@ -76,10 +76,8 @@ export default function CareInstructionsForm({
   });
   useEffect(() => {
     console.log(clickedOk);
-  }
-  , [clickedOk]);
+  }, [clickedOk]);
 
-    
   // Näytä Sonner/Toast kun komponentti vain kerran kun se renderöidään
   const toastDisplayed = useRef(false);
   useEffect(() => {
@@ -90,7 +88,7 @@ export default function CareInstructionsForm({
         duration: Infinity,
         action: {
           label: "OK",
-          onClick: () => setClickedOk(true)
+          onClick: () => setClickedOk(true),
         },
       });
       toastDisplayed.current = true;
@@ -101,7 +99,7 @@ export default function CareInstructionsForm({
     const selectedWoodOption = data.woodOption;
     const selectedLeatherOption = data.leatherOption;
     const selectedCheckboxOptions = data.items.filter(
-      (item) => item !== "wood" && item !== "leather"
+      (item) => item !== "wood" && item !== "leather",
     );
 
     const allSelectedOptions = [
@@ -175,7 +173,7 @@ export default function CareInstructionsForm({
                                     const newValue = checked
                                       ? [...field.value, item.id]
                                       : field.value.filter(
-                                          (value: string) => value !== item.id
+                                          (value: string) => value !== item.id,
                                         );
                                     setValue("items", newValue);
 
@@ -267,7 +265,9 @@ export default function CareInstructionsForm({
             )}
           />
 
-          <Button type="submit" disabled={!clickedOk}>Submit</Button>
+          <Button type="submit" disabled={!clickedOk}>
+            Submit
+          </Button>
         </form>
       </Form>
     </div>

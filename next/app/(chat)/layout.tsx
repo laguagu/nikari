@@ -20,7 +20,7 @@ export default function ChatLayout({
           <div className="border-b-2"></div>
         </div>
         {children}
-        <Toaster richColors position="bottom-center"/>
+        <Toaster richColors position="bottom-center" />
       </div>
     </div>
   );

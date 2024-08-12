@@ -15,17 +15,17 @@ export async function POST(req: Request) {
     ...messages,
     { role: "system", content: "Olet chatbot avustaja" },
   ];
-  
+
   // Ask OpenAI for a streaming chat completion given the prompt
   const response = await openai.chat.completions.create({
     model: "gpt-3.5-turbo",
     stream: true,
     messages: messagesWithRole,
   });
-  
+
   // Convert the response into a friendly text-stream
   const stream = OpenAIStream(response);
-  
+
   // Respond with the stream
   return new StreamingTextResponse(stream);
 }

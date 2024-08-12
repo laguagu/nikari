@@ -21,7 +21,7 @@ export const HoverEffect = ({
     <div
       className={cn(
         "grid grid-cols-1 lg:grid-cols-1 xl:grid-cols-2 py-2",
-        className
+        className,
       )}
     >
       {items.map((item, idx) => {
@@ -83,7 +83,7 @@ export const Card = ({
       className={cn(
         "rounded-2xl h-full w-full p-4 overflow-hidden bg-zinc-300 bg-opacity-30 border border-transparent dark:border-white/[0.2] group-hover:border-slate-700 relative z-20 flex flex-col md:flex-row justify-center items-center",
         isLastItem ? "bg-zinc-200 bg-opacity-100" : "",
-        className
+        className,
       )}
     >
       {isFirstItem && (
@@ -96,9 +96,8 @@ export const Card = ({
         />
       )}
       <div className="relative z-50">
-        <div className={cn("p-4", isLastItem 
-          ? "flex items-center" : "")}>
-            {children}
+        <div className={cn("p-4", isLastItem ? "flex items-center" : "")}>
+          {children}
         </div>
       </div>
     </div>
@@ -114,7 +113,13 @@ export const CardTitle = ({
   isLastItem?: boolean;
 }) => {
   return (
-    <h4 className={cn("text-black font-bold tracking-wide", isLastItem ? "mt-0 tracking-tighter sm:tracking-normal" : "mt-4", className)}>
+    <h4
+      className={cn(
+        "text-black font-bold tracking-wide",
+        isLastItem ? "mt-0 tracking-tighter sm:tracking-normal" : "mt-4",
+        className,
+      )}
+    >
       {children}
     </h4>
     // Tämä muuttaa Titlen näyttämään nappulalta
@@ -136,7 +141,7 @@ export const CardDescription = ({
     <p
       className={cn(
         "mt-8 text-zinc-700 tracking-wide leading-relaxed text-sm",
-        className
+        className,
       )}
     >
       {children}

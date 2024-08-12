@@ -1,4 +1,3 @@
-
 # Nikari Chatbot
 
 The GPT Vision feature identifies the material from a furniture image and provides care instructions for it.

@@ -18,7 +18,7 @@ import {
 
 function formatMaterialName(name: string): string {
   // Muuntaa camelCase-muotoisen merkkijonon sanoiksi
-  const words = name.replace(/([a-z])([A-Z])/g, '$1 $2');
+  const words = name.replace(/([a-z])([A-Z])/g, "$1 $2");
 
   // Muuntaa jokaisen sanan ensimmäisen kirjaimen isoksi
   const titleCase = words.replace(/\b(\w)/g, (char) => char.toUpperCase());
@@ -33,16 +33,16 @@ export default function CareGuides({ careGuides }: CareGuidesProps) {
         <p className="text-gray-700 mb-4 text-lg tracking-tight border-b">
           Click on each material to view the specific care instructions.
         </p>
-        {careGuides.map((careGuide, index) => {        
+        {careGuides.map((careGuide, index) => {
           const materialKey = careGuide.material;
           const multiPhotosMaterial = materialPhotos.find(
-            (photo) => photo.name === materialKey
+            (photo) => photo.name === materialKey,
           );
           let materialDisplay =
             careGuide.material === "outdoor"
               ? "outdoor furniture"
               : careGuide.material;
-              
+
           return (
             <Accordion key={index} type="single" collapsible className="mb-4">
               <AccordionItem value={careGuide.material}>
@@ -81,7 +81,7 @@ export default function CareGuides({ careGuides }: CareGuidesProps) {
                                 </p>
                               </CarouselItem>
                             );
-                          }
+                          },
                         )}
                     </CarouselContent>
                     <CarouselPrevious />

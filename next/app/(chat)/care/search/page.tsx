@@ -16,7 +16,7 @@ function Page() {
       instructions: careInstructions[key],
     };
   });
-  
+
   return (
     <div>
       <CareGuides careGuides={careGuides} />
