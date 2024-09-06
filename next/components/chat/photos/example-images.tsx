@@ -14,12 +14,12 @@ export function ExampleImages({
 }) {
   return (
     <div className="w-full mt-4">
-      <div className="flex items-center justify-center space-x-4">
-        <h3 className="text-sm font-semibold whitespace-nowrap">
+      <div className="flex flex-col sm:flex-row items-center justify-center sm:space-x-4 space-y-2 sm:space-y-0">
+        <h3 className="text-sm font-semibold text-center sm:text-left whitespace-nowrap">
           No image?
           <br /> Try one of these:
         </h3>
-        <div className="flex space-x-2">
+        <div className="flex flex-row sm:flex-row space-x-2">
           {exampleImages.map((img, index) => (
             <Card
               key={index}
@@ -32,6 +32,7 @@ export function ExampleImages({
                     src={img.src}
                     alt={img.alt}
                     fill
+                    sizes="(max-width: 640px) 80px, 80px"
                     className="rounded-md"
                   />
                 </div>
