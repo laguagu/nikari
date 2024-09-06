@@ -70,7 +70,7 @@ export const materialPhotos: MaterialPhotos[] = [
         id: "3",
         name: "laminate",
         href: "laminate",
-        imageSrc: "/care-instructions/laminate/laminate-1.jpg",
+        imageSrc: "/care-instructions/laminate/laminate-3.png",
       },
     ],
   },

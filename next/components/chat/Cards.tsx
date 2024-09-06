@@ -4,42 +4,42 @@ import Link from "next/link";
 
 export function Cards() {
   return (
-    <div className="flex flex-col items-center px-4 md:px-6 py-4 md:py-8 ">
-      <div className="flex flex-col gap-4 max-w-2xl w-full mx-auto">
-        {/* Kortit täällä */}
-        <Card className="hoverEffect shadow-md bg-white bg-opacity-60 group border-2 border-black border-opacity-35 divide-x-8">
-          <CardContent className="flex flex-col items-center justify-center p-4">
-            <h3 className="text-xl md:text-2xl font-semibold break-words text-gray-700 textColor">
+    <div className="flex flex-col items-center px-4 md:px-6 py-8 md:py-12 bg-white rounded-lg">
+      <div className="flex flex-col gap-6 max-w-2xl w-full mx-auto">
+        <Card className="shadow-sm bg-gray-50 hover:shadow-md transition-shadow duration-300 border border-gray-100">
+          <CardContent className="flex flex-col items-center justify-center p-6">
+            <h3 className="text-lg md:text-xl font-normal text-gray-800 mb-2">
               Step 1
             </h3>
-            <span className="text-medium"> Take a picture</span>
-            {/* <p className="text-gray-500 dark:text-gray-400 mt-2">This is the content of the first card.</p> */}
+            <span className="text-base text-gray-600">Take a picture</span>
           </CardContent>
         </Card>
-        <Card className="hoverEffect shadow-md bg-white bg-opacity-60 group border-2 border-black border-opacity-35">
-          <CardContent className="flex flex-col items-center justify-center p-4">
-            <h3 className="text-xl md:text-2xl font-semibold break-words text-gray-700 textColor">
+        <Card className="shadow-sm bg-gray-50 hover:shadow-md transition-shadow duration-300 border border-gray-100">
+          <CardContent className="flex flex-col items-center justify-center p-6">
+            <h3 className="text-lg md:text-xl font-normal text-gray-800 mb-2">
               Step 2
             </h3>
-            <span className="text-medium">Review and adjust</span>
+            <span className="text-base text-gray-600">Review and adjust</span>
           </CardContent>
         </Card>
-        <Card className="hoverEffect shadow-md bg-white bg-opacity-60 group border-2 border-black border-opacity-35">
-          <CardContent className="flex flex-col items-center justify-center p-4">
-            <h3 className="text-xl md:text-2xl font-semibold break-words text-gray-700 textColor">
+        <Card className="shadow-sm bg-gray-50 hover:shadow-md transition-shadow duration-300 border border-gray-100">
+          <CardContent className="flex flex-col items-center justify-center p-6">
+            <h3 className="text-lg md:text-xl font-normal text-gray-800 mb-2">
               Step 3
             </h3>
-            <span className="text-medium">Explore care instructions</span>
+            <span className="text-base text-gray-600">
+              Explore care instructions
+            </span>
           </CardContent>
         </Card>
-        <Link href={"/care"}>
-          <Card className="hoverEffect shadow-lg outline outline-2 bg-white  hover:cursor-pointer  hover:underline group ">
-            <CardContent className="flex flex-col items-center justify-center p-4">
-              <h3 className="text-xl md:text-2xl font-semibold text-gray-700 textColor">
+        <Link href={"/care"} className="w-full">
+          <Card className="shadow-sm bg-gray-100 hover:bg-gray-200 transition-colors duration-300 border border-gray-200 cursor-pointer">
+            <CardContent className="flex flex-col items-center justify-center p-6">
+              <h3 className="text-lg md:text-xl font-normal text-gray-800 mb-4">
                 Get started
               </h3>
               <Button
-                className="mt-2 font-semibold bg-gray-800 bg-opacity-90"
+                className="mt-2 font-normal bg-gray-700 hover:bg-gray-800 text-white transition-colors duration-300"
                 size="lg"
               >
                 Click here

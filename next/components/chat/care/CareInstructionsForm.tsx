@@ -99,7 +99,7 @@ export default function CareInstructionsForm({
     const selectedWoodOption = data.woodOption;
     const selectedLeatherOption = data.leatherOption;
     const selectedCheckboxOptions = data.items.filter(
-      (item) => item !== "wood" && item !== "leather",
+      (item) => item !== "wood" && item !== "leather"
     );
 
     const allSelectedOptions = [
@@ -173,7 +173,7 @@ export default function CareInstructionsForm({
                                     const newValue = checked
                                       ? [...field.value, item.id]
                                       : field.value.filter(
-                                          (value: string) => value !== item.id,
+                                          (value: string) => value !== item.id
                                         );
                                     setValue("items", newValue);
 
