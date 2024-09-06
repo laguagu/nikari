@@ -29,7 +29,7 @@ export default function MediaInputComponent({
   const [cameraError, setCameraError] = useState(null);
   const [isWebcamReady, setIsWebcamReady] = useState(false);
   const [isCameraActive, setIsCameraActive] = useState(false);
-  const [selectedExample, setSelectedExample] = useState<string | null>(null); 
+  const [selectedExample, setSelectedExample] = useState<string | null>(null);
 
   const captureImage = () => {
     const screenshot = webcamRef.current?.getScreenshot();
@@ -59,7 +59,7 @@ export default function MediaInputComponent({
   };
 
   const handleFileChange = async (
-    event: React.ChangeEvent<HTMLInputElement>
+    event: React.ChangeEvent<HTMLInputElement>,
   ) => {
     const file = event.target.files?.[0];
     if (file) {

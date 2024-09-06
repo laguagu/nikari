@@ -74,9 +74,6 @@ export default function CareInstructionsForm({
       leatherOption: undefined,
     },
   });
-  useEffect(() => {
-    console.log(clickedOk);
-  }, [clickedOk]);
 
   // Näytä Sonner/Toast kun komponentti vain kerran kun se renderöidään
   const toastDisplayed = useRef(false);
@@ -99,7 +96,7 @@ export default function CareInstructionsForm({
     const selectedWoodOption = data.woodOption;
     const selectedLeatherOption = data.leatherOption;
     const selectedCheckboxOptions = data.items.filter(
-      (item) => item !== "wood" && item !== "leather"
+      (item) => item !== "wood" && item !== "leather",
     );
 
     const allSelectedOptions = [
@@ -109,7 +106,6 @@ export default function CareInstructionsForm({
     ]
       .filter(Boolean)
       .join(",");
-    console.log(allSelectedOptions);
 
     router.push(`/care/search?materials=${allSelectedOptions}`);
   }
@@ -173,7 +169,7 @@ export default function CareInstructionsForm({
                                     const newValue = checked
                                       ? [...field.value, item.id]
                                       : field.value.filter(
-                                          (value: string) => value !== item.id
+                                          (value: string) => value !== item.id,
                                         );
                                     setValue("items", newValue);
 
