@@ -4,7 +4,7 @@ import Link from "next/link";
 
 export function Cards() {
   return (
-    <div className="flex flex-col items-center px-4 md:px-6 py-8 md:py-12 bg-white rounded-lg">
+    <div className="flex flex-col items-center px-4 md:px-6 py-8 md:py-12 mx-auto bg-white bg-opacity-10 border-white border-2 shadow-md rounded-lg">
       <div className="flex flex-col gap-6 max-w-2xl w-full mx-auto">
         <Card className="shadow-sm bg-gray-50 hover:shadow-md transition-shadow duration-300 border border-gray-100">
           <CardContent className="flex flex-col items-center justify-center p-6">

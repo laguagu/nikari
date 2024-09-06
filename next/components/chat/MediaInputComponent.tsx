@@ -10,6 +10,7 @@ import Image from "next/image";
 import Webcam from "react-webcam";
 import { CameraSkeleton } from "@/components/chat/skeletons";
 import { ExampleImages } from "./photos/example-images";
+import { Separator } from "@radix-ui/react-select";
 
 interface MediaInputComponentProps {
   handleSetMaterials: (value: string) => void;
