@@ -8,6 +8,7 @@ export async function POST(req: Request, res: Response) {
   try {
     const data = await req.json();
     const image = data.image_url;
+
     if (!image) {
       return Response.json({
         message: "Cant find image in req.body",

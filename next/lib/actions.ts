@@ -15,8 +15,7 @@ export async function getMaterials(image_url: string) {
       errorResponse.error.code === "content_policy_violation"
     ) {
       throw new Error(
-        "Your input image may contain content that is not allowed by AI safety system" ||
-          `HTTP error! status: ${response.status}`,
+        "Your input image may contain content that is not allowed by AI safety system",
       );
     } else {
       throw new Error(

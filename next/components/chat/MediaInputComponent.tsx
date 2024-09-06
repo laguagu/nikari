@@ -9,12 +9,18 @@ import {
 import Image from "next/image";
 import Webcam from "react-webcam";
 import { CameraSkeleton } from "@/components/chat/skeletons";
-
+import { Card, CardContent } from "@/components/ui/card";
 interface MediaInputComponentProps {
   handleSetMaterials: (value: string) => void;
   imageURL: string | null;
   setImageURL: (value: string | null) => void;
 }
+
+const exampleImages = [
+  { src: "/examples/akademia.png", alt: "Wood furniture" },
+  { src: "/examples/lounge.png", alt: "Leather sofa" },
+  { src: "/examples/tarjoilu.png", alt: "Metal chair" },
+];
 
 export default function MediaInputComponent({
   handleSetMaterials,
@@ -28,6 +34,7 @@ export default function MediaInputComponent({
   const [cameraError, setCameraError] = useState(null);
   const [isWebcamReady, setIsWebcamReady] = useState(false);
   const [isCameraActive, setIsCameraActive] = useState(false);
+  const [selectedExample, setSelectedExample] = useState<string | null>(null);
 
   const captureImage = () => {
     const screenshot = webcamRef.current?.getScreenshot();
@@ -35,6 +42,24 @@ export default function MediaInputComponent({
       setImageURL(screenshot);
     } else {
       console.error("Failed to capture image");
+    }
+  };
+
+  const handleExampleClick = async (src: string) => {
+    // Muunna kuva base64-muotoon ja aseta se esikatseluun
+    try {
+      const response = await fetch(src);
+      const blob = await response.blob();
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        const base64data = reader.result as string;
+        setImageURL(base64data);
+        setSelectedExample(src);
+      };
+      reader.readAsDataURL(blob);
+    } catch (error) {
+      console.error("Error loading example image:", error);
+      // Handle error (e.g., show an error message to the user)
     }
   };
 
@@ -230,21 +255,37 @@ export default function MediaInputComponent({
         </div>
       )}
       <canvas ref={canvasRef} style={{ display: "none" }} />
-      {/* <div className="text-center text-base font-light md:mx-20 flex-col">
-        <div className="inline-block p-2 border-b-2 items-center">
-          <div className="flex items-center">
-            <span className="font-normal text-sm">
-              Want to view all material care instructions right now?
-            </span>
-            <Button variant={"outline"} className="ml-2 font-bold">
-              <PhotoIcon className="w-5 mr-1 flex-shrink-0 right-0" />
-              <Link href="/care/search?materials=metal%2Cleather%2Claminate%2Cplastic%2Cfabric%2Coutdoor%2Cwood">
-                Explore
-              </Link>
-            </Button>
+      {/* example images */}
+      {!isCameraActive && !imageURL && (
+        <div className="w-full mt-4">
+          <div className="flex items-center justify-center space-x-4">
+            <h3 className="text-sm font-semibold whitespace-nowrap">
+              No image?
+              <br /> Try one of these:
+            </h3>
+            <div className="flex space-x-2">
+              {exampleImages.map((img, index) => (
+                <Card
+                  key={index}
+                  className="cursor-pointer hover:opacity-80 transition-opacity w-20 h-20"
+                  onClick={() => handleExampleClick(img.src)}
+                >
+                  <CardContent className="p-0 h-full">
+                    <div className="relative w-full h-full">
+                      <Image
+                        src={img.src}
+                        alt={img.alt}
+                        layout="fill"
+                        className="rounded-md"
+                      />
+                    </div>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
           </div>
         </div>
-      </div> */}
+      )}
     </div>
   );
 }

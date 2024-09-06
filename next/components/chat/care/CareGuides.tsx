@@ -28,10 +28,10 @@ function formatMaterialName(name: string): string {
 
 export default function CareGuides({ careGuides }: CareGuidesProps) {
   return (
-    <div className="md:p-4 ">
-      <div className=" overflow-y-auto p-4 bg-zinc-50 bg-opacity-90 shadow rounded-lg outline outline-white">
-        <p className="text-gray-700 mb-4 text-lg tracking-tight border-b">
-          Click on each material to view the specific care instructions.
+    <div className="md:p-4">
+      <div className="overflow-y-auto p-4 bg-zinc-50 bg-opacity-90 shadow rounded-lg outline outline-white">
+        <p className="text-gray-700 p-4 text-sm sm:text-base text-center border-b border-gray-200 mb-4">
+          Select a material to view its care instructions
         </p>
         {careGuides.map((careGuide, index) => {
           const materialKey = careGuide.material;
@@ -46,14 +46,12 @@ export default function CareGuides({ careGuides }: CareGuidesProps) {
           return (
             <Accordion key={index} type="single" collapsible className="mb-4">
               <AccordionItem value={careGuide.material}>
-                <AccordionTrigger
-                  className={`bg-zinc-100 relative cursor-pointer px-6 py-3 rounded-lg text-lg font-semibold group `}
-                >
-                  <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-10 rounded-lg transition-all duration-300 ease-in-out"></div>
+                <AccordionTrigger className="bg-zinc-100 relative cursor-pointer px-4 sm:px-6 py-2 sm:py-3 rounded-lg text-base sm:text-lg font-semibold group">
+                  <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-5 rounded-lg transition-all duration-300 ease-in-out"></div>
                   {formatMaterialName(materialDisplay)}
                 </AccordionTrigger>
-                <AccordionContent className="px-6 py-4 rounded-lg bg-zinc-100 bg-opacity-50 my-2 shadow-md hover:shadow-lg transition-shadow duration-200 border-2">
-                  <Carousel>
+                <AccordionContent className="px-4 sm:px-6 py-4 rounded-lg bg-zinc-100 bg-opacity-50 my-2 shadow-sm hover:shadow transition-shadow duration-200 border">
+                  <Carousel className="max-w-xl mx-auto">
                     <CarouselContent>
                       {careGuide.instructions &&
                         Object.entries(careGuide.instructions).map(
@@ -62,21 +60,18 @@ export default function CareGuides({ careGuides }: CareGuidesProps) {
                             return (
                               <CarouselItem
                                 key={idx}
-                                className="flex flex-col justify-around"
+                                className="flex flex-col items-center"
                               >
                                 {photo && (
-                                  <div className="flex flex-col items-center">
-                                    <Image
-                                      alt="Furniture care instructions"
-                                      src={photo.imageSrc}
-                                      height={400}
-                                      width={400}
-                                      className="aspect-[1/1] rounded-xl mb-4 cursor-pointer shadow-md object-cover border-2 border-white"
-                                      title="Furniture care instructions"
-                                    />
-                                  </div>
+                                  <Image
+                                    alt="Furniture care instructions"
+                                    src={photo.imageSrc}
+                                    height={350}
+                                    width={350}
+                                    className="rounded-lg mb-4 sm:mb-6 object-cover shadow-sm"
+                                  />
                                 )}
-                                <p className="text-gray-800 md:text-lg text-left tracking-tight border-b">
+                                <p className="text-gray-700 text-center max-w-md text-sm sm:text-base leading-snug sm:leading-relaxed">
                                   {instruction}
                                 </p>
                               </CarouselItem>
@@ -84,8 +79,8 @@ export default function CareGuides({ careGuides }: CareGuidesProps) {
                           },
                         )}
                     </CarouselContent>
-                    <CarouselPrevious />
-                    <CarouselNext />
+                    <CarouselPrevious className="bg-zinc-200 hover:bg-zinc-300" />
+                    <CarouselNext className="bg-zinc-200 hover:bg-zinc-300" />
                   </Carousel>
                 </AccordionContent>
               </AccordionItem>

@@ -19,15 +19,6 @@ export default function Page() {
     setError(null); // Resetoi virhetila
     try {
       let materials = await getMaterials(image_url);
-
-      // If "outdoor" is detected, set all other materials to false
-      // if (materials["outdoor"]) {
-      //   materials = Object.keys(materials).reduce((acc, material) => {
-      //     acc[material] = material === "outdoor"; // Aseta "outdoor" trueksi ja muut falseksi
-      //     return acc;
-      //   }, {} as { [key: string]: boolean });
-      // }
-
       setMaterials(materials);
       setIsDetectingMaterials(false);
     } catch (error) {
