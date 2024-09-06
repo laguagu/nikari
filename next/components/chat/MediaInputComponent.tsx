@@ -252,7 +252,9 @@ export default function MediaInputComponent({
       <canvas ref={canvasRef} style={{ display: "none" }} />
       {/* example images */}
       {!isCameraActive && !imageURL && (
-        <ExampleImages onExampleClick={handleExampleClick} />
+        <div>
+          <ExampleImages onExampleClick={handleExampleClick} />
+        </div>
       )}
     </div>
   );

@@ -13,7 +13,7 @@ export function ExampleImages({
   onExampleClick: (src: string) => void;
 }) {
   return (
-    <div className="w-full mt-4">
+    <div className="w-full sm:mt-4">
       <div className="flex flex-col sm:flex-row items-center justify-center sm:space-x-4 space-y-2 sm:space-y-0">
         <h3 className="text-sm font-semibold text-center sm:text-left whitespace-nowrap">
           No image?
