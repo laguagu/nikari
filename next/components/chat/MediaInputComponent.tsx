@@ -9,18 +9,13 @@ import {
 import Image from "next/image";
 import Webcam from "react-webcam";
 import { CameraSkeleton } from "@/components/chat/skeletons";
-import { Card, CardContent } from "@/components/ui/card";
+import { ExampleImages } from "./photos/example-images";
+
 interface MediaInputComponentProps {
   handleSetMaterials: (value: string) => void;
   imageURL: string | null;
   setImageURL: (value: string | null) => void;
 }
-
-const exampleImages = [
-  { src: "/examples/akademia.png", alt: "Wood furniture" },
-  { src: "/examples/lounge.png", alt: "Leather sofa" },
-  { src: "/examples/tarjoilu.png", alt: "Metal chair" },
-];
 
 export default function MediaInputComponent({
   handleSetMaterials,
@@ -34,7 +29,7 @@ export default function MediaInputComponent({
   const [cameraError, setCameraError] = useState(null);
   const [isWebcamReady, setIsWebcamReady] = useState(false);
   const [isCameraActive, setIsCameraActive] = useState(false);
-  const [selectedExample, setSelectedExample] = useState<string | null>(null);
+  const [selectedExample, setSelectedExample] = useState<string | null>(null); 
 
   const captureImage = () => {
     const screenshot = webcamRef.current?.getScreenshot();
@@ -64,7 +59,7 @@ export default function MediaInputComponent({
   };
 
   const handleFileChange = async (
-    event: React.ChangeEvent<HTMLInputElement>,
+    event: React.ChangeEvent<HTMLInputElement>
   ) => {
     const file = event.target.files?.[0];
     if (file) {
@@ -257,34 +252,7 @@ export default function MediaInputComponent({
       <canvas ref={canvasRef} style={{ display: "none" }} />
       {/* example images */}
       {!isCameraActive && !imageURL && (
-        <div className="w-full mt-4">
-          <div className="flex items-center justify-center space-x-4">
-            <h3 className="text-sm font-semibold whitespace-nowrap">
-              No image?
-              <br /> Try one of these:
-            </h3>
-            <div className="flex space-x-2">
-              {exampleImages.map((img, index) => (
-                <Card
-                  key={index}
-                  className="cursor-pointer hover:opacity-80 transition-opacity w-20 h-20"
-                  onClick={() => handleExampleClick(img.src)}
-                >
-                  <CardContent className="p-0 h-full">
-                    <div className="relative w-full h-full">
-                      <Image
-                        src={img.src}
-                        alt={img.alt}
-                        layout="fill"
-                        className="rounded-md"
-                      />
-                    </div>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-          </div>
-        </div>
+        <ExampleImages onExampleClick={handleExampleClick} />
       )}
     </div>
   );
