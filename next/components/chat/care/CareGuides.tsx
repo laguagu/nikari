@@ -36,7 +36,7 @@ export default function CareGuides({ careGuides }: CareGuidesProps) {
         {careGuides.map((careGuide, index) => {
           const materialKey = careGuide.material;
           const multiPhotosMaterial = materialPhotos.find(
-            (photo) => photo.name === materialKey,
+            (photo) => photo.name === materialKey
           );
           let materialDisplay =
             careGuide.material === "outdoor"
@@ -60,7 +60,7 @@ export default function CareGuides({ careGuides }: CareGuidesProps) {
                             return (
                               <CarouselItem
                                 key={idx}
-                                className="flex flex-col items-center"
+                                className="flex flex-col items-center align-middle justify-center"
                               >
                                 {photo && (
                                   <Image
@@ -76,7 +76,7 @@ export default function CareGuides({ careGuides }: CareGuidesProps) {
                                 </p>
                               </CarouselItem>
                             );
-                          },
+                          }
                         )}
                     </CarouselContent>
                     <CarouselPrevious className="bg-zinc-200 hover:bg-zinc-300" />
