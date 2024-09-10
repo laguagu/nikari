@@ -1,8 +1,8 @@
 "use client";
-import { useSearchParams } from "next/navigation";
-import { careInstructions } from "@/lib/hoitoOhjeet";
-import { MaterialCareInstructions } from "@/lib/definition";
 import CareGuides from "@/components/chat/care/CareGuides";
+import { MaterialCareInstructions } from "@/lib/definition";
+import { careInstructions } from "@/lib/hoitoOhjeet";
+import { useSearchParams } from "next/navigation";
 
 function Page() {
   const [searchParams] = useSearchParams();

@@ -1,8 +1,8 @@
-import Loader from "@/components/chat/Loader";
+import AnimatedContent from "@/components/chat/Loader";
 export default function Page() {
   return (
     <div>
-      <Loader>Loading care instructions</Loader>
+      <AnimatedContent>Loading care instructions</AnimatedContent>
     </div>
   );
 }

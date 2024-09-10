@@ -1,14 +1,16 @@
 "use client";
-import React from "react";
-import { ThreeDots } from "react-loader-spinner";
+import { motion } from "framer-motion";
 
-export default function Loader({ children }: { children: React.ReactNode }) {
+import { ReactNode } from "react";
+
+export default function AnimatedContent({ children }: { children: ReactNode }) {
   return (
-    <div>
-      <div className="flex justify-center items-center">
-        <h1 className="mr-2">{children}</h1>
-        <ThreeDots height="56" width="56" color="" />
-      </div>
-    </div>
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.5 }}
+    >
+      {children}
+    </motion.div>
   );
 }

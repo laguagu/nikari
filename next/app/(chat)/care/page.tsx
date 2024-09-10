@@ -1,10 +1,12 @@
 "use client";
-import React, { useState } from "react";
-import { getMaterials } from "@/lib/actions";
-import CareInstructionsForm from "@/components/chat/care/CareInstructionsForm";
-import { FormSkeleton } from "@/components/chat/skeletons";
 import MediaInputComponent from "@/components/chat/MediaInputComponent";
+import CareInstructionsForm from "@/components/chat/care/CareInstructionsForm";
 import Error from "@/components/chat/error";
+import { FormSkeleton } from "@/components/chat/skeletons";
+import { getMaterials } from "@/lib/actions";
+import { fadeVariants } from "@/lib/animation-config";
+import { AnimatePresence, motion } from "framer-motion";
+import { useState } from "react";
 
 export default function Page() {
   const [materials, setMaterials] = useState<{ [key: string]: boolean } | null>(
@@ -28,21 +30,63 @@ export default function Page() {
   };
 
   return (
-    <div>
-      {error && !imageURL && <Error cameraError={error} />}
-      {!materials && !isDetectingMaterials && (
-        <MediaInputComponent
-          handleSetMaterials={handleSetMaterials}
-          setImageURL={setImageURL}
-          imageURL={imageURL}
-        />
-      )}
-      {isDetectingMaterials && (
-        <div className="flex justify-center">
-          <FormSkeleton />
-        </div>
-      )}
-      {materials && <CareInstructionsForm materials={materials} />}
-    </div>
+    <motion.div
+      initial="hidden"
+      animate="visible"
+      exit="exit"
+      variants={fadeVariants}
+    >
+      <AnimatePresence mode="wait">
+        {error && !imageURL && (
+          <motion.div
+            key="error"
+            variants={fadeVariants}
+            initial="hidden"
+            animate="visible"
+            exit="exit"
+          >
+            <Error cameraError={error} />
+          </motion.div>
+        )}
+        {!materials && !isDetectingMaterials && (
+          <motion.div
+            key="mediaInput"
+            variants={fadeVariants}
+            initial="hidden"
+            animate="visible"
+            exit="exit"
+          >
+            <MediaInputComponent
+              handleSetMaterials={handleSetMaterials}
+              setImageURL={setImageURL}
+              imageURL={imageURL}
+            />
+          </motion.div>
+        )}
+        {isDetectingMaterials && (
+          <motion.div
+            key="formSkeleton"
+            variants={fadeVariants}
+            initial="hidden"
+            animate="visible"
+            exit="exit"
+            className="flex justify-center"
+          >
+            <FormSkeleton />
+          </motion.div>
+        )}
+        {materials && (
+          <motion.div
+            key="careInstructions"
+            variants={fadeVariants}
+            initial="hidden"
+            animate="visible"
+            exit="exit"
+          >
+            <CareInstructionsForm materials={materials} />
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </motion.div>
   );
 }

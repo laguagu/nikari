@@ -1,16 +1,17 @@
 "use client";
-import React, { useState, useRef } from "react";
+import { CameraSkeleton } from "@/components/chat/skeletons";
 import { Button } from "@/components/ui/button";
+import { mediaInputVariants } from "@/lib/animation-config";
 import {
-  DocumentPlusIcon,
   CameraIcon,
   CheckIcon,
+  DocumentPlusIcon,
 } from "@heroicons/react/24/outline";
+import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
+import React, { useRef, useState } from "react";
 import Webcam from "react-webcam";
-import { CameraSkeleton } from "@/components/chat/skeletons";
 import { ExampleImages } from "./photos/example-images";
-import { Separator } from "@radix-ui/react-select";
 
 interface MediaInputComponentProps {
   handleSetMaterials: (value: string) => void;
@@ -118,78 +119,60 @@ export default function MediaInputComponent({
   };
 
   return (
-    <div className="flex flex-col items-center justify-center space-y-4 md:my-6 my-3 relative ">
-      {!isCameraActive && !imageURL && (
-        <div className="md:mb-2s border-white flex flex-col md:flex-row items-center justify-center max-w-md mx-auto p-4 bg-zinc-200 border-2 rounded-xl">
-          <Image
-            alt="instructions step 1"
-            src={"/steps/step-1.webp"}
-            height={175}
-            width={175}
-            className="aspect-square rounded-xl object-cover shadow-lg mx-4 my-2"
-          />
-          <p className="text-start break-words max-w-xs md:max-w-sm">
-            Capture a clear photo of your furniture. Ensure the photo is
-            well-lit and the entire piece of furniture is visible in the shot.
-          </p>
-        </div>
-      )}
-      {loadingCamera && !imageURL && <CameraSkeleton />}
-      {!imageURL && (
-        <div className="flex gap-3">
-          {!isCameraActive && (
-            <>
-              <Button
-                onClick={toggleCamera}
-                className="font-semibold"
-                variant={"outline"}
-              >
-                Activate Camera
-                <CameraIcon className="w-5 ml-2" />
-              </Button>
-              <input
-                type="file"
-                ref={fileInputRef}
-                style={{ display: "none" }}
-                onChange={handleFileChange}
-                accept="image/*"
-              />
-              <Button
-                variant={"outline"}
-                onClick={() => fileInputRef.current?.click()}
-                className="font-semibold"
-              >
-                <DocumentPlusIcon className="w-5 mr-1 flex-shrink-0 right-0" />
-                Upload Image
-              </Button>
-            </>
-          )}
-        </div>
-      )}
-      {isCameraActive && !imageURL && (
-        <>
-          <Webcam
-            audio={false}
-            ref={webcamRef}
-            screenshotFormat="image/jpeg"
-            videoConstraints={videoConstraints}
-            className={`rounded-xl ${isWebcamReady ? "" : "hidden"}`} // Piilota Webcam-komponentti kunnes se on valmis
-            onUserMedia={handleCameraStart}
-            onUserMediaError={handleCameraError}
-          />
-          <div className="flex gap-3">
-            {!loadingCamera && isWebcamReady && (
-              <Button
-                onClick={captureImage}
-                className="font-semibold"
-                variant={"outline"}
-              >
-                <CameraIcon className="w-5 mr-1 flex-shrink-0 right-0" />
-                Take Screenshot
-              </Button>
-            )}
-            {!loadingCamera && (
+    <div className="flex flex-col items-center justify-center space-y-4 md:my-6 my-3 relative">
+      <AnimatePresence mode="wait">
+        {!isCameraActive && !imageURL && (
+          <motion.div
+            key="instructions"
+            variants={mediaInputVariants}
+            initial="hidden"
+            animate="visible"
+            exit="exit"
+            className="md:mb-2s border-white flex flex-col md:flex-row items-center justify-center max-w-md mx-auto p-4 bg-zinc-200 border-2 rounded-xl"
+          >
+            <Image
+              alt="instructions step 1"
+              src={"/steps/step-1.webp"}
+              height={175}
+              width={175}
+              className="aspect-square rounded-xl object-cover shadow-lg mx-4 my-2"
+            />
+            <p className="text-start break-words max-w-xs md:max-w-sm">
+              Capture a clear photo of your furniture. Ensure the photo is
+              well-lit and the entire piece of furniture is visible in the shot.
+            </p>
+          </motion.div>
+        )}
+        {loadingCamera && !imageURL && (
+          <motion.div
+            key="camera-skeleton"
+            variants={mediaInputVariants}
+            initial="hidden"
+            animate="visible"
+            exit="exit"
+          >
+            <CameraSkeleton />
+          </motion.div>
+        )}
+        {!imageURL && (
+          <motion.div
+            key="camera-buttons"
+            variants={mediaInputVariants}
+            initial="hidden"
+            animate="visible"
+            exit="exit"
+            className="flex gap-3"
+          >
+            {!isCameraActive && (
               <>
+                <Button
+                  onClick={toggleCamera}
+                  className="font-semibold"
+                  variant={"outline"}
+                >
+                  Activate Camera
+                  <CameraIcon className="w-5 ml-2" />
+                </Button>
                 <input
                   type="file"
                   ref={fileInputRef}
@@ -207,56 +190,125 @@ export default function MediaInputComponent({
                 </Button>
               </>
             )}
-          </div>
-        </>
-      )}
-      {imageURL && (
-        <div className="bg-gray-200 md:p-8 p-5 justify-center items-center ml-3 rounded-xl border-white border-2 shadow-md border-opacity-80 ">
-          <div className="text-center justify-center">
-            <Image
-              src={imageURL}
-              alt="Esikatselu"
-              className="rounded-md object-contain md:max-w-lg md:max-h-none max-h-96 w-full h-auto"
-              width={640}
-              height={360}
+          </motion.div>
+        )}
+        {isCameraActive && !imageURL && (
+          <motion.div
+            key="webcam"
+            variants={mediaInputVariants}
+            initial="hidden"
+            animate="visible"
+            exit="exit"
+          >
+            <Webcam
+              audio={false}
+              ref={webcamRef}
+              screenshotFormat="image/jpeg"
+              videoConstraints={videoConstraints}
+              className={`rounded-xl ${isWebcamReady ? "" : "hidden"}`}
+              onUserMedia={handleCameraStart}
+              onUserMediaError={handleCameraError}
             />
-            <div className="space-y-2 mt-2 xs:space-x-0 sm:space-x-3 md:space-x-3 ">
-              <Button
-                variant={"outline"}
-                className="font-semibold"
-                onClick={() => sendImageToGPT(imageURL)}
-              >
-                <CheckIcon className="w-5 mr-1 flex-shrink-0 right-0" />
-                Accept and Send
-              </Button>
-              <Button
-                onClick={resetStates}
-                variant={"outline"}
-                className="font-semibold"
-              >
-                <CameraIcon className="w-5 mr-1 flex-shrink-0 right-0" />
-                Take New Picture
-              </Button>
+            <div className="flex gap-3 mt-4">
+              {!loadingCamera && isWebcamReady && (
+                <Button
+                  onClick={captureImage}
+                  className="font-semibold"
+                  variant={"outline"}
+                >
+                  <CameraIcon className="w-5 mr-1 flex-shrink-0 right-0" />
+                  Take Screenshot
+                </Button>
+              )}
+              {!loadingCamera && (
+                <>
+                  <input
+                    type="file"
+                    ref={fileInputRef}
+                    style={{ display: "none" }}
+                    onChange={handleFileChange}
+                    accept="image/*"
+                  />
+                  <Button
+                    variant={"outline"}
+                    onClick={() => fileInputRef.current?.click()}
+                    className="font-semibold"
+                  >
+                    <DocumentPlusIcon className="w-5 mr-1 flex-shrink-0 right-0" />
+                    Upload Image
+                  </Button>
+                </>
+              )}
             </div>
-          </div>
-        </div>
-      )}
-      {cameraError && !imageURL && (
-        <div className="text-center text-lg">
-          <p>
-            Error: {cameraError}
-            <br />
-            Please plug in camera or continue by uploading from files.
-          </p>
-        </div>
-      )}
+          </motion.div>
+        )}
+        {imageURL && (
+          <motion.div
+            key="image-preview"
+            variants={mediaInputVariants}
+            initial="hidden"
+            animate="visible"
+            exit="exit"
+            className="bg-gray-200 md:p-8 p-5 justify-center items-center ml-3 rounded-xl border-white border-2 shadow-md border-opacity-80"
+          >
+            <div className="text-center justify-center">
+              <Image
+                src={imageURL}
+                alt="Esikatselu"
+                className="rounded-md object-contain md:max-w-lg md:max-h-none max-h-96 w-full h-auto"
+                width={640}
+                height={360}
+              />
+              <div className="space-y-2 mt-2 xs:space-x-0 sm:space-x-3 md:space-x-3">
+                <Button
+                  variant={"outline"}
+                  className="font-semibold"
+                  onClick={() => sendImageToGPT(imageURL)}
+                >
+                  <CheckIcon className="w-5 mr-1 flex-shrink-0 right-0" />
+                  Accept and Send
+                </Button>
+                <Button
+                  onClick={resetStates}
+                  variant={"outline"}
+                  className="font-semibold"
+                >
+                  <CameraIcon className="w-5 mr-1 flex-shrink-0 right-0" />
+                  Take New Picture
+                </Button>
+              </div>
+            </div>
+          </motion.div>
+        )}
+        {cameraError && !imageURL && (
+          <motion.div
+            key="camera-error"
+            variants={mediaInputVariants}
+            initial="hidden"
+            animate="visible"
+            exit="exit"
+            className="text-center text-lg"
+          >
+            <p>
+              Error: {cameraError}
+              <br />
+              Please plug in camera or continue by uploading from files.
+            </p>
+          </motion.div>
+        )}
+        {!isCameraActive && !imageURL && (
+          <motion.div
+            key="example-images"
+            variants={mediaInputVariants}
+            initial="hidden"
+            animate="visible"
+            exit="exit"
+          >
+            <ExampleImages onExampleClick={handleExampleClick} />
+          </motion.div>
+        )}
+      </AnimatePresence>
       <canvas ref={canvasRef} style={{ display: "none" }} />
-      {/* example images */}
-      {!isCameraActive && !imageURL && (
-        <div>
-          <ExampleImages onExampleClick={handleExampleClick} />
-        </div>
-      )}
     </div>
   );
 }
