@@ -61,7 +61,7 @@ export default function MediaInputComponent({
   };
 
   const handleFileChange = async (
-    event: React.ChangeEvent<HTMLInputElement>,
+    event: React.ChangeEvent<HTMLInputElement>
   ) => {
     const file = event.target.files?.[0];
     if (file) {
@@ -209,7 +209,7 @@ export default function MediaInputComponent({
               onUserMedia={handleCameraStart}
               onUserMediaError={handleCameraError}
             />
-            <div className="flex gap-3 mt-4">
+            <div className="flex gap-3 mt-4 justify-center">
               {!loadingCamera && isWebcamReady && (
                 <Button
                   onClick={captureImage}
