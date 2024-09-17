@@ -23,7 +23,7 @@ const cardSteps = [
 
 export const CardSteps = () => {
   return (
-    <div className="flex flex-col max-w-2xl w-full mx-auto">
+    <div className="flex gap-3 sm:gap-5 flex-col max-w-2xl w-full mx-auto">
       <div className="grid grid-cols-3 gap-4 sm:gap-6">
         {cardSteps.map((step, index) => (
           <MotionDiv
@@ -43,7 +43,7 @@ export const CardSteps = () => {
                 {step.description}
               </p>
             </div>
-            {index < cardSteps.length - 1 && (
+            {index < cardSteps.length && (
               <div className="w-8 h-px bg-[#5c5c5c] mt-4 sm:mt-6 opacity-30"></div>
             )}
           </MotionDiv>
