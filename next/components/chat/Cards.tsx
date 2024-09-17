@@ -1,7 +1,7 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
+import { Card } from "@/components/ui/card";
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
@@ -23,7 +23,7 @@ const cardSteps = [
 
 export const CardSteps = () => {
   return (
-    <div className="flex flex-col gap-6 sm:gap-8 max-w-2xl w-full mx-auto">
+    <div className="flex flex-col max-w-2xl w-full mx-auto">
       <div className="grid grid-cols-3 gap-4 sm:gap-6">
         {cardSteps.map((step, index) => (
           <MotionDiv
@@ -43,32 +43,36 @@ export const CardSteps = () => {
                 {step.description}
               </p>
             </div>
-            {index < cardSteps.length && (
+            {index < cardSteps.length - 1 && (
               <div className="w-8 h-px bg-[#5c5c5c] mt-4 sm:mt-6 opacity-30"></div>
             )}
           </MotionDiv>
         ))}
       </div>
       <Link href="/care" className="w-full mt-6 sm:mt-8">
-        <MotionCard
-          className="bg-[#202020] hover:bg-[#4a4a4a] transition-colors duration-300 cursor-pointer"
-          whileHover={{ y: -2 }}
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
+        <MotionDiv
+          className="bg-white rounded-lg shadow-md transition-all duration-300 cursor-pointer overflow-hidden"
+          whileHover={{
+            y: -4,
+            boxShadow:
+              "0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08)",
+          }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
           transition={{ delay: 0.3, duration: 0.4 }}
         >
-          <CardContent className="flex items-center justify-between p-4 sm:p-6">
-            <h3 className="text-lg sm:text-xl font-medium text-white">
+          <div className="p-4 sm:p-6">
+            <h3 className="text-lg text-center text-[#5c5c5c] sm:text-xl font-medium mb-4">
               Get started
             </h3>
             <Button
-              className="font-normal bg-white text-[#5c5c5c] hover:bg-gray-100 hover:text-[#4a4a4a]"
+              className="w-full font-normal bg-[#202020] text-white hover:bg-[#333333] hover:text-white transition-colors duration-300"
               size="default"
             >
               Start now <ArrowRight className="ml-2 h-4 w-4 sm:h-5 sm:w-5" />
             </Button>
-          </CardContent>
-        </MotionCard>
+          </div>
+        </MotionDiv>
       </Link>
     </div>
   );
