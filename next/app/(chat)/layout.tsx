@@ -1,7 +1,7 @@
 import { HomeButton } from "@/components/ui/HomeButton";
+import { Toaster } from "@/components/ui/sonner";
 import Link from "next/link";
 import React from "react";
-import { Toaster } from "@/components/ui/sonner";
 export default function ChatLayout({
   children,
 }: {
