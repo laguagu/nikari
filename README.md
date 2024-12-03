@@ -1,35 +1,24 @@
+# Material Recognition & Care Guide App
 
-# Nikari Chatbot
+Next.js sovellus, joka hyödyntää OpenAI:n Vision API:a huonekalujen materiaalien tunnistamiseen ja tarjoaa materiaaleihin perustuvat hoito-ohjeet.
 
-The GPT Vision feature identifies the material from a furniture image and provides care instructions for it.
+## Features
 
-## Getting Started
+- Materiaalien tunnistus kuvista OpenAI:n Vision API:n avulla
+- Automaattiset hoito-ohjeet tunnistetuille materiaaleille
+- Responsiivinen käyttöliittymä Next.js:llä
+- API-reitit materiaalien tunnistukseen ja käsittelyyn
 
-First, run the development server:
+## Tech Stack
 
+- [Next.js](https://nextjs.org/) - React framework
+- [OpenAI API](https://openai.com/blog/openai-api) - Vision and Chat capabilities
+- TypeScript
+- Tailwind CSS
+
+## Aloitus
+
+1. Clone the repository
+2. Install dependencies:
 ```bash
-cd next/
-
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+npm install
