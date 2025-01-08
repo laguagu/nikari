@@ -1,35 +1,163 @@
+# Materiaalintunnistus & Hoito-ohjeet Sovellus
 
-# Nikari Chatbot
+Next.js-pohjainen web-sovellus Nikarille, joka hyödyntää OpenAI:n Vision API:a huonekalujen materiaalien tunnistamiseen ja tarjoaa materiaaleihin perustuvat hoito-ohjeet.
 
-The GPT Vision feature identifies the material from a furniture image and provides care instructions for it.
+## Ominaisuudet
 
-## Getting Started
+- Materiaalien automaattinen tunnistus kuvista OpenAI:n Vision API:n avulla
+- Yksityiskohtaiset hoito-ohjeet tunnistetuille materiaaleille
+- Responsiivinen ja käyttäjäystävällinen käyttöliittymä
+- Tehokas chat-käyttöliittymä materiaalien hoito-ohjeiden kysymiseen
+- Basic-autentikaatio API-rajapinnoille (tällä hetkellä pois käytöstä)
+- Monikielinen tuki (suomi, englanti)
+- Mobiiliystävällinen suunnittelu
 
-First, run the development server:
+## Teknologiat
 
+- [Next.js 14](https://nextjs.org/) - React framework
+- [OpenAI API](https://openai.com/blog/openai-api) - Vision ja Chat toiminnallisuudet
+- [TypeScript](https://www.typescriptlang.org/) - Tyyppiturvallinen JavaScript
+- [Tailwind CSS](https://tailwindcss.com/) - Käyttöliittymän tyylit
+- [Docker](https://www.docker.com/) - Kontitus
+
+
+## Aloitus
+
+1. Kloonaa repositorio:
 ```bash
-cd next/
-
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone [https://github.com/laguagu/nikari]
+cd [nikari]
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. Asenna riippuvuudet:
+```bash
+npm install
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+3. Kopioi `.env.example` tiedosto nimellä `.env.local`:
+```bash
+cp .env.example .env.local
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+Tiedoston sisältö:
+```
+OPENAI_API_KEY=""
 
-## Learn More
+# Autentikointi ei ole käytössä koska middleware on pois käytöstä "_" prefix merkillä 
+# Basic auth kovakoodattu username,password katso middleware.ts
+BASIC_AUTH_USER=testuser
+BASIC_AUTH_PASSWORD="testpassword"
+```
 
-To learn more about Next.js, take a look at the following resources:
+4. Käynnistä kehityspalvelin:
+```bash
+npm run dev
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Sovellus on nyt käytettävissä osoitteessa `http://localhost:3000`
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## API-dokumentaatio
+
+### Vision API
+
+**POST /api/visio**
+- Endpoint huonekalujen materiaalien tunnistukseen kuvista OpenAI:n Vision API:n avulla
+- Request body:
+```json
+{
+  "image_url": "string"
+}
+```
+- Response:
+```json
+{
+  "index": 0,
+  "message": {
+    "role": "assistant",
+    "content": {
+      "wood": boolean,
+      "leather": boolean,
+      "metal": boolean,
+      "laminate": boolean,
+      "plastic": boolean,
+      "fabric": boolean
+    }
+  },
+  "finish_reason": "stop"
+}
+```
+
+- Error Response (400):
+```json
+{
+  "message": "Cant find image in req.body",
+  "status": 400
+}
+```
+
+- Error Response (500):
+```json
+{
+  "message": "Internal server error",
+  "status": 500
+}
+```
+
+API käyttää OpenAI:n GPT-4 Vision -mallia analysoinnissa ja palauttaa JSON-muotoisen vastauksen, joka kertoo mitä materiaaleja kuvassa on havaittu.
+
+## Käyttöönotto
+
+### Docker-käyttöönotto
+
+1. Rakenna Docker-image:
+```bash
+docker build -t nikari-app .
+```
+
+2. Käynnistä kontti:
+```bash
+docker run -p 3000:3000 --env-file .env.local nikari-app
+```
+
+### Rahti-käyttöönotto
+
+1. Kirjaudu Rahti-rekisteriin:
+```bash
+docker login -u g -p $(oc whoami -t) image-registry.apps.2.rahti.csc.fi
+```
+
+2. Tägää ja työnnä image:
+```bash
+docker tag nikari-app image-registry.apps.2.rahti.csc.fi/alyakokeilut/nikari:latest
+docker push image-registry.apps.2.rahti.csc.fi/alyakokeilut/nikari:latest
+```
+
+3. Tarkista imagestream:
+```bash
+oc get imagestream nikari
+```
+
+## Testaus
+
+Sovellus käyttää Jest-testikehystä yksikkö- ja integraatiotesteihin:
+
+```bash
+# Aja kaikki testit
+npm test
+
+# Aja testit watch-tilassa
+npm run test:watch
+
+# Aja testikattavuusraportti
+npm run test:coverage
+```
+
+## Lisenssi
+
+Tämä projekti on lisensoitu [MIT-lisenssin](LICENSE) alaisuudessa.
+
+## Yhteystiedot ja Tuki
+
+Ongelmatilanteissa tai kysymyksissä ota yhteyttä:
+- Sähköposti: [yhteystiedot]
+- Issue Tracker: [GitHub Issues -linkki]

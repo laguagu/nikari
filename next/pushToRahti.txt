@@ -1,0 +1,19 @@
+buildaa sovellus
+docker run -p 3000:3000 my-nextjs-app
+
+Rahti 1
+docker tag my-nextjs-app docker-registry.rahti.csc.fi/nodetesti/webchat:latest
+docker push docker-registry.rahti.csc.fi/nodetesti/webchat:latest
+
+Rahti 2 - DockerHub
+docker tag my-nextjs-app laguagu/nikari:latest
+docker push laguagu/nikari:latest
+
+Rahti 2 - Rahti Image registry
+docker tag my-nextjs-app image-registry.apps.2.rahti.csc.fi/alyakokeilut/nikari:latest
+docker login -u g -p $(oc whoami -t) image-registry.apps.2.rahti.csc.fi
+docker push image-registry.apps.2.rahti.csc.fi/alyakokeilut/nikari:latest
+
+-Tarkista imagestream
+oc get imagestream nikari
+
