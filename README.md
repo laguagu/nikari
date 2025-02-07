@@ -137,27 +137,6 @@ docker push image-registry.apps.2.rahti.csc.fi/alyakokeilut/nikari:latest
 oc get imagestream nikari
 ```
 
-## Testaus
-
-Sovellus käyttää Jest-testikehystä yksikkö- ja integraatiotesteihin:
-
-```bash
-# Aja kaikki testit
-npm test
-
-# Aja testit watch-tilassa
-npm run test:watch
-
-# Aja testikattavuusraportti
-npm run test:coverage
-```
-
 ## Lisenssi
 
 Tämä projekti on lisensoitu [MIT-lisenssin](LICENSE) alaisuudessa.
-
-## Yhteystiedot ja Tuki
-
-Ongelmatilanteissa tai kysymyksissä ota yhteyttä:
-- Sähköposti: [yhteystiedot]
-- Issue Tracker: [GitHub Issues -linkki]
