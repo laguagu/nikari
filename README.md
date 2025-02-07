@@ -25,8 +25,8 @@ Next.js-pohjainen web-sovellus Nikarille, joka hyödyntää OpenAI:n Vision API:
 
 1. Kloonaa repositorio:
 ```bash
-git clone [https://github.com/laguagu/nikari]
-cd [nikari]
+git clone https://github.com/laguagu/nikari
+cd nikari
 ```
 
 2. Asenna riippuvuudet:
